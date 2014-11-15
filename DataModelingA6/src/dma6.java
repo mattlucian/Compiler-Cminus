@@ -44,8 +44,7 @@ class Scheduler {
         // gets connection to olympia
         try {
             connection = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@olympia.unfcsd.unf.edu:1521:dworcl", "myersm",
-                    "n48663");
+                    "jdbc:oracle:thin:@olympia.unfcsd.unf.edu:1521:dworcl", "myersm","n48663");
         } catch (SQLException e) {
             System.out.println("Connection to Olympia Failed!");
             return;
@@ -53,11 +52,15 @@ class Scheduler {
 
         if (connection == null) {
             System.out.println("Failed to establish connection somewhere!");
+            // exit
+        }else{
+            System.out.println("Made it!");
         }
     }
 
     public void printQuery(){
         String query = "SELECT * FROM student";
+
         Statement stmt = null;
         try{
             stmt = connection.createStatement();
