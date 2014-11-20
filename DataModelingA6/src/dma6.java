@@ -43,8 +43,7 @@ class Scheduler {
 
         // gets connection to olympia
         try {
-            connection = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@olympia.unfcsd.unf.edu:1521:dworcl", "myersm","n48663");
+            connection = DriverManager.getConnection("jdbc:oracle:thin:@olympia.unfcsd.unf.edu:1521:dworcl", "myersm","n48663");
         } catch (SQLException e) {
             System.out.println("Connection to Olympia Failed!");
             return;
