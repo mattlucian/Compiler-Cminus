@@ -39,6 +39,7 @@ class Scheduler {
             System.out.println("Failed to establish connection somewhere!");
             // exit
         }else{
+            // you have a valid connection now to use
             System.out.println("Made it!");
         }
     }
@@ -51,7 +52,7 @@ class Scheduler {
             stmt = connection.createStatement();
             ResultSet rs = stmt.executeQuery(query);
             while(rs.next()){
-                for(int i = 1; i < 10; i++){
+                for(int i = 1; i < 9; i++){
                     // can do rs.getString("COLUMN NAME")
                     System.out.print(rs.getString(i)+"\t");
                 }
