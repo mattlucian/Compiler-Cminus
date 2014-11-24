@@ -8,8 +8,10 @@ import java.util.Scanner;
 
 public class dma6 {
     public static void main(String[] args){
-        AdminClass adminClass = new AdminClass();
-        adminClass.mainMenu();
+        //AdminClass adminClass = new AdminClass();
+        //adminClass.mainMenu();
+
+
     }
 }
 
@@ -67,6 +69,12 @@ class Scheduler {
 class AdminClass {
 
     private Scanner inputReader = new Scanner(System.in); // for reading input
+    private  Connection connection;
+
+    AdminClass(){ } // filler constructor
+    AdminClass(Connection establishedConnection){
+        connection = establishedConnection;
+    }
 
     //region Main Menu
     public void mainMenu(){
@@ -142,21 +150,53 @@ class AdminClass {
 
             if (choice == 1) {
                 // create admin account
-
-                // INSERT INTO faculty (
-
+                getInputFor(true);
+                System.out.println(" Administrator account has been created");
             } else if (choice == 2) {
                 // create faculty account
-
+                getInputFor(false);
+                System.out.println(" Faculty account has been created");
             } else if (choice == 3) {
                 // exit
-
 
             } else {
                 System.out.println("Error, invalid selection please try again");
             }
 
         }while(choice != 3);
+    }
+
+    public void getInputFor(boolean isAdmin){
+        System.out.println("Enter Account n# (exclude the n) and press enter key");
+        String nNumber = inputReader.nextLine();
+        Integer validNumber = 0;
+
+        boolean validated = false;
+        while(!validated){
+            try{
+                validNumber = Integer.parseInt(nNumber);
+                validated = true;
+            }catch (Exception e){
+                System.out.println("~Error, please enter a valid number");
+                nNumber = inputReader.nextLine();
+            }
+        }
+
+        System.out.println("Enter Account First Name: ");
+        String firstName = inputReader.nextLine().trim();
+
+        System.out.println("Enter Account Last Name: ");
+        String lastName = inputReader.nextLine().trim();
+
+        System.out.println("Enter Faculty Type (director, etc.): ");
+        String facultyType = inputReader.nextLine().trim();
+
+        System.out.println("Enter a password for this account: ");
+        String passWord = inputReader.nextLine().trim();
+
+        String query = "INSERT INTO faculty ( n_number, first_name, last_name, is_administrator, password, faculty_type) VALUES (";
+        query += ( Integer.toString(validNumber) + " , " + firstName + " , " + lastName + " , " + Boolean.toString(isAdmin) + " , " + passWord + " , " + facultyType );
+
     }
 
     public void deleteAccount(){
@@ -166,6 +206,15 @@ class AdminClass {
 
     //region Reporting Menu Functions
     public void printCourseReport(){
+
+
+        // while(rs.next()) {
+
+
+
+        // }
+
+
         System.out.println("Test print course report");
     }
 
