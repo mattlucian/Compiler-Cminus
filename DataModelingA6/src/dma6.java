@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class dma6 {
     public static void main(String[] args){
-        //AdminClass adminClass = new AdminClass();
-        //adminClass.mainMenu();
+        AdminClass adminClass = new AdminClass();
+        adminClass.mainMenu();
 
 
     }
@@ -167,7 +167,11 @@ class AdminClass {
     }
 
     public void getInputFor(boolean isAdmin){
-        System.out.print("Enter Account n# (exclude the n) and press enter key");
+        System.out.println("Enter Account n# (exclude the n) and press enter key: ");
+
+        String random = inputReader.nextLine(); // there's a newline character prior to this still in scanner, this eliminates it
+        // can fix later
+
         String nNumber = inputReader.nextLine();
         Integer validNumber = 0;
 
@@ -195,8 +199,9 @@ class AdminClass {
         String passWord = inputReader.nextLine().trim();
 
         String query = "INSERT INTO faculty ( n_number, first_name, last_name, is_administrator, password, faculty_type) VALUES (";
-        query += ( Integer.toString(validNumber) + " , " + firstName + " , " + lastName + " , " + Boolean.toString(isAdmin) + " , " + passWord + " , " + facultyType );
+        query += ( Integer.toString(validNumber) + " , '" + firstName + "' , '" + lastName + "' , " + Boolean.toString(isAdmin) + " , '" + passWord + "' , '" + facultyType + "')" );
 
+        System.out.println(query);
     }
 
     public void deleteAccount(){
@@ -224,6 +229,9 @@ class AdminClass {
             }
             if (!isValid)
                 System.out.println("Invalid choice, please try again.");
+            else {
+                System.out.println("Account Deleted: "+firstName+" "+lastName);
+            }
         }
     }
     //endregion
@@ -258,4 +266,19 @@ class AdminClass {
         System.out.println("Test print student report");
     }
     //endregion
+}
+
+class FacultyRecord{
+
+    public int fac_id;
+    public String first_name;
+    public String last_name;
+    public String fac_type;
+    public boolean isAdministrator;
+    private String fac_password;
+
+    FacultyRecord(int id, String fName, String lName, String type, boolean administrator, String password){
+        fac_id = id; first_name = fName; last_name = lName; fac_type = type; isAdministrator = administrator; fac_password = password;
+    }
+
 }
