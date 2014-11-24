@@ -1,4 +1,6 @@
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -8,20 +10,8 @@ import java.util.Scanner;
 
 public class dma6 {
     public static void main(String[] args){
-        AdminClass adminClass = new AdminClass();
-        adminClass.mainMenu();
 
-
-    }
-}
-
-class Scheduler {
-
-    private Connection connection = null;
-
-    Scheduler(){
-
-        // registers driver for use
+        Connection connection;
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
         } catch (ClassNotFoundException e) {
@@ -31,7 +21,7 @@ class Scheduler {
 
         // gets connection to olympia
         try {
-            connection = DriverManager.getConnection("jdbc:oracle:thin:@olympia.unfcsd.unf.edu:1521:dworcl", "myersm","n48663");
+            connection = DriverManager.getConnection("jdbc:oracle:thin:@olympia.unfcsd.unf.edu:1521:dworcl", "teama6dm2f14","team6ccgmpr");
         } catch (SQLException e) {
             System.out.println("Connection to Olympia Failed!");
             return;
@@ -39,39 +29,23 @@ class Scheduler {
 
         if (connection == null) {
             System.out.println("Failed to establish connection somewhere!");
-            // exit
-        }else{
-            // you have a valid connection now to use
-            System.out.println("Made it!");
+            return;
         }
-    }
 
-    public void printQuery(){
-        String query = "SELECT * FROM student";
+        System.out.println("");
 
-        Statement stmt = null;
-        try{
-            stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-            while(rs.next()){
-                for(int i = 1; i < 9; i++){
-                    // can do rs.getString("COLUMN NAME")
-                    System.out.print(rs.getString(i)+"\t");
-                }
-                System.out.print("\n");
-            }
-        }catch(SQLException e){
-            System.out.println("Query ERROR: "+e.getMessage());
-        }
+        AdminClass adminClass = new AdminClass(connection);
+        adminClass.mainMenu();
+
     }
 }
+
 
 class AdminClass {
 
     private Scanner inputReader = new Scanner(System.in); // for reading input
     private  Connection connection;
 
-    AdminClass(){ } // filler constructor
     AdminClass(Connection establishedConnection){
         connection = establishedConnection;
     }
@@ -133,7 +107,6 @@ class AdminClass {
             } else {
                 System.out.println("Error, invalid selection please try again");
             }
-
         }while(choice != 6);
         return;
     }
@@ -150,12 +123,10 @@ class AdminClass {
 
             if (choice == 1) {
                 // create admin account
-                getInputFor(true);
-                System.out.println(" Administrator account has been created");
+                getInputFor(1);
             } else if (choice == 2) {
                 // create faculty account
-                getInputFor(false);
-                System.out.println(" Faculty account has been created");
+                getInputFor(0);
             } else if (choice == 3) {
                 // exit
 
@@ -166,7 +137,7 @@ class AdminClass {
         }while(choice != 3);
     }
 
-    public void getInputFor(boolean isAdmin){
+    public void getInputFor(int isAdmin){
         System.out.println("Enter Account n# (exclude the n) and press enter key: ");
 
         String random = inputReader.nextLine(); // there's a newline character prior to this still in scanner, this eliminates it
@@ -198,27 +169,45 @@ class AdminClass {
         System.out.println("Enter a password for this account: ");
         String passWord = inputReader.nextLine().trim();
 
-        String query = "INSERT INTO faculty ( n_number, first_name, last_name, is_administrator, password, faculty_type) VALUES (";
-        query += ( Integer.toString(validNumber) + " , '" + firstName + "' , '" + lastName + "' , " + Boolean.toString(isAdmin) + " , '" + passWord + "' , '" + facultyType + "')" );
-
-        System.out.println(query);
+        // insert
+        FacultyRecord facultyObject = new FacultyRecord(validNumber,firstName,lastName,facultyType,isAdmin,passWord);
+        boolean result = facultyObject.insertFacultyRecord(connection);
+        if(result){
+            System.out.println("Successfully created account!");
+        }
+        System.out.println("Failed to create account");
     }
 
     public void deleteAccount(){
         System.out.println("Choose an account to delete: ");
 
-        String query = "SELECT n_number,first_name,last_name FROM faculty";
+        String query = "SELECT * FROM faculty";
 
-        String firstName = "Matt";
-        String lastName = "Myers"; // fillers, can be deleted later
-        boolean isValid = false;
-        // store in list
+        List<FacultyRecord> facultyList = new ArrayList<FacultyRecord>();
 
         int count = 1;
-        // while(rs.next()) {
-            System.out.println( "(" + Integer.toString(count) + ") : " + firstName + " " + lastName );
-            count++;
-        // }
+        try{
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+
+            while(rs.next()){
+                int n_number = rs.getInt("n_number");
+                String first_name = rs.getString("first_name");
+                String last_name = rs.getString("last_name");
+                String faculty_type = rs.getString("faculty_type");
+                int isAdmin = rs.getInt("is_administrator");
+                String password = rs.getString("password");
+
+                facultyList.add(new FacultyRecord(n_number, first_name, last_name, faculty_type , isAdmin, password));
+                System.out.println( "(" + Integer.toString(count++) + ") : " + first_name + " " + last_name + " [ "+ faculty_type +" ]");
+            }
+
+        }catch (Exception e){
+            System.out.println("Failed to pull down records: "+ e.getMessage());
+            return;
+        }
+
+        boolean isValid = false;
 
         while(!isValid) {
             int choice = inputReader.nextInt();
@@ -230,7 +219,18 @@ class AdminClass {
             if (!isValid)
                 System.out.println("Invalid choice, please try again.");
             else {
-                System.out.println("Account Deleted: "+firstName+" "+lastName);
+
+                String deleteQuery = "DELETE FROM faculty WHERE n_number = " + facultyList.get(choice-1).fac_id;
+
+                try{
+                    Statement statement = connection.createStatement();
+                    statement.executeUpdate(query);
+                }catch (Exception e){
+                    System.out.println("Error: "+e.getMessage());
+                    return;
+                }
+
+                System.out.println("Account Deleted: "+facultyList.get(choice-1).first_name+" "+facultyList.get(choice-1).last_name);
             }
         }
     }
@@ -274,11 +274,26 @@ class FacultyRecord{
     public String first_name;
     public String last_name;
     public String fac_type;
-    public boolean isAdministrator;
+    public int isAdministrator;
     private String fac_password;
 
-    FacultyRecord(int id, String fName, String lName, String type, boolean administrator, String password){
+    FacultyRecord(int id, String fName, String lName, String type, int administrator, String password){
         fac_id = id; first_name = fName; last_name = lName; fac_type = type; isAdministrator = administrator; fac_password = password;
+    }
+
+    public boolean insertFacultyRecord(Connection establishedConnection){
+        String query = "INSERT INTO faculty (n_number, first_name, last_name, is_administrator, password, faculty_type ) VALUES ( ";
+        query += this.fac_id+" , '"+ this.first_name +"' , '" + this.last_name + "' , " + this.isAdministrator + " , '" + this.fac_password + "' , '" + this.fac_type +"' )";
+
+        try{
+            System.out.println(query);
+            Statement statement = establishedConnection.createStatement();
+            statement.executeUpdate(query);
+            return true;
+        }catch (Exception e){
+            System.out.println("Error: "+e.getMessage());
+            return false;
+        }
     }
 
 }
