@@ -25,6 +25,11 @@ public final class Student {
     public Student(){
         super();
     }
+    public Student(int id, String first, String last){
+        n_number = id;
+        firstName = first;
+        lastName = last;
+    }
 
     public int getN_number() {
         return n_number;
@@ -57,5 +62,22 @@ public final class Student {
     public void setSemester(String semester) {
         this.semester = semester;
     }
-    
+    public int prefSize(){
+        return prefs.size();
+    }
+    public void addPreference(CourseChoice cc){
+        prefs.add(cc);
+    }
+    public CourseChoice getPreference(int n){
+        return prefs.get(n);
+    }
+    public boolean containsCourse(int course){
+        int size = prefs.size();
+        for (int p = 0; p < size; p++) {
+            if(prefs.get(p).getCourseIndex() == course){
+                return true;
+            }
+        }
+        return false;
+    }
 }

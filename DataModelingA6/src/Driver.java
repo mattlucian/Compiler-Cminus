@@ -16,15 +16,13 @@ import java.util.Scanner;
  */
 public class Driver {
     private static Scanner in = new Scanner(System.in);
-    private static final String separator = "---------------------------";
     
-    private static List<String> courses = new ArrayList<>();
-    private static List<Integer> chosen = new ArrayList<>();
+    private static List<String> courses = new ArrayList<>();//the available course based on chosen semester
     private static final int MAX_COURSES = 6;
     
-    private Student student = new Student();//save info
+    //private Student student = new Student();//save info
     
-    //pretend initializer
+    //pretend initializer: in reality, it will change based on chosen semester
     static {
         courses.add("COP2220 - Computer Science I");
         courses.add("COT3100 - Comp Structures");
@@ -51,74 +49,108 @@ public class Driver {
         courses.add("CIS4362 - Computer Cryptography");
         courses.add("CEN4943 - Software Dev Practicum");
     }
+    //pre-built for speed
+    private static final String SEPARATOR = "------------------------------";
+    private static final String DAYS_MENU = "\nAvailable Days\n" + SEPARATOR + "\n[1] Monday/Wednesday\n[2] Tuesday/Thursday\n[3] Monday/Wednesday/Friday\n[4] Cancel\n";
+    private static final String TIMES_MENU = "\nAvailable Times\n" + SEPARATOR + "\n[1] Morning\n[2] Evening\n[3] Night\n[4] Cancel\n";
 
     public Driver(){
-        
+        super();
     }
-    
-    
-    public static void showStudentMenu(){
+    /**
+     * Displays menus and records selections in the Student option.
+     * Each menu has a cancel option to return to Navigation Menu.
+     * After 6 classes have been chosen, the only available option is to
+     * submit the classes.
+     * Protects against multiple entries of same course.
+     * 
+     * @param student, prebuilt with n-number, name, and semester
+     */
+    public static void studentSelection(Student student){
+        //this data already secured
+        //prepare available courses for chosen semester
+        int selectedCourse;
+        int selectedDays;
+        int selectedTimes;
+        int choices = 0;
         
-        System.out.println("\n\n\tStudent Menu");
-        System.out.println(String.format("%s", separator));
-        System.out.println("[1] Select courses");
-        System.out.println("[2] Select days of week");
-        System.out.println("[3] Select time of day");
-        System.out.println("[5] Back");
-        System.out.println("[6] Quit");
-        
-        int choice = getChoice(6);
-        switch(choice){
-            case 1:
-                if(chosen.size() < MAX_COURSES){
-                    showCourseMenu();
-                } else {
-                    System.out.println("Course Limit Has Been Reached.");
-                }
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                System.out.println("You chose " + chosen.size() + " selections");
-                return;
+        while(showNavMenu(choices >= MAX_COURSES, choices)){
+            selectedCourse = showCourseMenu(courses);
+            if(selectedCourse == courses.size() + 1){
+                System.out.println("Cancelling current course");
+                continue;
+            } else if(student.containsCourse(selectedCourse)) {
+                //Handle selecting the same course multiple times
+                System.out.println("Course has already been chosen. Please try another.");
+                continue;
+            }
+            selectedDays = showDaysMenu();
+            if(selectedDays == 4){
+                System.out.println("Cancelling current course");
+                continue;
+            }
+            selectedTimes = showTimesMenu();
+            if(selectedTimes == 4){
+                System.out.println("Cancelling current course");
+                continue;
+            }
+            
+            //log the entire choice
+            student.addPreference(new CourseChoice(selectedCourse, selectedDays, selectedTimes));
+            choices++;
+            System.out.println("Course logged.");
         }
         
+        
+        System.out.println("Have a nice day.");
     }
-    public static void showCourseMenu(){
+    /**
+     * Returns true to select a class
+     * False means cancel or abort
+     * @param reachedLimit
+     * @return 
+     */
+    public static boolean showNavMenu(boolean reachedLimit, int chosen){
+        int temp = 1;
         StringBuilder result = new StringBuilder();
-        result.append("Available Course\n");
-        int size = courses.size();
-        for (int c = 0; c < size; c++) {
-            result.append(String.format("[%2d] %s\n", (c + 1), courses.get(c)));
+        result.append(String.format("\nNavigation Menu  [Classes: %d]\n", chosen)).append(SEPARATOR).append('\n');
+        if(!reachedLimit){
+            result.append(String.format("[%d] Select a class\n", temp++));
         }
-        result.append(String.format("\n[%2d] Cancel\n", size));
+        result.append(String.format("[%d] Quit and submit\n", temp));
+        
         System.out.println(result.toString());
-        int choice = getChoice(courses.size() + 1);
-        //record selection
-        if(choice < size){
-            chosen.add(choice);
+        return getChoice(temp) != temp;
+    }
+    /**
+     * 
+     * @param available
+     * @return 
+     */
+    public static int showCourseMenu(List<String> available){
+        StringBuilder result = new StringBuilder();
+        result.append("\nAvailable Course\n");
+        result.append(String.format("%s\n", SEPARATOR));
+        int size = available.size();
+        for (int c = 0; c < size; c++) {
+            result.append(String.format("[%2d] %s\n", (c + 1), available.get(c)));
         }
+        result.append(String.format("\n[%2d] Cancel\n", size + 1));
+        System.out.println(result.toString());
+        return getChoice(size + 1);
         
     }
-    public static void showDaysMenu(){
-        
-        System.out.println("[1] Monday");
-        System.out.println("[2] Tuesday");
-        System.out.println("[3] Wednesday");
-        System.out.println("[4] Thursday");
-        System.out.println("[5] Friday");
-        System.out.println("[6] Cancel");
-        int choice = getChoice(5);
+    /**
+     * Returns false to cancel
+     */
+    public static int showDaysMenu(){
+        System.out.println(DAYS_MENU);
+        return getChoice(4);
         
     }
-    public static void showTimesMenu(){
-        
+    public static int showTimesMenu(){
+        System.out.println(TIMES_MENU);
+        return getChoice(4);
     }
     /**
      * Retrieves user's choice following a menu.
@@ -136,5 +168,10 @@ public class Driver {
             } catch (Exception e) { /* Politely ignore */ }
             System.out.println("Invalid selection. Please try again.");
         } while (true);
+    }
+    
+    public static void main(String[] args) {
+        Student chris = new Student(1234, "Chris", "Raley");
+        Driver.studentSelection(chris);
     }
 }
