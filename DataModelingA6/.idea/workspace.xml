@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="872f2f07-e1c2-47af-a521-fbf200453203" name="Default" comment="" />
+    <list default="true" id="872f2f07-e1c2-47af-a521-fbf200453203" name="Default" comment="Adds Faculty Record object.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/DataModelingA6/AdminClass.class" afterPath="$PROJECT_DIR$/out/production/DataModelingA6/AdminClass.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/dma6.java" afterPath="$PROJECT_DIR$/src/dma6.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/sql/table_structure.sql" afterPath="$PROJECT_DIR$/sql/table_structure.sql" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="DataModelingA6.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,47 +33,49 @@
       <file leaf-file-name="dma6.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/dma6.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.42735043" vertical-offset="1035" max-vertical-offset="1620">
-              <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+            <state vertical-scroll-proportion="4.3162394" vertical-offset="0" max-vertical-offset="2625">
+              <caret line="222" column="57" selection-start-line="222" selection-start-column="57" selection-end-line="222" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="n#!!doc;n#reportingMenu#0;n#AdminClass#0" expanded="false" />
-                <element signature="e#3911#3912#0" expanded="true" />
-                <element signature="e#3968#3969#0" expanded="true" />
-                <element signature="e#4002#4003#0" expanded="true" />
-                <element signature="e#4059#4060#0" expanded="true" />
-                <element signature="n#!!doc;n#printCourseReport#0;n#AdminClass#0" expanded="false" />
-                <element signature="e#4151#4152#0" expanded="true" />
-                <element signature="e#4213#4214#0" expanded="true" />
-                <element signature="e#4248#4249#0" expanded="true" />
-                <element signature="e#4307#4308#0" expanded="true" />
-                <element signature="e#4343#4344#0" expanded="true" />
-                <element signature="e#4403#4404#0" expanded="true" />
-                <element signature="e#4442#4443#0" expanded="true" />
-                <element signature="e#4505#4506#0" expanded="true" />
-                <element signature="e#4544#4545#0" expanded="true" />
-                <element signature="e#4607#4608#0" expanded="true" />
+                <element signature="n#!!doc;n#mainMenu#0;n#AdminClass#0" expanded="false" />
+                <element signature="method#reportingMenu#0;class#AdminClass#0" expanded="false" />
+                <element signature="method#createAccount#0;class#AdminClass#0" expanded="false" />
+                <element signature="method#getInputFor#0;class#AdminClass#0" expanded="false" />
+                <element signature="e#5929#5944#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="table_structure.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sql/table_structure.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1785">
+              <caret line="59" column="44" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/sql/table_structure.sql" />
         <option value="$PROJECT_DIR$/src/dma6.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="14" />
     <option name="y" value="22" />
     <option name="width" value="1243" />
     <option name="height" value="705" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -91,6 +98,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -124,9 +132,22 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataModelingA6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DataModelingA6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sql" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -143,9 +164,13 @@
     <property name="dynamic.classpath" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="FullScreen" value="false" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/sql" />
       <recent name="$PROJECT_DIR$" />
     </key>
   </component>
@@ -163,7 +188,15 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="DataModelingA6" />
       <envs />
+      <RunnerSettings RunnerId="Cover" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="" />
+        <option name="TRANSPORT" value="0" />
+        <option name="LOCAL" value="true" />
+      </RunnerSettings>
       <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Cover" />
+      <ConfigurationWrapper RunnerId="Debug" />
       <ConfigurationWrapper RunnerId="Run" />
       <method />
     </configuration>
@@ -223,6 +256,19 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -249,19 +295,6 @@
       <envs />
       <properties />
       <listeners />
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -340,36 +373,61 @@
       <option name="number" value="Default" />
       <updated>1415588194436</updated>
     </task>
+    <task id="LOCAL-00001" summary="Adds faculty and admin creation query and validates input.">
+      <created>1416804689682</created>
+      <option name="number" value="00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1416804689682</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Adds faculty and admin creation query and validates input.">
+      <created>1416805496402</created>
+      <option name="number" value="00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1416805496402</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Adds table structure sql, and some logic for account deletion.">
+      <created>1416806888530</created>
+      <option name="number" value="00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1416806888530</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Adds Faculty Record object.">
+      <created>1416855823880</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1416855823880</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="14" y="22" width="1243" height="705" extended-state="0" />
+    <frame x="0" y="22" width="1243" height="705" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32861635" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39937106" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32861635" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24939662" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21158488" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.40408805" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14963797" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.40408805" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32861635" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -387,10 +445,22 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Adds faculty and admin creation query and validates input." />
+    <MESSAGE value="Adds table structure sql, and some logic for account deletion." />
+    <MESSAGE value="Adds Faculty Record object." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adds Faculty Record object." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="1" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/dma6.java</url>
+          <line>290</line>
+          <properties />
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -401,26 +471,83 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/dma6.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3600">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="n#!!doc;n#reportingMenu#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#3911#3912#0" expanded="true" />
-            <element signature="e#3968#3969#0" expanded="true" />
-            <element signature="e#4002#4003#0" expanded="true" />
-            <element signature="e#4059#4060#0" expanded="true" />
-            <element signature="n#!!doc;n#printCourseReport#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#4151#4152#0" expanded="true" />
-            <element signature="e#4213#4214#0" expanded="true" />
-            <element signature="e#4248#4249#0" expanded="true" />
-            <element signature="e#4307#4308#0" expanded="true" />
-            <element signature="e#4343#4344#0" expanded="true" />
-            <element signature="e#4403#4404#0" expanded="true" />
-            <element signature="e#4442#4443#0" expanded="true" />
-            <element signature="e#4505#4506#0" expanded="true" />
-            <element signature="e#4544#4545#0" expanded="true" />
-            <element signature="e#4607#4608#0" expanded="true" />
+            <element signature="n#!!doc;n#mainMenu#0;n#AdminClass#0" expanded="false" />
+            <element signature="method#reportingMenu#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#createAccount#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#getInputFor#0;class#AdminClass#0" expanded="false" />
+            <element signature="e#5929#5944#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql/table_structure.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="885" max-vertical-offset="1785">
+          <caret line="59" column="44" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dma6.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2580">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="n#!!doc;n#mainMenu#0;n#AdminClass#0" expanded="false" />
+            <element signature="method#reportingMenu#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#createAccount#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#getInputFor#0;class#AdminClass#0" expanded="false" />
+            <element signature="e#5929#5944#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dma6.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1635">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="n#!!doc;n#mainMenu#0;n#AdminClass#0" expanded="false" />
+            <element signature="method#reportingMenu#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#createAccount#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#getInputFor#0;class#AdminClass#0" expanded="false" />
+            <element signature="e#5929#5944#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dma6.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1635">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="n#!!doc;n#mainMenu#0;n#AdminClass#0" expanded="false" />
+            <element signature="method#reportingMenu#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#createAccount#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#getInputFor#0;class#AdminClass#0" expanded="false" />
+            <element signature="e#5929#5944#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dma6.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1620">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="n#!!doc;n#mainMenu#0;n#AdminClass#0" expanded="false" />
+            <element signature="method#reportingMenu#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#createAccount#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#getInputFor#0;class#AdminClass#0" expanded="false" />
+            <element signature="e#5929#5944#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -431,22 +558,26 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="n#!!doc;n#reportingMenu#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#3911#3912#0" expanded="true" />
-            <element signature="e#3968#3969#0" expanded="true" />
-            <element signature="e#4002#4003#0" expanded="true" />
-            <element signature="e#4059#4060#0" expanded="true" />
-            <element signature="n#!!doc;n#printCourseReport#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#4151#4152#0" expanded="true" />
-            <element signature="e#4213#4214#0" expanded="true" />
-            <element signature="e#4248#4249#0" expanded="true" />
-            <element signature="e#4307#4308#0" expanded="true" />
-            <element signature="e#4343#4344#0" expanded="true" />
-            <element signature="e#4403#4404#0" expanded="true" />
-            <element signature="e#4442#4443#0" expanded="true" />
-            <element signature="e#4505#4506#0" expanded="true" />
-            <element signature="e#4544#4545#0" expanded="true" />
-            <element signature="e#4607#4608#0" expanded="true" />
+            <element signature="n#!!doc;n#mainMenu#0;n#AdminClass#0" expanded="false" />
+            <element signature="method#reportingMenu#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#createAccount#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#getInputFor#0;class#AdminClass#0" expanded="false" />
+            <element signature="e#5929#5944#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/dma6.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1260">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="n#!!doc;n#mainMenu#0;n#AdminClass#0" expanded="false" />
+            <element signature="method#reportingMenu#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#createAccount#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#getInputFor#0;class#AdminClass#0" expanded="false" />
+            <element signature="e#5929#5944#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -457,22 +588,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="n#!!doc;n#reportingMenu#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#3911#3912#0" expanded="true" />
-            <element signature="e#3968#3969#0" expanded="true" />
-            <element signature="e#4002#4003#0" expanded="true" />
-            <element signature="e#4059#4060#0" expanded="true" />
-            <element signature="n#!!doc;n#printCourseReport#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#4151#4152#0" expanded="true" />
-            <element signature="e#4213#4214#0" expanded="true" />
-            <element signature="e#4248#4249#0" expanded="true" />
-            <element signature="e#4307#4308#0" expanded="true" />
-            <element signature="e#4343#4344#0" expanded="true" />
-            <element signature="e#4403#4404#0" expanded="true" />
-            <element signature="e#4442#4443#0" expanded="true" />
-            <element signature="e#4505#4506#0" expanded="true" />
-            <element signature="e#4544#4545#0" expanded="true" />
-            <element signature="e#4607#4608#0" expanded="true" />
+            <element signature="n#!!doc;n#mainMenu#0;n#AdminClass#0" expanded="false" />
+            <element signature="method#reportingMenu#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#createAccount#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#getInputFor#0;class#AdminClass#0" expanded="false" />
+            <element signature="e#5929#5944#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -483,22 +603,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="n#!!doc;n#reportingMenu#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#3911#3912#0" expanded="true" />
-            <element signature="e#3968#3969#0" expanded="true" />
-            <element signature="e#4002#4003#0" expanded="true" />
-            <element signature="e#4059#4060#0" expanded="true" />
-            <element signature="n#!!doc;n#printCourseReport#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#4151#4152#0" expanded="true" />
-            <element signature="e#4213#4214#0" expanded="true" />
-            <element signature="e#4248#4249#0" expanded="true" />
-            <element signature="e#4307#4308#0" expanded="true" />
-            <element signature="e#4343#4344#0" expanded="true" />
-            <element signature="e#4403#4404#0" expanded="true" />
-            <element signature="e#4442#4443#0" expanded="true" />
-            <element signature="e#4505#4506#0" expanded="true" />
-            <element signature="e#4544#4545#0" expanded="true" />
-            <element signature="e#4607#4608#0" expanded="true" />
+            <element signature="n#!!doc;n#mainMenu#0;n#AdminClass#0" expanded="false" />
+            <element signature="method#reportingMenu#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#createAccount#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#getInputFor#0;class#AdminClass#0" expanded="false" />
+            <element signature="e#5929#5944#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -509,22 +618,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="n#!!doc;n#reportingMenu#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#3911#3912#0" expanded="true" />
-            <element signature="e#3968#3969#0" expanded="true" />
-            <element signature="e#4002#4003#0" expanded="true" />
-            <element signature="e#4059#4060#0" expanded="true" />
-            <element signature="n#!!doc;n#printCourseReport#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#4151#4152#0" expanded="true" />
-            <element signature="e#4213#4214#0" expanded="true" />
-            <element signature="e#4248#4249#0" expanded="true" />
-            <element signature="e#4307#4308#0" expanded="true" />
-            <element signature="e#4343#4344#0" expanded="true" />
-            <element signature="e#4403#4404#0" expanded="true" />
-            <element signature="e#4442#4443#0" expanded="true" />
-            <element signature="e#4505#4506#0" expanded="true" />
-            <element signature="e#4544#4545#0" expanded="true" />
-            <element signature="e#4607#4608#0" expanded="true" />
+            <element signature="n#!!doc;n#mainMenu#0;n#AdminClass#0" expanded="false" />
+            <element signature="method#reportingMenu#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#createAccount#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#getInputFor#0;class#AdminClass#0" expanded="false" />
+            <element signature="e#5929#5944#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -535,22 +633,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="n#!!doc;n#reportingMenu#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#3911#3912#0" expanded="true" />
-            <element signature="e#3968#3969#0" expanded="true" />
-            <element signature="e#4002#4003#0" expanded="true" />
-            <element signature="e#4059#4060#0" expanded="true" />
-            <element signature="n#!!doc;n#printCourseReport#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#4151#4152#0" expanded="true" />
-            <element signature="e#4213#4214#0" expanded="true" />
-            <element signature="e#4248#4249#0" expanded="true" />
-            <element signature="e#4307#4308#0" expanded="true" />
-            <element signature="e#4343#4344#0" expanded="true" />
-            <element signature="e#4403#4404#0" expanded="true" />
-            <element signature="e#4442#4443#0" expanded="true" />
-            <element signature="e#4505#4506#0" expanded="true" />
-            <element signature="e#4544#4545#0" expanded="true" />
-            <element signature="e#4607#4608#0" expanded="true" />
+            <element signature="n#!!doc;n#mainMenu#0;n#AdminClass#0" expanded="false" />
+            <element signature="method#reportingMenu#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#createAccount#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#getInputFor#0;class#AdminClass#0" expanded="false" />
+            <element signature="e#5929#5944#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -561,22 +648,11 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="n#!!doc;n#reportingMenu#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#3911#3912#0" expanded="true" />
-            <element signature="e#3968#3969#0" expanded="true" />
-            <element signature="e#4002#4003#0" expanded="true" />
-            <element signature="e#4059#4060#0" expanded="true" />
-            <element signature="n#!!doc;n#printCourseReport#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#4151#4152#0" expanded="true" />
-            <element signature="e#4213#4214#0" expanded="true" />
-            <element signature="e#4248#4249#0" expanded="true" />
-            <element signature="e#4307#4308#0" expanded="true" />
-            <element signature="e#4343#4344#0" expanded="true" />
-            <element signature="e#4403#4404#0" expanded="true" />
-            <element signature="e#4442#4443#0" expanded="true" />
-            <element signature="e#4505#4506#0" expanded="true" />
-            <element signature="e#4544#4545#0" expanded="true" />
-            <element signature="e#4607#4608#0" expanded="true" />
+            <element signature="n#!!doc;n#mainMenu#0;n#AdminClass#0" expanded="false" />
+            <element signature="method#reportingMenu#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#createAccount#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#getInputFor#0;class#AdminClass#0" expanded="false" />
+            <element signature="e#5929#5944#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -587,48 +663,42 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="n#!!doc;n#reportingMenu#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#3911#3912#0" expanded="true" />
-            <element signature="e#3968#3969#0" expanded="true" />
-            <element signature="e#4002#4003#0" expanded="true" />
-            <element signature="e#4059#4060#0" expanded="true" />
-            <element signature="n#!!doc;n#printCourseReport#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#4151#4152#0" expanded="true" />
-            <element signature="e#4213#4214#0" expanded="true" />
-            <element signature="e#4248#4249#0" expanded="true" />
-            <element signature="e#4307#4308#0" expanded="true" />
-            <element signature="e#4343#4344#0" expanded="true" />
-            <element signature="e#4403#4404#0" expanded="true" />
-            <element signature="e#4442#4443#0" expanded="true" />
-            <element signature="e#4505#4506#0" expanded="true" />
-            <element signature="e#4544#4545#0" expanded="true" />
-            <element signature="e#4607#4608#0" expanded="true" />
+            <element signature="n#!!doc;n#mainMenu#0;n#AdminClass#0" expanded="false" />
+            <element signature="method#reportingMenu#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#createAccount#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#getInputFor#0;class#AdminClass#0" expanded="false" />
+            <element signature="e#5929#5944#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_71.jdk/Contents/Home/src.zip!/java/util/Scanner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38157895" vertical-offset="19988" max-vertical-offset="38700">
+          <caret line="1402" column="21" selection-start-line="1402" selection-start-column="21" selection-end-line="1402" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql/table_structure.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="774" max-vertical-offset="1785">
+          <caret line="59" column="44" selection-start-line="59" selection-start-column="44" selection-end-line="59" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/dma6.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42735043" vertical-offset="1035" max-vertical-offset="1620">
-          <caret line="79" column="0" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+        <state vertical-scroll-proportion="4.3162394" vertical-offset="0" max-vertical-offset="2625">
+          <caret line="222" column="57" selection-start-line="222" selection-start-column="57" selection-end-line="222" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="n#!!doc;n#reportingMenu#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#3911#3912#0" expanded="true" />
-            <element signature="e#3968#3969#0" expanded="true" />
-            <element signature="e#4002#4003#0" expanded="true" />
-            <element signature="e#4059#4060#0" expanded="true" />
-            <element signature="n#!!doc;n#printCourseReport#0;n#AdminClass#0" expanded="false" />
-            <element signature="e#4151#4152#0" expanded="true" />
-            <element signature="e#4213#4214#0" expanded="true" />
-            <element signature="e#4248#4249#0" expanded="true" />
-            <element signature="e#4307#4308#0" expanded="true" />
-            <element signature="e#4343#4344#0" expanded="true" />
-            <element signature="e#4403#4404#0" expanded="true" />
-            <element signature="e#4442#4443#0" expanded="true" />
-            <element signature="e#4505#4506#0" expanded="true" />
-            <element signature="e#4544#4545#0" expanded="true" />
-            <element signature="e#4607#4608#0" expanded="true" />
+            <element signature="n#!!doc;n#mainMenu#0;n#AdminClass#0" expanded="false" />
+            <element signature="method#reportingMenu#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#createAccount#0;class#AdminClass#0" expanded="false" />
+            <element signature="method#getInputFor#0;class#AdminClass#0" expanded="false" />
+            <element signature="e#5929#5944#0" expanded="true" />
           </folding>
         </state>
       </provider>
