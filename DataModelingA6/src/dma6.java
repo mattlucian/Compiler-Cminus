@@ -131,7 +131,32 @@ class AdminClass {
     }
 
     public void createAccount(){
-        System.out.println("Test create account");
+
+        int choice = 0;
+        do{
+            System.out.println("Which type of Account would you like to create?");
+            System.out.println("1. Admin Account");
+            System.out.println("2. Faculty Account");
+            System.out.println("3. Exit to menu");
+            choice = inputReader.nextInt();
+
+            if (choice == 1) {
+                // create admin account
+
+                // INSERT INTO faculty (
+
+            } else if (choice == 2) {
+                // create faculty account
+
+            } else if (choice == 3) {
+                // exit
+
+
+            } else {
+                System.out.println("Error, invalid selection please try again");
+            }
+
+        }while(choice != 3);
     }
 
     public void deleteAccount(){
