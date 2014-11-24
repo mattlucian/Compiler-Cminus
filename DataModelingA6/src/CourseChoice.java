@@ -12,12 +12,12 @@ package dmodel;
  */
 public class CourseChoice {
     
-    //days
+    //day classifications
     public static final int MON_WED = 1;
     public static final int TUE_THR = 2;
     public static final int MON_WED_FRI = 3;
     
-    //times
+    //time classifications
     public static final int MORNING = 1;
     public static final int EVENING = 2;
     public static final int NIGHT = 3;
@@ -25,14 +25,16 @@ public class CourseChoice {
     private int courseIndex;
     private int days;
     private int times;
+    private String courseTitle;
 
     public CourseChoice(){
         
     }
-    public CourseChoice(int course, int day, int time){
+    public CourseChoice(int course, int day, int time, String title){
         courseIndex = course;
         days = day;
         times = time;
+        courseTitle = title;
     }
 
     public int getCourseIndex() {
@@ -57,6 +59,14 @@ public class CourseChoice {
 
     public void setTimes(int times) {
         this.times = times;
+    }
+
+    public String getCourseTitle() {
+        return courseTitle;
+    }
+
+    public void setCourseTitle(String courseTitle) {
+        this.courseTitle = courseTitle;
     }
     
 }

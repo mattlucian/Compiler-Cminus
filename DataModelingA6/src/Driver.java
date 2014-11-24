@@ -7,6 +7,7 @@
 package dmodel;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -53,6 +54,7 @@ public class Driver {
     private static final String SEPARATOR = "------------------------------";
     private static final String DAYS_MENU = "\nAvailable Days\n" + SEPARATOR + "\n[1] Monday/Wednesday\n[2] Tuesday/Thursday\n[3] Monday/Wednesday/Friday\n[4] Cancel\n";
     private static final String TIMES_MENU = "\nAvailable Times\n" + SEPARATOR + "\n[1] Morning\n[2] Evening\n[3] Night\n[4] Cancel\n";
+    private static final int MAX_DAYS_TIMES = 4;
 
     public Driver(){
         super();
@@ -85,18 +87,19 @@ public class Driver {
                 continue;
             }
             selectedDays = showDaysMenu();
-            if(selectedDays == 4){
+            if(selectedDays == MAX_DAYS_TIMES){
                 System.out.println("Cancelling current course");
                 continue;
             }
             selectedTimes = showTimesMenu();
-            if(selectedTimes == 4){
+            if(selectedTimes == MAX_DAYS_TIMES){
                 System.out.println("Cancelling current course");
                 continue;
             }
             
             //log the entire choice
-            student.addPreference(new CourseChoice(selectedCourse, selectedDays, selectedTimes));
+            student.addPreference(new CourseChoice(selectedCourse, selectedDays, selectedTimes, courses.get(selectedCourse - 1)));
+            //mapping from selection to course title: selectedCourse => courses.get(selectedCourse - 1)
             choices++;
             System.out.println("Course logged.");
         }
@@ -105,6 +108,8 @@ public class Driver {
         System.out.println("Have a nice day.");
     }
     /**
+     * Main Navigation Menu
+     * 
      * Returns true to select a class
      * False means cancel or abort
      * @param reachedLimit
@@ -123,7 +128,7 @@ public class Driver {
         return getChoice(temp) != temp;
     }
     /**
-     * 
+     * Available Courses Menu
      * @param available
      * @return 
      */
@@ -141,16 +146,23 @@ public class Driver {
         
     }
     /**
+     * Days Menu
+     * 
      * Returns false to cancel
      */
     public static int showDaysMenu(){
         System.out.println(DAYS_MENU);
-        return getChoice(4);
+        return getChoice(MAX_DAYS_TIMES);
         
     }
+    /**
+     * Times Menu
+     * 
+     * @return 
+     */
     public static int showTimesMenu(){
         System.out.println(TIMES_MENU);
-        return getChoice(4);
+        return getChoice(MAX_DAYS_TIMES);
     }
     /**
      * Retrieves user's choice following a menu.
@@ -170,8 +182,10 @@ public class Driver {
         } while (true);
     }
     
+    //Testing
     public static void main(String[] args) {
         Student chris = new Student(1234, "Chris", "Raley");
         Driver.studentSelection(chris);
+        
     }
 }

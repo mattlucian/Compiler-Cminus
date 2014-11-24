@@ -72,12 +72,15 @@ public final class Student {
         return prefs.get(n);
     }
     public boolean containsCourse(int course){
-        int size = prefs.size();
-        for (int p = 0; p < size; p++) {
-            if(prefs.get(p).getCourseIndex() == course){
-                return true;
-            }
-        }
-        return false;
+        //Pre Java 8
+//        int size = prefs.size();
+//        for (int p = 0; p < size; p++) {
+//            if(prefs.get(p).getCourseIndex() == course){
+//                return true;
+//            }
+//        }
+//        return false;
+        
+        return prefs.stream().anyMatch((cc) -> cc.getCourseIndex() == course);
     }
 }
