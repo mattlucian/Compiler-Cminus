@@ -11,6 +11,8 @@ import java.util.Scanner;
 public class dma6 {
     public static void main(String[] args){
 
+
+        System.out.println("test");
         Connection connection;
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -32,7 +34,6 @@ public class dma6 {
             return;
         }
 
-        System.out.println("");
 
         AdminClass adminClass = new AdminClass(connection);
         adminClass.mainMenu();
