@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class dma6 {
     public static void main(String[] args){
-        AdminClass adminClass = new AdminClass();
-        adminClass.mainMenu();
+        //AdminClass adminClass = new AdminClass();
+        //adminClass.mainMenu();
 
 
     }
@@ -200,7 +200,31 @@ class AdminClass {
     }
 
     public void deleteAccount(){
-        System.out.println("Test delete account");
+        System.out.println("Choose an account to delete: ");
+
+        String query = "SELECT n_number,first_name,last_name FROM faculty";
+
+        String firstName = "Matt";
+        String lastName = "Myers"; // fillers, can be deleted later
+        boolean isValid = false;
+        // store in list
+
+        int count = 1;
+        // while(rs.next()) {
+            System.out.println( "(" + Integer.toString(count) + ") : " + firstName + " " + lastName );
+            count++;
+        // }
+
+        while(!isValid) {
+            int choice = inputReader.nextInt();
+            for (int i = 1; i < count; i++) {
+                if (choice == i) {
+                    isValid = true;
+                }
+            }
+            if (!isValid)
+                System.out.println("Invalid choice, please try again.");
+        }
     }
     //endregion
 
