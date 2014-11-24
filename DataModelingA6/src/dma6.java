@@ -8,8 +8,8 @@ import java.util.Scanner;
 
 public class dma6 {
     public static void main(String[] args){
-        //AdminClass adminClass = new AdminClass();
-        //adminClass.mainMenu();
+        AdminClass adminClass = new AdminClass();
+        adminClass.mainMenu();
 
 
     }
@@ -167,7 +167,7 @@ class AdminClass {
     }
 
     public void getInputFor(boolean isAdmin){
-        System.out.println("Enter Account n# (exclude the n) and press enter key");
+        System.out.print("Enter Account n# (exclude the n) and press enter key");
         String nNumber = inputReader.nextLine();
         Integer validNumber = 0;
 
