@@ -10,8 +10,8 @@ The project uses Oracle 11.2 and Java connections done via JDBC drivers.
 Official TODO List:
 
 - Nick
-   - Faculty menu
-   - Course preference forms
+    - Faculty menu
+    - Course preference forms
     - Document your functions / classes at a high level. Add to word document
 
 - Matt
