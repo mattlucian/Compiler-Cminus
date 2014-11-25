@@ -12,11 +12,13 @@ Official TODO List:
 - Nick
    - Faculty menu
    - Course preference forms
+    - Document your functions / classes at a high level. Add to word document
 
 - Matt
     - Admin part
     - Reports
         - Add report information
+    - Document your functions / classes at a high level. Add to word document
 
 - Katelin
     - Log in / Authenticate student, faculty, admin
@@ -35,6 +37,7 @@ Official TODO List:
        
 - Chris
     - Student menu
+    - Document your functions / classes at a high level. Add to word document
 
 Nick and Ryan (Sat and Sun)
     - presentation
