@@ -15,7 +15,7 @@ public class dma6 {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
         } catch (ClassNotFoundException e) {
-            System.out.println("Oracle JDBC .jar not found!");
+            System.out.println("Oracle JDBC .jar not found: " + e.getMessage());
             return;
         }
 
@@ -32,8 +32,11 @@ public class dma6 {
             return;
         }
 
-        Admin adminClass = new Admin(connection);
-        adminClass.mainMenu();
+//        Admin adminClass = new Admin(connection);
+//        adminClass.mainMenu();
+
+        Faculty facultyClass = new Faculty(connection);
+        facultyClass.mainMenu();
 
     }
 }
