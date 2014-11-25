@@ -32,8 +32,11 @@ public class dma6 {
             return;
         }
 
-        Admin adminClass = new Admin(connection);
-        adminClass.mainMenu();
+        Student chris = new Student(1234, "Chris", "Raley");
+        Driver.studentSelection(chris);
+
+//        Admin adminClass = new Admin(connection);
+//        adminClass.mainMenu();
 
     }
 }

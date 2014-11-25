@@ -4,7 +4,6 @@
  *
  */
 
-package dmodel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +19,7 @@ public final class Student {
     private String lastName;
     private String semester;
     //max is 6
-    private List<CourseChoice> prefs = new ArrayList<>();
+    private List<CourseChoice> prefs = new ArrayList<CourseChoice>();
     
     public Student(){
         super();
@@ -73,14 +72,14 @@ public final class Student {
     }
     public boolean containsCourse(int course){
         //Pre Java 8
-//        int size = prefs.size();
-//        for (int p = 0; p < size; p++) {
-//            if(prefs.get(p).getCourseIndex() == course){
-//                return true;
-//            }
-//        }
-//        return false;
+        int size = prefs.size();
+        for (int p = 0; p < size; p++) {
+            if(prefs.get(p).getCourseIndex() == course){
+                return true;
+            }
+        }
+        return false;
         
-        return prefs.stream().anyMatch((cc) -> cc.getCourseIndex() == course);
+       // return prefs.stream().anyMatch((cc) -> cc.getCourseIndex() == course);
     }
 }

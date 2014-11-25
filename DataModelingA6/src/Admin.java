@@ -90,10 +90,10 @@ public class Admin {
 
             if (choice == 1) {
                 // create admin account
-                getInputFor(1);
+                getInputAndInsertFaculty(1);
             } else if (choice == 2) {
                 // create faculty account
-                getInputFor(0);
+                getInputAndInsertFaculty(0);
             } else if (choice == 3) {
                 // exit
 
@@ -104,7 +104,10 @@ public class Admin {
         }while(choice != 3);
     }
 
-    public void getInputFor(int isAdmin){
+    /*
+    *   
+    */
+    public void getInputAndInsertFaculty(int isAdmin){
         System.out.println("Enter Account n# (exclude the n) and press enter key: ");
 
         String random = inputReader.nextLine(); // there's a newline character prior to this still in scanner, this eliminates it

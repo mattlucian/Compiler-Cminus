@@ -4,8 +4,6 @@
  *
  */
 
-package dmodel;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -18,7 +16,7 @@ import java.util.Scanner;
 public class Driver {
     private static Scanner in = new Scanner(System.in);
     
-    private static List<String> courses = new ArrayList<>();//the available course based on chosen semester
+    private static List<String> courses = new ArrayList<String>();//the available course based on chosen semester
     private static final int MAX_COURSES = 6;
     
     //private Student student = new Student();//save info
@@ -183,9 +181,9 @@ public class Driver {
     }
     
     //Testing
-    public static void main(String[] args) {
-        Student chris = new Student(1234, "Chris", "Raley");
-        Driver.studentSelection(chris);
-        
-    }
+   // public static void main(String[] args) {
+    //    Student chris = new Student(1234, "Chris", "Raley");
+    //    Driver.studentSelection(chris);
+   //
+   // }
 }
