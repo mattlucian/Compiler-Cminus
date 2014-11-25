@@ -6,3 +6,35 @@ This README explains about Team-A6's Data Modeling - Final Project for Fall of 2
 
 The project uses Oracle 11.2 and Java connections done via JDBC drivers.
 
+
+Official TODO List:
+
+- Nick
+   - Faculty menu
+   - Course preference forms
+
+- Matt
+    - Admin part
+    - Reports
+        - Add report information
+
+- Katelin
+    - Log in / Authenticate student, faculty, admin
+    - Document your functions / classes at a high level. Add to word document
+
+- Ryan
+     - Documentation
+          - Consult Phase 2 document
+
+- Randall
+    - Functional Diagrams
+    - ERD revamp
+        - Remove days/times
+        - Add NUMBER length
+    - physical and logical assumptions
+       
+- Chris
+    - Student menu
+
+Nick and Ryan (Sat and Sun)
+    - presentation
