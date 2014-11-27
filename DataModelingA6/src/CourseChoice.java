@@ -12,7 +12,7 @@
  */
 public class CourseChoice {
     
-    //day classifications
+    //day classifications: export as public
     public static final int MON_WED = 1;
     public static final int TUE_THR = 2;
     public static final int MON_WED_FRI = 3;
@@ -22,27 +22,17 @@ public class CourseChoice {
     public static final int EVENING = 2;
     public static final int NIGHT = 3;
     
-    private int courseIndex;
+    private int courseCRN;//maps to DB
     private int days;
     private int times;
-    private String courseTitle;
 
     public CourseChoice(){
         
     }
-    public CourseChoice(int course, int day, int time, String title){
-        courseIndex = course;
+    public CourseChoice(int crn, int day, int time){
         days = day;
         times = time;
-        courseTitle = title;
-    }
-
-    public int getCourseIndex() {
-        return courseIndex;
-    }
-
-    public void setCourseIndex(int courseIndex) {
-        this.courseIndex = courseIndex;
+        courseCRN = crn;
     }
 
     public int getDays() {
@@ -61,12 +51,12 @@ public class CourseChoice {
         this.times = times;
     }
 
-    public String getCourseTitle() {
-        return courseTitle;
+    public int getCourseCRN() {
+        return courseCRN;
     }
 
-    public void setCourseTitle(String courseTitle) {
-        this.courseTitle = courseTitle;
+    public void setCourseCRN(int courseCRN) {
+        this.courseCRN = courseCRN;
     }
     
 }
