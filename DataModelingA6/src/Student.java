@@ -28,7 +28,7 @@ public final class Student {
     
     //private int year = 2014;
     //max is 6 per activeSemester
-    private Map<Semester, Request> prefmap = new HashMap<>();
+    private Map<Semester, Request> prefmap = new HashMap<Semester, Request>();
     
     
     public Student(){

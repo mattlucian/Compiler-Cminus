@@ -19,7 +19,7 @@ public class Request {
     //year is bound to chosen semeseter!
     private int year = 2015;
     //Upto 6 course selections
-    List<CourseChoice> selections = new ArrayList<>();
+    List<CourseChoice> selections = new ArrayList<CourseChoice>();
 
     public Request(){
         

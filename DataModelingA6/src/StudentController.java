@@ -73,7 +73,7 @@ public class StudentController {
      */
     private boolean showSemesterMenu(Student s){
         int index = 1;
-        Map<Integer, Semester> smap = new HashMap<>();
+        Map<Integer, Semester> smap = new HashMap<Integer, Semester>();
         System.out.println("\nChoose a Semester\n" + SEPARATOR);
         
         //Dynamically display ONLY those semesters that student has not completed
@@ -164,7 +164,7 @@ public class StudentController {
         while(true){
             int temp = 1;
             //Map selections to actions
-            Map<Integer,Integer> smap = new HashMap<>();
+            Map<Integer,Integer> smap = new HashMap<Integer,Integer>();
             StringBuilder menu = new StringBuilder();
             menu.append(String.format("\nPreference Menu  [Submitted Classes: %d]\n", choices)).append(SEPARATOR).append('\n');
             if(choices < MAX_COURSES){
@@ -281,6 +281,11 @@ public class StudentController {
     private Student initStudent(String nNumber){
         Student s = new Student();
         String firstName, lastName;
+        nNumber = nNumber.toUpperCase();//force 'n' to uppercase
+        //Remove 'N' if needed prior to parsing
+        if(nNumber.charAt(0) == 'N'){
+            nNumber = nNumber.substring(1);
+        }
         int n = 0;
         try {
             n = Integer.parseInt(nNumber);
@@ -346,7 +351,7 @@ public class StudentController {
 //        return courses;
 //    }
     private List<Course> getAvailableCourses(Semester semester){
-        List<Course> courses = new ArrayList<>();
+        List<Course> courses = new ArrayList<Course>();
         PreparedStatement ps = null;
         ResultSet rset = null;
         try {

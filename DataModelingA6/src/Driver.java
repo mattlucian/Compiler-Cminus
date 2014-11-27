@@ -11,11 +11,12 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- *
- * @author chris
+ * Compile:  javac -cp ojdbc6.jar:. Driver.java
+ * Run:      java  -cp ojdbc6.jar:. Driver
+ * Designed to run on Osprey with oracle jdbc driver jar file.
  */
 public class Driver {
-    private static final String dbURL = "jdbc:oracle:thin:@olympia.unfcsd.unf.edu";
+    private static final String dbURL = "jdbc:oracle:thin:@olympia.unfcsd.unf.edu:1521:dworcl";
     private static final String db_username = "teama6dm2f14";
     private static final String db_password = "team6ccgmpr";
     
