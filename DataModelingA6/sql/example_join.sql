@@ -1,4 +1,3 @@
-
 ----------------------
 -- Gets Courses Ranked By Faculty
 ----------------------

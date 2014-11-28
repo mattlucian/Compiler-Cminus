@@ -14,6 +14,11 @@ public class TestQuery {
         con = connection;
     }
 
+    /*
+     * Accepts entire Query string and returns a result set
+     * -- I only created this because SQL Plus has terrible
+     * -- formatting when trying to view contents of a table
+     */
     ResultSet query(String query){
         try{
             Statement statement = con.createStatement();

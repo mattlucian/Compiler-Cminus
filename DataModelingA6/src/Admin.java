@@ -10,14 +10,23 @@ import java.util.Scanner;
  */
 public class Admin {
 
+    //region Properties + Constructor
     private Scanner inputReader = new Scanner(System.in); // for reading input
     private Connection connection;
 
+    /*
+     * Admin constructor. Accepts the established
+     * connection to Oracle for later user
+     */
     Admin(Connection establishedConnection){
         connection = establishedConnection;
     }
+    // endregion
 
     //region Main Menu
+    /*
+     * Displays the Admin main menu to get input
+     */
     public void mainMenu(){
         int choice = 0;
         do{
@@ -47,6 +56,11 @@ public class Admin {
     //endregion
 
     //region Main Menu Functions
+    /*
+     * Displays a reporting menu so the admin can choose what type of
+     * report they would like to view. Each selection calls the corresponding
+     * reporting method
+     */
     public void reportingMenu(){
         int choice = 0;
         do{
@@ -78,6 +92,10 @@ public class Admin {
         return;
     }
 
+    /*
+     * Displays a menu to let the admin choose whether to create an Admin
+     * account or a standard faculty account
+     */
     public void createAccount(){
 
         int choice = 0;
@@ -105,7 +123,9 @@ public class Admin {
     }
 
     /*
-    *   
+     *  Gets the input to create either an Admin account or
+     *  a standard faculty account. The parameter determines
+     *  whether an admin account or faculty account is being created
     */
     public void getInputAndInsertFaculty(int isAdmin){
         System.out.println("Enter Account n# (exclude the n) and press enter key: ");
@@ -148,6 +168,11 @@ public class Admin {
         System.out.println("Failed to create account");
     }
 
+    /*
+    *   Allows an Admin to Delete an Account from the Faculty Table
+    *   Pulls a list of current faculty members and lets the user
+    *   select a choice of which account to delete
+    */
     public void deleteAccount(){
         System.out.println("Choose an account to delete: ");
 
@@ -168,9 +193,12 @@ public class Admin {
                 String faculty_type = rs.getString("faculty_type");
                 int isAdmin = rs.getInt("is_administrator");
                 String password = rs.getString("password");
+                boolean isAnAdmin = false;
+                if(isAdmin == 1)
+                    isAnAdmin = true;
 
                 facultyList.add(new FacultyRecord(n_number, first_name, last_name, faculty_type , isAdmin, password));
-                System.out.println( "(" + Integer.toString(count++) + ") : " + first_name + " " + last_name + " [ "+ faculty_type +" ]");
+                System.out.println( "(" + Integer.toString(count++) + ") : " + first_name + " " + last_name + " [ "+ faculty_type+ ((isAnAdmin)?"-(Admin)":"") +" ]");
             }
 
         }catch (Exception e){
@@ -210,6 +238,12 @@ public class Admin {
     //endregion
 
     //region Reporting Menu Functions
+    /*
+    *   Pulls from the Course_Request and Course_Ranking Tables
+    *   to Print out a report of all the courses requested by
+    *   Faculty and Students. It also gets additional information, such
+    *   as the days and times of each request
+    */
     public void printCourseReport(){
 
 
@@ -223,18 +257,43 @@ public class Admin {
         System.out.println("Test print course report");
     }
 
+
+    /*
+    *   Prints out a report of the days requested and
+    *   the additional information linked to those days from
+    *   the Course_Ranking, Course_RequestPreference_Form,
+    *   Form_Semester_Info, Faculty, and Student tables
+    */
     public void printDayReport(){
         System.out.println("Test print day report");
     }
 
+    /*
+    *   Prints out a report of the times requested and
+    *   the additional information linked to those times from
+    *   the Course_Ranking, Course_RequestPreference_Form,
+    *   Form_Semester_Info, Faculty, and Student tables
+    */
     public void printTimeReport(){
         System.out.println("Test print time report");
     }
 
+    /*
+    *   Prints out a report of what the faculty requested and
+    *   the additional information linked to each faculty member:
+    *   Course_Ranking, Course_RequestPreference_Form,
+    *   Form_Semester_Info, Faculty, and Student tables
+    */
     public void printFacultyReport(){
         System.out.println("Test print faculty report");
     }
 
+   /*
+    *   Prints out a report of what the students requested and
+    *   the additional information linked to each student:
+    *   Course_Ranking, Course_RequestPreference_Form,
+    *   Form_Semester_Info, Faculty, and Student tables
+    */
     public void printStudentReport(){
         System.out.println("Test print student report");
     }
