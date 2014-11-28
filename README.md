@@ -12,17 +12,22 @@ Official TODO List:
 - Nick
     - Faculty menu
     - Course preference forms
-    - Document your functions / classes at a high level. Add to word document
+    - Document your functions / classes at a high level
 
 - Matt
-    - Admin part
+    - Admin account creation (DONE)
+    - Admin account deletion (DONE)
+    - Document your functions / classes at a high level (DONE)
     - Reports
-        - Add report information
-    - Document your functions / classes at a high level. Add to word document
+        - Course Report Queries (DONE)
+        - Days Report Queries
+        - Times Report Queries
+        - Faculty Report Queries (PARTIALLY)
+        - Student Report Queries (PARTIALLY)
 
 - Katelin
     - Log in / Authenticate student, faculty, admin
-    - Document your functions / classes at a high level. Add to word document
+    - Document your functions / classes at a high level
 
 - Ryan
      - Documentation
@@ -37,7 +42,7 @@ Official TODO List:
        
 - Chris
     - Student menu
-    - Document your functions / classes at a high level. Add to word document
+    - Document your functions / classes at a high level
 
 Nick and Ryan (Sat and Sun)
     - presentation
