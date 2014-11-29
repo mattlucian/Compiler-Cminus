@@ -1,3 +1,5 @@
+import javax.swing.plaf.nimbus.State;
+import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -359,7 +361,6 @@ public class Admin {
 
     }
 
-
     /*
     *   Prints out a report of the days requested and
     *   the additional information linked to those days from
@@ -397,7 +398,137 @@ public class Admin {
     *   Form_Semester_Info, Faculty, and Student tables
     */
     public void printStudentReport(){
-        System.out.println("Test print student report");
+
+        //region Fall Semester
+        System.out.println("Fall Semester:");
+        String queryForFall = "select distinct s.first_name, s.last_name, s.n_number, cr.days_id, cr.times_id "+
+                "FROM student s " +
+                "INNER JOIN course_request cr " +
+                " ON s.n_number = cr.n_number " +
+                "WHERE cr.semester = 'Fall'";
+        try{
+            int count = 1;
+            Statement stm = connection.createStatement();
+            ResultSet rs = stm.executeQuery(queryForFall);
+            while(rs.next()){
+                System.out.println(count+++": "+rs.getString(1)+" "+rs.getString(2)+" ("+rs.getString(3)+")");
+                System.out.println("-- "+days[rs.getInt(4)]+" | "+times[rs.getInt(5)]);
+                String queryToGetClasses = "select c.course_name, c.code from course c " +
+                        "inner join course_request cr " +
+                        "on c.CRN = cr.CRN " +
+                        "where cr.n_number = "+rs.getInt(3);
+                Statement stm2 = connection.createStatement();
+                ResultSet rs2 = stm2.executeQuery(queryToGetClasses);
+                // for each class
+                while(rs2.next()){
+                    System.out.println("-- "+rs2.getString(1)+" ("+rs2.getString(2)+")");
+
+                    String queryToGetFacultyDetails = "select f.first_name, f.last_name " +
+                            "from faculty f " +
+                            "inner join course_ranking cr " +
+                            "on f.n_number = cr.n_number " +
+                            "where cr.code = '"+rs2.getString(2)+"'";
+                    Statement stm3 = connection.createStatement();
+                    ResultSet rs3 = stm3.executeQuery(queryToGetFacultyDetails);
+
+                    while(rs3.next()){
+                        System.out.println("--- Instructed By: "+rs3.getString(1)+" "+rs3.getString(2));
+                    }
+                }
+            }
+        }catch (SQLException e){
+            System.out.println("Error getting Fall: "+e.getMessage());
+        }
+        //endregion
+
+        //region Spring Semester
+        System.out.println("Spring Semester:");
+        String queryForSpring = "select distinct s.first_name, s.last_name, s.n_number, cr.days_id, cr.times_id "+
+                "FROM student s " +
+                "INNER JOIN course_request cr " +
+                " ON s.n_number = cr.n_number " +
+                "WHERE cr.semester = 'Spring'";
+        try{
+            int count =1;
+            Statement stm = connection.createStatement();
+            ResultSet rs = stm.executeQuery(queryForSpring);
+            while(rs.next()){
+                System.out.println(count+++": "+rs.getString(1)+" "+rs.getString(2)+" ("+rs.getString(3)+")");
+                System.out.println("-- "+days[rs.getInt(4)]+" | "+times[rs.getInt(5)]);
+                String queryToGetClasses = "select c.course_name, c.code from course c " +
+                        "inner join course_request cr " +
+                        "on c.CRN = cr.CRN " +
+                        "where cr.n_number = "+rs.getInt(3);
+                Statement stm2 = connection.createStatement();
+                ResultSet rs2 = stm2.executeQuery(queryToGetClasses);
+                // for each class
+                while(rs2.next()){
+                    System.out.println("-- "+rs2.getString(1)+" ("+rs2.getString(2)+")");
+
+                    String queryToGetFacultyDetails = "select f.first_name, f.last_name " +
+                            "from faculty f " +
+                            "inner join course_ranking cr " +
+                            "on f.n_number = cr.n_number " +
+                            "where cr.code = '"+rs2.getString(2)+"'";
+                    Statement stm3 = connection.createStatement();
+                    ResultSet rs3 = stm3.executeQuery(queryToGetFacultyDetails);
+
+                    while(rs3.next()){
+                        System.out.println("--- Instructed By: "+rs3.getString(1)+" "+rs3.getString(2));
+                    }
+                }
+            }
+        }catch (SQLException e){
+            System.out.println("Error getting Fall: "+e.getMessage());
+        }
+
+
+        //endregion
+
+        //region Summer Semester
+        String queryForSummer = "select distinct s.first_name, s.last_name, s.n_number, cr.days_id, cr.times_id "+
+                "FROM student s " +
+                "INNER JOIN course_request cr " +
+                " ON s.n_number = cr.n_number " +
+                "WHERE cr.semester = 'Spring'";
+
+        try{
+            int count = 1;
+            Statement stm = connection.createStatement();
+            ResultSet rs = stm.executeQuery(queryForSummer);
+            while(rs.next()){
+                System.out.println(count+++": "+rs.getString(1)+" "+rs.getString(2)+" ("+rs.getString(3)+")");
+                System.out.println("-- "+days[rs.getInt(4)]+" | "+times[rs.getInt(5)]);
+                String queryToGetClasses = "select c.course_name, c.code from course c " +
+                        "inner join course_request cr " +
+                        "on c.CRN = cr.CRN " +
+                        "where cr.n_number = "+rs.getInt(3);
+                Statement stm2 = connection.createStatement();
+                ResultSet rs2 = stm2.executeQuery(queryToGetClasses);
+                // for each class
+                while(rs2.next()){
+                    System.out.println("-- "+rs2.getString(1)+" ("+rs2.getString(2)+")");
+
+                    String queryToGetFacultyDetails = "select f.first_name, f.last_name " +
+                            "from faculty f " +
+                            "inner join course_ranking cr " +
+                            "on f.n_number = cr.n_number " +
+                            "where cr.code = '"+rs2.getString(2)+"'";
+                    Statement stm3 = connection.createStatement();
+                    ResultSet rs3 = stm3.executeQuery(queryToGetFacultyDetails);
+
+                    while(rs3.next()){
+                        System.out.println("--- Instructed By: "+rs3.getString(1)+" "+rs3.getString(2));
+                    }
+                }
+            }
+        }catch (SQLException e){
+            System.out.println("Error getting Fall: "+e.getMessage());
+        }
+
+
+        //endregion
+
     }
     //endregion
 }
