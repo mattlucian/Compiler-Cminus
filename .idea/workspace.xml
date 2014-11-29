@@ -69,7 +69,7 @@
       <file leaf-file-name="dma6.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="9" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0" vertical-offset="106" max-vertical-offset="799">
+            <state line="27" column="9" selection-start="817" selection-end="817" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
               <folding />
             </state>
           </provider>
@@ -78,20 +78,51 @@
       <file leaf-file-name="Admin.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Admin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="0" selection-start="0" selection-end="7754" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="4165">
+            <state line="165" column="42" selection-start="5611" selection-end="5611" vertical-scroll-proportion="-11.153846" vertical-offset="2430" max-vertical-offset="4080">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Faculty.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="FacultyRecord.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FacultyRecord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="5" selection-start="545" selection-end="545" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="663">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PreferenceFormRecord.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="29" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1224">
+              <folding>
+                <element signature="e#1439#1461#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Faculty.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="119" column="0" selection-start="4637" selection-end="4637" vertical-scroll-proportion="3.1928935" vertical-offset="0" max-vertical-offset="6834">
+            <state line="170" column="71" selection-start="6650" selection-end="6650" vertical-scroll-proportion="0.0" vertical-offset="3914" max-vertical-offset="6902">
               <folding>
                 <element signature="e#365#373#0" expanded="true" />
-                <element signature="e#3694#3702#0" expanded="true" />
-                <element signature="e#6542#6550#0" expanded="true" />
+                <element signature="e#3820#3828#0" expanded="true" />
+                <element signature="e#6736#6744#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FormSemesterInfoRecord.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FormSemesterInfoRecord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="70" column="63" selection-start="2966" selection-end="2966" vertical-scroll-proportion="1.1725888" vertical-offset="429" max-vertical-offset="1479">
+              <folding>
+                <element signature="e#2108#2132#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -111,7 +142,10 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/DataModelingA6/src/dma6.java" />
+        <option value="$PROJECT_DIR$/DataModelingA6/src/CoursePreferenceFormRecord.java" />
+        <option value="$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java" />
         <option value="$PROJECT_DIR$/DataModelingA6/src/Faculty.java" />
+        <option value="$PROJECT_DIR$/DataModelingA6/src/FormSemesterInfoRecord.java" />
       </list>
     </option>
   </component>
@@ -147,7 +181,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -200,6 +233,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -222,7 +256,7 @@
     <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="SearchEverywhereHistory" value="" />
+    <property name="SearchEverywhereHistory" value="null" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -288,19 +322,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -326,6 +347,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -421,7 +455,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -486,11 +520,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="119" column="0" selection-start="4637" selection-end="4637" vertical-scroll-proportion="0.0" vertical-offset="2023" max-vertical-offset="6834">
+          <folding>
+            <element signature="e#365#373#0" expanded="true" />
+            <element signature="e#3820#3828#0" expanded="true" />
+            <element signature="e#6736#6744#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="9" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0" vertical-offset="106" max-vertical-offset="799">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="0" selection-end="7754" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="4165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="323" column="39" selection-start="12293" selection-end="12293" vertical-scroll-proportion="0.0" vertical-offset="5491" max-vertical-offset="6834">
           <folding>
             <element signature="e#365#373#0" expanded="true" />
-            <element signature="e#3694#3702#0" expanded="true" />
-            <element signature="e#6542#6550#0" expanded="true" />
+            <element signature="e#3820#3828#0" expanded="true" />
+            <element signature="e#6736#6744#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -514,8 +573,8 @@
         <state line="378" column="1" selection-start="13980" selection-end="13980" vertical-scroll-proportion="0.0" vertical-offset="6426" max-vertical-offset="6460">
           <folding>
             <element signature="e#365#373#0" expanded="true" />
-            <element signature="e#3694#3702#0" expanded="true" />
-            <element signature="e#6542#6550#0" expanded="true" />
+            <element signature="e#3820#3828#0" expanded="true" />
+            <element signature="e#6736#6744#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -539,8 +598,8 @@
         <state line="175" column="0" selection-start="6275" selection-end="6275" vertical-scroll-proportion="0.0" vertical-offset="2975" max-vertical-offset="2992">
           <folding>
             <element signature="e#365#373#0" expanded="true" />
-            <element signature="e#3694#3702#0" expanded="true" />
-            <element signature="e#6542#6550#0" expanded="true" />
+            <element signature="e#3820#3828#0" expanded="true" />
+            <element signature="e#6736#6744#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -559,27 +618,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Admin.java">
+    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="0" selection-end="7754" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4080">
+        <state line="27" column="9" selection-start="817" selection-end="817" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
+    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FacultyRecord.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="9" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0" vertical-offset="412" max-vertical-offset="799">
+        <state line="16" column="5" selection-start="545" selection-end="545" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="663">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="165" column="42" selection-start="5611" selection-end="5611" vertical-scroll-proportion="-11.153846" vertical-offset="2430" max-vertical-offset="4080">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="0" selection-start="4637" selection-end="4637" vertical-scroll-proportion="3.1928935" vertical-offset="0" max-vertical-offset="6834">
+        <state line="170" column="71" selection-start="6650" selection-end="6650" vertical-scroll-proportion="0.0" vertical-offset="3914" max-vertical-offset="6902">
           <folding>
             <element signature="e#365#373#0" expanded="true" />
-            <element signature="e#3694#3702#0" expanded="true" />
-            <element signature="e#6542#6550#0" expanded="true" />
+            <element signature="e#3820#3828#0" expanded="true" />
+            <element signature="e#6736#6744#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="29" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1224">
+          <folding>
+            <element signature="e#1439#1461#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FormSemesterInfoRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="70" column="63" selection-start="2966" selection-end="2966" vertical-scroll-proportion="1.1725888" vertical-offset="429" max-vertical-offset="1479">
+          <folding>
+            <element signature="e#2108#2132#0" expanded="true" />
           </folding>
         </state>
       </provider>

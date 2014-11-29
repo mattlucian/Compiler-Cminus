@@ -13,6 +13,7 @@ import java.util.Scanner;
  */
 public class Faculty {
     private static List<String> courses = new ArrayList<String>();//the available course based on chosen semester
+    private static int current_fac_id = 1;
 
     //pretend initializer: in reality, it will change based on chosen semester
     static {
@@ -81,11 +82,11 @@ public class Faculty {
     public void newCoursePreferenceForm(){
 
         //sql to create new course preference form
-        System.out.println("You are creating a new Course Preference Form");
-        int coursePreferenceFormId = 1;
+        System.out.println("Creating a new Course Preference Form...");
+        PreferenceFormRecord preference_form = new PreferenceFormRecord(current_fac_id);
 
         //view the course preference form menu
-        coursePreferenceFormMenu(coursePreferenceFormId);
+        coursePreferenceFormMenu(preference_form);
     }
 
     public void viewCoursePreferenceForms(){
@@ -93,6 +94,7 @@ public class Faculty {
         int choice = 0;
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         Date date = new Date();
+        PreferenceFormRecord preference_form;
 
         //load Course Preference Forms
         ArrayList<String> coursePreferenceForms = new ArrayList<String>();
@@ -111,29 +113,30 @@ public class Faculty {
             System.out.println("Error, invalid selection please try again");
         } else if(choice != coursePreferenceForms.size()+1){
 
+            preference_form = PreferenceFormRecord.loadById(connection, choice);
             //dump the course preference form information
-            System.out.println("All data currently related to Course Preference Form #1:");
+            System.out.println("All data currently related to Course Preference Form:");
 
             //show options for managing course preference form
-            coursePreferenceFormMenu(choice);
+            coursePreferenceFormMenu(preference_form);
         }
 
     }
 
-    public void editCoursePreferenceForm(int coursePreferenceFormId)
+    public void editCoursePreferenceForm(PreferenceFormRecord preference_form)
     {
-        System.out.println("You are editing Course Preference Form ID#" + coursePreferenceFormId);
+        System.out.println("You are editing Course Preference Form ID#" + preference_form);
 
-        coursePreferenceFormMenu(coursePreferenceFormId);
+        coursePreferenceFormMenu(preference_form);
     }
 
-    public void coursePreferenceFormMenu(int coursePreferenceFormId)
+    public void coursePreferenceFormMenu(PreferenceFormRecord preference_form)
     {
         int choice = 0;
 
         //show menu of editable items
         do{
-            System.out.println("You are managing Course Preference Form #" + coursePreferenceFormId +": \n");
+            System.out.println("You are managing Course Preference Form #" + preference_form +": \n");
             System.out.println("Course Preference Form Menu:");
             System.out.println("1. Course Rankings");
             System.out.println("2. Fall Preferences");
@@ -143,13 +146,13 @@ public class Faculty {
             choice = inputReader.nextInt();
 
             if (choice == 1) {
-                courseRankingMenu(coursePreferenceFormId);
+                courseRankingMenu(preference_form);
             } else if (choice == 2) {
-                semesterPreferenceForm(coursePreferenceFormId, "Fall");
+                semesterPreferenceForm(preference_form, "Fall");
             } else if (choice == 3) {
-                semesterPreferenceForm(coursePreferenceFormId, "Spring");
+                semesterPreferenceForm(preference_form, "Spring");
             } else if (choice == 4) {
-                semesterPreferenceForm(coursePreferenceFormId, "Summer");
+                semesterPreferenceForm(preference_form, "Summer");
             } else if (choice == 5) {
                 //back to Faculty menu
             }  else {
@@ -165,7 +168,7 @@ public class Faculty {
         System.out.println("Your request has been received. Please contact Professor Abbassi for your paper copy.");
     }
 
-    public void courseRankingMenu(int coursePreferenceFormId)
+    public void courseRankingMenu(PreferenceFormRecord preference_form)
     {
         int choice = 0;
         ArrayList<String> coursesRanked = new ArrayList<String>();
@@ -221,9 +224,10 @@ public class Faculty {
         }
     }
 
-    public void semesterPreferenceForm(int coursePreferenceFormId, String semester)
+    public void semesterPreferenceForm(PreferenceFormRecord preference_form, String semester)
     {
         int choice = 0;
+        FormSemesterInfoRecord form_semester_info = FormSemesterInfoRecord.loadOne(connection, preference_form, semester);
 
         //show menu of editable items
         do{
@@ -238,13 +242,13 @@ public class Faculty {
 
             choice = inputReader.nextInt();
             if (choice == 1) {
-                courseLoadPreference(coursePreferenceFormId, semester);
+                courseLoadPreference(form_semester_info);
             } else if (choice == 2) {
-                schedulingFactors(coursePreferenceFormId, semester);
+                schedulingFactors(form_semester_info);
             } else if (choice == 3) {
-                timesOfDayPreference(coursePreferenceFormId, semester);
+                timesOfDayPreference(form_semester_info);
             } else if (choice == 4) {
-                daysOfWeekPreference(coursePreferenceFormId, semester);
+                daysOfWeekPreference(form_semester_info);
             } else if (choice == 5) {
                 // back to Course Preference Forms Menu
             }  else {
@@ -253,7 +257,7 @@ public class Faculty {
         }while(choice != 5);
     }
 
-    public void courseLoadPreference(int coursePreferenceFormId, String semester)
+    public void courseLoadPreference(FormSemesterInfoRecord form_semester_info)
     {
         int choice = 0;
 
@@ -271,7 +275,7 @@ public class Faculty {
         }while(choice < 1 || choice > 3);
     }
 
-    public void schedulingFactors(int coursePreferenceFormId, String semester)
+    public void schedulingFactors(FormSemesterInfoRecord form_semester_info)
     {
         String input = "";
         boolean inputValid = false;
@@ -314,7 +318,7 @@ public class Faculty {
         }while(!inputValid);
     }
 
-    public void timesOfDayPreference(int coursePreferenceFormId, String semester)
+    public void timesOfDayPreference(FormSemesterInfoRecord form_semester_info)
     {
         String input = "";
         boolean inputValid = false;
@@ -358,7 +362,7 @@ public class Faculty {
         }while(!inputValid);
     }
 
-    public void daysOfWeekPreference(int coursePreferenceFormId, String semester)
+    public void daysOfWeekPreference(FormSemesterInfoRecord form_semester_info)
     {
         String input = "";
         boolean inputValid = false;
