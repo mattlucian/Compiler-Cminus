@@ -281,11 +281,11 @@ public class Faculty {
         System.out.println("a: Course Preference \tb: Days of the Week \tc: Times of the Day");
 
         //clear buffer of any existing input
-        input = inputReader.nextLine();
+        inputReader.nextLine();
 
         do {
             inputValid = false;
-            input = inputReader.nextLine();
+            input = inputReader.nextLine().trim();
             if(input.split(" ").length != 3 && !input.equals("quit"))
             {
                 System.out.println("Invalid input. Enter \"quit\" to go back to the previous menu.");
@@ -325,11 +325,11 @@ public class Faculty {
         System.out.println("a: Morning \nb: Afternoon \nc: Evening");
 
         //clear buffer of any existing input
-        input = inputReader.nextLine();
+        inputReader.nextLine();
 
         do {
             inputValid = false;
-            input = inputReader.nextLine();
+            input = inputReader.nextLine().trim();
             if(input.split(" ").length != 3 && !input.equals("quit"))
             {
                 System.out.println("Invalid input. Enter \"quit\" to go back to the previous menu.");
@@ -369,11 +369,11 @@ public class Faculty {
         System.out.println("a: MWF (3 credits, 7am - 3pm) \nb: MW \nc: TR");
 
         //clear buffer of any existing input
-        input = inputReader.nextLine();
+        inputReader.nextLine();
 
         do {
             inputValid = false;
-            input = inputReader.nextLine();
+            input = inputReader.nextLine().trim();
             if(input.split(" ").length != 3 && !input.equals("quit"))
             {
                 System.out.println("Invalid input. Enter \"quit\" to go back to the previous menu.");
