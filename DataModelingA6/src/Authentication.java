@@ -13,6 +13,7 @@ import java.sql.Statement;
 public class Authentication {
     public static Connection connection;
 
+    // test addition
     Authentication(Connection establishedConnection){
         connection = establishedConnection;
         Scanner in = new Scanner(System.in);
