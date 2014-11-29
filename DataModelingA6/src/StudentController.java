@@ -57,7 +57,7 @@ public class StudentController {
         while(showSemesterMenu(student)){//when false, go back to Semester menu
             
             //An available semester has been chosen
-            List<Course> availableCourses = getAvailableCourses(student.getActiveSemester());
+            List<Course> availableCourses = getAvailableCourses(student.getActiveSemester(), student.getActiveSemesterYear());
             //launch course menu chain
             handlePreferences(student, availableCourses);
         }
@@ -73,6 +73,9 @@ public class StudentController {
     private boolean showSemesterMenu(Student s){
         int index = 1;
         Map<Integer, Semester> smap = new HashMap<Integer, Semester>();
+
+        System.out.println("The year is 2014!");
+
         System.out.println("\nChoose a Semester\n" + SEPARATOR);
         
         //Dynamically display ONLY those semesters that student has not completed
@@ -349,19 +352,23 @@ public class StudentController {
 //        
 //        return courses;
 //    }
-    private List<Course> getAvailableCourses(Semester semester){
+    private List<Course> getAvailableCourses(Semester semester, int is_odd_year){ // pass in is_odd_year depending on year
         List<Course> courses = new ArrayList<Course>();
         PreparedStatement ps = null;
         ResultSet rset = null;
         try {
-            ps = conn.prepareStatement("SELECT crn,code,course_number,course_name FROM course WHERE semester = '?'");
+            ps = conn.prepareStatement("SELECT crn,code,course_number,course_name FROM course WHERE semester = ? AND is_odd_year = ?");
             ps.setString(1, semester.toString());
+
+            ps.setInt(2,0); // add is_odd_year here
+
             rset = ps.executeQuery();
             while(rset.next()){
                 //RS: 1-crn, 2-code, 3-courseNumber, 4-courseName
                 courses.add(new Course(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4)));
             }
         } catch (SQLException e) {
+            System.out.println("Error: "+e.getMessage());
         } finally {
             clean(rset, ps);
         }

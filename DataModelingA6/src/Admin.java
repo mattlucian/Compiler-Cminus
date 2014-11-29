@@ -388,7 +388,58 @@ public class Admin {
     *   Form_Semester_Info, Faculty, and Student tables
     */
     public void printFacultyReport(){
-        System.out.println("Test print faculty report");
+
+        String getFaculty = "select f.first_name, f.last_name " +
+                "from faculty f " +
+                "inner join " +
+                "inner join course_ranking cr " +
+                " on f.n_number = cr.n_number " +
+                "where cr.semester = '";
+
+
+        System.out.println("Fall Semester");
+        //region Fall Semester
+        try{
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(getFaculty+"Fall'");
+
+        }catch (SQLException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+
+        //endregion
+
+        System.out.println("Spring Semester");
+        //region Spring Semester
+        try{
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(getFaculty+"Spring'");
+
+        }catch (SQLException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+
+        //endregion
+
+        System.out.println("Summer Semester");
+        //region Summer Semester
+        try{
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(getFaculty+"Summer'");
+            while(rs.next()){
+                System.out.println(" - "+rs.getString(1)+" "+rs.getString(2));
+
+
+
+
+            }
+
+
+        }catch (SQLException e){
+            System.out.println("Error: "+e.getMessage());
+        }
+
+        //endregion
     }
 
    /*

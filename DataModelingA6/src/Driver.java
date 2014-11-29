@@ -40,13 +40,13 @@ public class Driver {
     public static void main(String[] args) {
         
         //Simulating login: acquired n-Number
-        //String number = "n00045673";
+        String number = "n00045673";
         
         //keep this instantiated as a singleton
-        //StudentController controller = new StudentController(conn);//delivers connection
+        StudentController controller = new StudentController(conn);//delivers connection
         
         //everytime the student option selected, call this method:
-        //controller.startSession(number);
+        controller.startSession(number);
 
 //        TestQuery ts = new TestQuery(conn);
 //        String query = "SELECT * FROM course";
@@ -67,7 +67,7 @@ public class Driver {
 //        }catch (SQLException ex){
 //            System.out.println("Error: "+ex.getMessage());
 //        }
-        Admin admin = new Admin(conn);
-        admin.mainMenu();
+       // Admin admin = new Admin(conn);
+    //    admin.mainMenu();
     }
 }
