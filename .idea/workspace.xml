@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="990d23a1-40a9-4a2f-8a0a-0bda8fdbfe24" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataModelingA6/src/Faculty.java" afterPath="$PROJECT_DIR$/DataModelingA6/src/Faculty.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java" afterPath="$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataModelingA6/src/dma6.java" afterPath="$PROJECT_DIR$/DataModelingA6/src/dma6.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DatabaseModelingA6.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -69,7 +72,7 @@
       <file leaf-file-name="dma6.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="27" column="9" selection-start="817" selection-end="817" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
+            <state line="37" column="55" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.0" vertical-offset="290" max-vertical-offset="1071">
               <folding />
             </state>
           </provider>
@@ -88,18 +91,57 @@
         <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FacultyRecord.java">
           <provider selected="true" editor-type-id="text-editor">
             <state line="16" column="5" selection-start="545" selection-end="545" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="663">
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PreferenceFormRecord.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="62" column="33" selection-start="1985" selection-end="1985" vertical-scroll-proportion="1.0495627" vertical-offset="694" max-vertical-offset="1632">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2091#2113#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OracleStatementWrapper.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/DataModelingA6/ojdbc6.jar!/oracle/jdbc/driver/OracleStatementWrapper.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="88" column="30" selection-start="4048" selection-end="4048" vertical-scroll-proportion="-3.76" vertical-offset="1385" max-vertical-offset="2822">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PreferenceFormRecord.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java">
+      <file leaf-file-name="OracleStatement.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/DataModelingA6/ojdbc6.jar!/oracle/jdbc/driver/OracleStatement.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="29" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1224">
-              <folding>
-                <element signature="e#1439#1461#0" expanded="true" />
-              </folding>
+            <state line="454" column="30" selection-start="18242" selection-end="18242" vertical-scroll-proportion="-3.76" vertical-offset="7607" max-vertical-offset="9452">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DatabaseError.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/DataModelingA6/ojdbc6.jar!/oracle/jdbc/driver/DatabaseError.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="434" column="40" selection-start="25987" selection-end="25987" vertical-scroll-proportion="-3.76" vertical-offset="7267" max-vertical-offset="8432">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Message11.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/DataModelingA6/ojdbc6.jar!/oracle/jdbc/driver/Message11.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="28" selection-start="554" selection-end="554" vertical-scroll-proportion="-8.12" vertical-offset="18" max-vertical-offset="340">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -107,20 +149,20 @@
       <file leaf-file-name="Faculty.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="170" column="71" selection-start="6650" selection-end="6650" vertical-scroll-proportion="0.0" vertical-offset="3914" max-vertical-offset="6902">
+            <state line="88" column="0" selection-start="3490" selection-end="3490" vertical-scroll-proportion="-3.7692308" vertical-offset="1262" max-vertical-offset="7038">
               <folding>
                 <element signature="e#365#373#0" expanded="true" />
-                <element signature="e#3820#3828#0" expanded="true" />
-                <element signature="e#6736#6744#0" expanded="true" />
+                <element signature="e#4216#4224#0" expanded="true" />
+                <element signature="e#7170#7178#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FormSemesterInfoRecord.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="FormSemesterInfoRecord.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FormSemesterInfoRecord.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="70" column="63" selection-start="2966" selection-end="2966" vertical-scroll-proportion="1.1725888" vertical-offset="429" max-vertical-offset="1479">
+            <state line="43" column="25" selection-start="1643" selection-end="1643" vertical-scroll-proportion="0.0" vertical-offset="429" max-vertical-offset="1479">
               <folding>
                 <element signature="e#2108#2132#0" expanded="true" />
               </folding>
@@ -141,11 +183,11 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/DataModelingA6/src/dma6.java" />
         <option value="$PROJECT_DIR$/DataModelingA6/src/CoursePreferenceFormRecord.java" />
-        <option value="$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java" />
-        <option value="$PROJECT_DIR$/DataModelingA6/src/Faculty.java" />
         <option value="$PROJECT_DIR$/DataModelingA6/src/FormSemesterInfoRecord.java" />
+        <option value="$PROJECT_DIR$/DataModelingA6/src/Faculty.java" />
+        <option value="$PROJECT_DIR$/DataModelingA6/src/dma6.java" />
+        <option value="$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java" />
       </list>
     </option>
   </component>
@@ -429,6 +471,11 @@
     </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="SliceManager">
+    <option name="analysisUIOptions">
+      <AnalysisUIOptions />
+    </option>
+  </component>
   <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
     <option name="USER" value="" />
     <option name="PASSWORD" value="" />
@@ -455,8 +502,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -465,20 +512,20 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32357723" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14350453" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32445142" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32357723" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
@@ -523,8 +570,8 @@
         <state line="119" column="0" selection-start="4637" selection-end="4637" vertical-scroll-proportion="0.0" vertical-offset="2023" max-vertical-offset="6834">
           <folding>
             <element signature="e#365#373#0" expanded="true" />
-            <element signature="e#3820#3828#0" expanded="true" />
-            <element signature="e#6736#6744#0" expanded="true" />
+            <element signature="e#4216#4224#0" expanded="true" />
+            <element signature="e#7170#7178#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -548,8 +595,8 @@
         <state line="323" column="39" selection-start="12293" selection-end="12293" vertical-scroll-proportion="0.0" vertical-offset="5491" max-vertical-offset="6834">
           <folding>
             <element signature="e#365#373#0" expanded="true" />
-            <element signature="e#3820#3828#0" expanded="true" />
-            <element signature="e#6736#6744#0" expanded="true" />
+            <element signature="e#4216#4224#0" expanded="true" />
+            <element signature="e#7170#7178#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -573,8 +620,8 @@
         <state line="378" column="1" selection-start="13980" selection-end="13980" vertical-scroll-proportion="0.0" vertical-offset="6426" max-vertical-offset="6460">
           <folding>
             <element signature="e#365#373#0" expanded="true" />
-            <element signature="e#3820#3828#0" expanded="true" />
-            <element signature="e#6736#6744#0" expanded="true" />
+            <element signature="e#4216#4224#0" expanded="true" />
+            <element signature="e#7170#7178#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -598,8 +645,8 @@
         <state line="175" column="0" selection-start="6275" selection-end="6275" vertical-scroll-proportion="0.0" vertical-offset="2975" max-vertical-offset="2992">
           <folding>
             <element signature="e#365#373#0" expanded="true" />
-            <element signature="e#3820#3828#0" expanded="true" />
-            <element signature="e#6736#6744#0" expanded="true" />
+            <element signature="e#4216#4224#0" expanded="true" />
+            <element signature="e#7170#7178#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -618,17 +665,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="9" selection-start="817" selection-end="817" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="748">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FacultyRecord.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="5" selection-start="545" selection-end="545" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="663">
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -639,31 +681,67 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FormSemesterInfoRecord.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="43" column="25" selection-start="1643" selection-end="1643" vertical-scroll-proportion="0.0" vertical-offset="429" max-vertical-offset="1479">
+          <folding>
+            <element signature="e#2108#2132#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/DataModelingA6/ojdbc6.jar!/oracle/jdbc/driver/Message11.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="28" selection-start="554" selection-end="554" vertical-scroll-proportion="-8.12" vertical-offset="18" max-vertical-offset="340">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/DataModelingA6/ojdbc6.jar!/oracle/jdbc/driver/DatabaseError.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="434" column="40" selection-start="25987" selection-end="25987" vertical-scroll-proportion="-3.76" vertical-offset="7267" max-vertical-offset="8432">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/DataModelingA6/ojdbc6.jar!/oracle/jdbc/driver/OracleStatementWrapper.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="30" selection-start="4048" selection-end="4048" vertical-scroll-proportion="-3.76" vertical-offset="1385" max-vertical-offset="2822">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/DataModelingA6/ojdbc6.jar!/oracle/jdbc/driver/OracleStatement.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="454" column="30" selection-start="18242" selection-end="18242" vertical-scroll-proportion="-3.76" vertical-offset="7607" max-vertical-offset="9452">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="55" selection-start="1102" selection-end="1102" vertical-scroll-proportion="0.0" vertical-offset="290" max-vertical-offset="1071">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="170" column="71" selection-start="6650" selection-end="6650" vertical-scroll-proportion="0.0" vertical-offset="3914" max-vertical-offset="6902">
+        <state line="88" column="0" selection-start="3490" selection-end="3490" vertical-scroll-proportion="-3.7692308" vertical-offset="1262" max-vertical-offset="7038">
           <folding>
             <element signature="e#365#373#0" expanded="true" />
-            <element signature="e#3820#3828#0" expanded="true" />
-            <element signature="e#6736#6744#0" expanded="true" />
+            <element signature="e#4216#4224#0" expanded="true" />
+            <element signature="e#7170#7178#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="29" selection-start="374" selection-end="374" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1224">
+        <state line="62" column="33" selection-start="1985" selection-end="1985" vertical-scroll-proportion="1.0495627" vertical-offset="694" max-vertical-offset="1632">
           <folding>
-            <element signature="e#1439#1461#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FormSemesterInfoRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="70" column="63" selection-start="2966" selection-end="2966" vertical-scroll-proportion="1.1725888" vertical-offset="429" max-vertical-offset="1479">
-          <folding>
-            <element signature="e#2108#2132#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#2091#2113#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -22,13 +22,34 @@ public class PreferenceFormRecord {
     }
 
     public boolean insertPreferenceFormRecord(Connection establishedConnection){
-        String query = "INSERT INTO preference_form (n_number) VALUES ( ";
-        query += this.fac_id + ")";
+        String query = "SELECT NVL(MAX(preference_form.preference_form_id)+1, 1) AS max_id FROM preference_form";
+        int max_id = -1;
+        try{
+            Statement statement = establishedConnection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+
+            while(rs.next()){
+                max_id = rs.getInt("max_id");
+            }
+        }catch (Exception e){
+            System.out.println("Error: "+e.getMessage());
+            return false;
+        }
+
+        if(max_id == -1)
+        {
+            System.out.println("Error: Could not load max id");
+            return false;
+        }
+
+        query = "INSERT INTO preference_form (preference_form_id, n_number) VALUES ( ";
+        query += max_id + ", " + this.fac_id + ")";
 
         try{
             System.out.println(query);
             Statement statement = establishedConnection.createStatement();
-            this.preference_form_id = statement.executeUpdate(query, Statement.RETURN_GENERATED_KEYS);
+            statement.executeUpdate(query);
+            this.preference_form_id = max_id;
             return true;
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
@@ -42,7 +63,6 @@ public class PreferenceFormRecord {
         query += preference_form_id + " LIMIT 1";
 
         try{
-
             List<PreferenceFormRecord> preference_form_list = new ArrayList<PreferenceFormRecord>();
 
             try{

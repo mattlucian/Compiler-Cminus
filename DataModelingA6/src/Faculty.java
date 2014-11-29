@@ -13,7 +13,7 @@ import java.util.Scanner;
  */
 public class Faculty {
     private static List<String> courses = new ArrayList<String>();//the available course based on chosen semester
-    private static int current_fac_id = 1;
+    public static int current_fac_id = 123;
 
     //pretend initializer: in reality, it will change based on chosen semester
     static {
@@ -85,8 +85,16 @@ public class Faculty {
         System.out.println("Creating a new Course Preference Form...");
         PreferenceFormRecord preference_form = new PreferenceFormRecord(current_fac_id);
 
-        //view the course preference form menu
-        coursePreferenceFormMenu(preference_form);
+        System.out.println("Preference Form Id before insert:" + preference_form.preference_form_id);
+        if(preference_form.insertPreferenceFormRecord(connection))
+        {
+            System.out.println("Preference Form Id after insert:" + preference_form.preference_form_id);
+            //view the course preference form menu
+            coursePreferenceFormMenu(preference_form);
+        }
+
+        System.out.println("An error occurred creating your new course preference form.");
+
     }
 
     public void viewCoursePreferenceForms(){
@@ -125,7 +133,7 @@ public class Faculty {
 
     public void editCoursePreferenceForm(PreferenceFormRecord preference_form)
     {
-        System.out.println("You are editing Course Preference Form ID#" + preference_form);
+        System.out.println("You are editing Course Preference Form ID#" + preference_form.preference_form_id);
 
         coursePreferenceFormMenu(preference_form);
     }
@@ -136,7 +144,7 @@ public class Faculty {
 
         //show menu of editable items
         do{
-            System.out.println("You are managing Course Preference Form #" + preference_form +": \n");
+            System.out.println("You are managing Course Preference Form #" + preference_form.preference_form_id +": \n");
             System.out.println("Course Preference Form Menu:");
             System.out.println("1. Course Rankings");
             System.out.println("2. Fall Preferences");
