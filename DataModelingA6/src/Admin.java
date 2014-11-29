@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,8 +45,12 @@ public class Admin {
             } else if (choice == 3) {
                 deleteAccount();
             } else if (choice == 4) {
-                // destroy session, log out
-
+                // destroy session, log out -- move this close to official program exit
+                try {
+                    connection.close();
+                }catch (SQLException e){
+                    System.out.println("Error: " + e.getMessage());
+                }
             } else {
                 System.out.println("Error, invalid selection please try again");
             }
@@ -246,15 +251,57 @@ public class Admin {
     */
     public void printCourseReport(){
 
+        // selects distinct courses that have course rankings
+        String query = "select distinct c.course_name, c.code "+
+                        "from course c "+
+                        "inner join course_ranking cr "+
+                        "on cr.code = c.code";
 
-        // while(rs.next()) {
+        try{
+            Statement stm = connection.createStatement();
+            ResultSet rs = stm.executeQuery(query);
+            System.out.println("--------------");
+            while(rs.next()) {
+                // select faculty members that have ranked it
+                String query2 = "select distinct f.n_number, f.first_name, f.last_name "+
+                                "FROM faculty f "+
+                                "INNER JOIN course_ranking cr "+
+                                " ON f.n_number = cr.n_number "+
+                                "WHERE cr.code = '"+rs.getString(2).trim()+"'";
+                Statement newstm = connection.createStatement();
+                ResultSet innerRS = newstm.executeQuery(query2);
+                System.out.println(rs.getString(1)+" ("+rs.getString(2)+")");
+                while(innerRS.next()){
+                    // prints faculty name + n_number
+                    System.out.println("- "+innerRS.getString(2)+" "+innerRS.getString(3));
+
+                    // get all details per faculty
+                    String queryFacultyDetails = "select preference_form_id from preference_form where n_number = "+innerRS.getInt(1);
+                    Statement anotherStm = connection.createStatement();
+                    ResultSet internalRS = anotherStm.executeQuery(queryFacultyDetails);
+                    int count = 1;
+                    while(internalRS.next()){
+                        // prints preference form for particular faculty member
+                        System.out.println("-- Preference Form: "+Integer.toString(count));
+                        String remainingQuery = "Select * from form_semester_info where preference_form_id = "+internalRS.getInt(1);
+                        Statement lastStm = connection.createStatement();
+                        ResultSet lastRS = lastStm.executeQuery(remainingQuery);
+                        while(lastRS.next()){
+                            // prints details per semester for preference form
+                            System.out.println("--- Semester: "+lastRS.getString(1));
+                            System.out.println("---- Time Of Day: "+lastRS.getInt(4));
+                            System.out.println("---- Days of Week: "+lastRS.getInt(5));
+                        }
+                        count++;
+                    }
 
 
-
-        // }
-
-
-        System.out.println("Test print course report");
+                }
+                System.out.println("--------------");
+            }
+        }catch (SQLException e){
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
 

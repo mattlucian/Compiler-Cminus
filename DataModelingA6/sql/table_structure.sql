@@ -59,11 +59,11 @@ CREATE TABLE form_semester_info (
 
 CREATE TABLE course_ranking (
        preference_form_id   NUMBER(6)     NOT NULL,
-       CRN                  NUMBER(7)     NOT NULL,
+       code                 VARCHAR2(10)  NOT NULL,
        n_number             NUMBER(8)     NOT NULL,
        rank_order           NUMBER(1)     NULL,
-       PRIMARY KEY (preference_form_id, CRN, n_number),
-       FOREIGN KEY (CRN) REFERENCES course,
+       PRIMARY KEY (preference_form_id, code, n_number),
+--       FOREIGN KEY (code) REFERENCES course,
        FOREIGN KEY (preference_form_id, n_number) REFERENCES preference_form
 );
 

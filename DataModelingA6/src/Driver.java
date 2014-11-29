@@ -48,25 +48,26 @@ public class Driver {
         //everytime the student option selected, call this method:
         //controller.startSession(number);
 
-        TestQuery ts = new TestQuery(conn);
-        String query = "SELECT * FROM course";
-        ResultSet rs = ts.query(query);
-        try{
-            while(rs.next()){
-                System.out.println("CRN: "+rs.getString(1));
-                System.out.println("Code: "+rs.getString(2));
-                System.out.println("Category: "+rs.getString(3));
-                System.out.println("Course#: "+rs.getString(4));
-                System.out.println("CourseName: "+rs.getString(5));
-                System.out.println("Is_Required: "+rs.getString(6));
-                System.out.println("Is_Odd_Year: "+rs.getString(7));
-                System.out.println("Semester: "+rs.getString(8));
-                System.out.println("---------------");
-            }
-            conn.close();
-        }catch (SQLException ex){
-            System.out.println("Error: "+ex.getMessage());
-        }
-
+//        TestQuery ts = new TestQuery(conn);
+//        String query = "SELECT * FROM course";
+//        ResultSet rs = ts.query(query);
+//        try{
+//            while(rs.next()){
+//                System.out.println("CRN: "+rs.getString(1));
+//                System.out.println("Code: "+rs.getString(2));
+//                System.out.println("Category: "+rs.getString(3));
+//                System.out.println("Course#: "+rs.getString(4));
+//                System.out.println("CourseName: "+rs.getString(5));
+//                System.out.println("Is_Required: "+rs.getString(6));
+//                System.out.println("Is_Odd_Year: "+rs.getString(7));
+//                System.out.println("Semester: "+rs.getString(8));
+//                System.out.println("---------------");
+//            }
+//            conn.close();
+//        }catch (SQLException ex){
+//            System.out.println("Error: "+ex.getMessage());
+//        }
+        Admin admin = new Admin(conn);
+        admin.mainMenu();
     }
 }
