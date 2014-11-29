@@ -14,6 +14,8 @@ public class Admin {
     //region Properties + Constructor
     private Scanner inputReader = new Scanner(System.in); // for reading input
     private Connection connection;
+    private String[] times = {"Morning (9am-12pm)","Afternoon (12pm-4pm)","Evening (4pm-9pm)"};
+    private String[] days = {"MW","TR","MWF","MWTRF"};
 
     /*
      * Admin constructor. Accepts the established
@@ -251,6 +253,10 @@ public class Admin {
     */
     public void printCourseReport(){
 
+        System.out.println("-----------");
+        System.out.println("| Faculty |");
+        System.out.println("-----------");
+        //region Faculty Portion
         // selects distinct courses that have course rankings
         String query = "select distinct c.course_name, c.code "+
                         "from course c "+
@@ -260,8 +266,8 @@ public class Admin {
         try{
             Statement stm = connection.createStatement();
             ResultSet rs = stm.executeQuery(query);
-            System.out.println("--------------");
             while(rs.next()) {
+
                 // select faculty members that have ranked it
                 String query2 = "select distinct f.n_number, f.first_name, f.last_name "+
                                 "FROM faculty f "+
@@ -289,19 +295,68 @@ public class Admin {
                         while(lastRS.next()){
                             // prints details per semester for preference form
                             System.out.println("--- Semester: "+lastRS.getString(1));
-                            System.out.println("---- Time Of Day: "+lastRS.getInt(4));
-                            System.out.println("---- Days of Week: "+lastRS.getInt(5));
+                            System.out.println("---- Time Of Day: "+times[lastRS.getInt(4)]);
+                            System.out.println("---- Days of Week: "+days[lastRS.getInt(5)]);
                         }
                         count++;
                     }
-
-
                 }
                 System.out.println("--------------");
             }
         }catch (SQLException e){
             System.out.println("Error: " + e.getMessage());
         }
+        //endregion
+
+        System.out.println("------------");
+        System.out.println("| Students |");
+        System.out.println("------------");
+        //region Student Portion
+        // selects distinct courses that have course requests
+        String query3 = "select distinct c.course_name, c.code "+
+                "from course c "+
+                "inner join course_request cr "+
+                "on cr.CRN = c.CRN ";
+        List<String> foundCourses = new ArrayList<String>();
+
+        try{
+            Statement stm = connection.createStatement();
+            ResultSet rs = stm.executeQuery(query3);
+            while(rs.next()) {
+                if(foundCourses.contains(rs.getString(2))){ // if already has course
+
+
+                }else{
+                    foundCourses.add(rs.getString(2)); // add code to found
+                    System.out.println(rs.getString(1)+" ("+rs.getString(2)+")");
+
+                }
+                // grab student information linking to the course request
+                String query2 = "select distinct s.n_number, s.first_name, s.last_name, cr.semester, cr.year, cr.days_id, cr.times_id "+
+                        "FROM student s "+
+                        "INNER JOIN course_request cr "+
+                        " ON s.n_number = cr.n_number " +
+                        "INNER JOIN course c " +
+                        " ON cr.CRN = c.CRN "+
+                        "WHERE c.code = '"+rs.getString(2)+"'";
+
+                Statement stmt2 = connection.createStatement();
+                ResultSet rs2 = stmt2.executeQuery(query2);
+                while(rs2.next()){
+                    // prints student name
+                    System.out.println("- "+rs2.getString(2)+" "+rs2.getString(3));
+
+                    // get all details pertaining to student
+                    System.out.println("-- "+rs2.getString(4)+" "+rs2.getString(5));
+                    System.out.println("--- "+days[rs2.getInt(6)]+" "+times[rs2.getInt(7)]);
+                }
+                System.out.println("--------------");
+            }
+        }catch (SQLException e){
+            System.out.println("Error: " + e.getMessage());
+        }
+        //endregion
+
     }
 
 
