@@ -1,7 +1,10 @@
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
@@ -87,11 +90,33 @@ public class Faculty {
 
     public void viewCoursePreferenceForms(){
 
-        //list all of the course preference forms
+        int choice = 0;
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        Date date = new Date();
+
+        //load Course Preference Forms
+        ArrayList<String> coursePreferenceForms = new ArrayList<String>();
+        coursePreferenceForms.add(dateFormat.format(date));
 
         //menu to select a course preference form
+        System.out.println("Available Course Preference Forms:");
 
-        //dump the course preference form information
+        for(int i = 0; i < coursePreferenceForms.size(); i++) {
+            System.out.println((i+1)+". "+coursePreferenceForms.get(i));
+        }
+        System.out.println((coursePreferenceForms.size()+1)+". Back to Faculty Menu");
+        choice = inputReader.nextInt();
+
+        if (choice < 0 || choice > coursePreferenceForms.size()+1) {
+            System.out.println("Error, invalid selection please try again");
+        } else if(choice != coursePreferenceForms.size()+1){
+
+            //dump the course preference form information
+            System.out.println("All data currently related to Course Preference Form #1:");
+
+            //show options for managing course preference form
+            coursePreferenceFormMenu(choice);
+        }
 
     }
 
@@ -250,10 +275,10 @@ public class Faculty {
     {
         String input = "";
         boolean inputValid = false;
-        System.out.println("Enter in a, b, and c in the corresponding order of importance to your scheduling.\n " +
+        System.out.println("Enter in a, b, and c in the corresponding order of importance to your scheduling.\n" +
                 "For example \"c a b\" to indicate that Times of the Day are the most important factor, \n" +
                 "and Days of the Week are the lease important factor:");
-        System.out.println("a: Course Preference \tb: Days of the Week: \tc: Times of the Day");
+        System.out.println("a: Course Preference \tb: Days of the Week \tc: Times of the Day");
 
         //clear buffer of any existing input
         input = inputReader.nextLine();
@@ -294,10 +319,10 @@ public class Faculty {
         String input = "";
         boolean inputValid = false;
 
-        System.out.println("Enter in a, b, and c in the corresponding order of preference for Time of the Day.\n " +
+        System.out.println("Enter in a, b, and c in the corresponding order of preference for Time of the Day.\n" +
                 "For example \"c a b\" to indicate that you prefer Evening, \n" +
-                "and you least prefer afternoon:");
-        System.out.println("a: Course Preference \nb: Days of the Week: \nc: Times of the Day");
+                "and you least prefer Afternoon:");
+        System.out.println("a: Morning \nb: Afternoon \nc: Evening");
 
         //clear buffer of any existing input
         input = inputReader.nextLine();
@@ -338,10 +363,10 @@ public class Faculty {
         String input = "";
         boolean inputValid = false;
 
-        System.out.println("Enter in a, b, and c in the corresponding order of preference for Days of the Week.\n " +
+        System.out.println("Enter in a, b, and c in the corresponding order of preference for Days of the Week.\n" +
                 "For example \"c a b\" to indicate that you prefer TR, \n" +
                 "and you least prefer MW:");
-        System.out.println("a: MWF (3 credits, 7am - 3pm) \nb: MW: \nc: TR");
+        System.out.println("a: MWF (3 credits, 7am - 3pm) \nb: MW \nc: TR");
 
         //clear buffer of any existing input
         input = inputReader.nextLine();

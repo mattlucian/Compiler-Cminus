@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="990d23a1-40a9-4a2f-8a0a-0bda8fdbfe24" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataModelingA6/src/Faculty.java" afterPath="$PROJECT_DIR$/DataModelingA6/src/Faculty.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="DatabaseModelingA6.iws" />
@@ -87,10 +88,11 @@
       <file leaf-file-name="Faculty.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="378" column="1" selection-start="13980" selection-end="13980" vertical-scroll-proportion="16.385014" vertical-offset="0" max-vertical-offset="6460">
+            <state line="323" column="39" selection-start="12293" selection-end="12293" vertical-scroll-proportion="0.344473" vertical-offset="5221" max-vertical-offset="6834">
               <folding>
-                <element signature="e#278#286#0" expanded="true" />
-                <element signature="e#5432#5440#0" expanded="true" />
+                <element signature="e#365#373#0" expanded="true" />
+                <element signature="e#3694#3702#0" expanded="true" />
+                <element signature="e#6542#6550#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -198,8 +200,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -287,19 +289,6 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -325,6 +314,19 @@
       <envs />
       <properties />
       <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
       <method />
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -440,7 +442,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14350453" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3284553" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32520324" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -485,10 +487,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state line="378" column="1" selection-start="13980" selection-end="13980" vertical-scroll-proportion="0.0" vertical-offset="6426" max-vertical-offset="6460">
+          <folding>
+            <element signature="e#365#373#0" expanded="true" />
+            <element signature="e#3694#3702#0" expanded="true" />
+            <element signature="e#6542#6550#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="32" column="9" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="0" selection-start="0" selection-end="7754" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="4165">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state line="175" column="0" selection-start="6275" selection-end="6275" vertical-scroll-proportion="0.0" vertical-offset="2975" max-vertical-offset="2992">
           <folding>
-            <element signature="e#278#286#0" expanded="true" />
-            <element signature="e#5432#5440#0" expanded="true" />
+            <element signature="e#365#373#0" expanded="true" />
+            <element signature="e#3694#3702#0" expanded="true" />
+            <element signature="e#6542#6550#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -523,10 +551,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="378" column="1" selection-start="13980" selection-end="13980" vertical-scroll-proportion="16.385014" vertical-offset="0" max-vertical-offset="6460">
+        <state line="323" column="39" selection-start="12293" selection-end="12293" vertical-scroll-proportion="0.344473" vertical-offset="5221" max-vertical-offset="6834">
           <folding>
-            <element signature="e#278#286#0" expanded="true" />
-            <element signature="e#5432#5440#0" expanded="true" />
+            <element signature="e#365#373#0" expanded="true" />
+            <element signature="e#3694#3702#0" expanded="true" />
+            <element signature="e#6542#6550#0" expanded="true" />
           </folding>
         </state>
       </provider>
