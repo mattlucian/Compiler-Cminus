@@ -1,5 +1,6 @@
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 import java.sql.Connection;
@@ -18,42 +19,57 @@ public class Authentication {
         connection = establishedConnection;
         Scanner in = new Scanner(System.in);
 
-        int choice;
-        System.out.println("What are you?");
-        System.out.println("1. Student");
-        System.out.println("2. Faculty");
-        System.out.println("3. Admin");
+        int choice = 0;
+do {
+    choice = 0;
 
+    System.out.println("");
+    System.out.println("Please make your selection: ");
+    System.out.println("[1] Login as Student");
+    System.out.println("[2] Login as Faculty");
+    System.out.println("[3] Login as Admin");
+    System.out.println("[4] Exit the program");
+    System.out.print(" >>   ");
+
+    try {
         choice = in.nextInt();
-        String login = null;
-        switch(choice)
-        {
-            case 1:
-                login = studentLogin();
-                if(login != null) {
-                    StudentController controller = new StudentController();
-                    controller.setConnection(connection);
-                    controller.startSession(login);
-                }
-                break;
-            case 2:
-                login = facultyLogin();
-                break;
-            case 3:
-                login = adminLogin();
-                if(login != null){
-                    Admin adminclass = new Admin(connection);
-                    adminclass.mainMenu();
-                }
-                break;
-            default:
-                System.out.println("Please enter valid selection.");
-        }
-        try{
-            connection.close();
-        }catch (SQLException e){
-            System.out.println("Error: "+e.getMessage());
-        }
+    }catch(InputMismatchException e)
+   {
+       in.nextLine();
+   }
+
+    String login = null;
+    switch (choice) {
+        case 1:
+            login = studentLogin();
+            if (login != null) {
+                StudentController controller = new StudentController();
+                controller.setConnection(connection);
+                controller.startSession(login);
+            }
+            break;
+        case 2:
+            login = facultyLogin();
+            break;
+        case 3:
+            login = adminLogin();
+            if (login != null) {
+                Admin adminclass = new Admin(connection);
+                adminclass.mainMenu();
+            }
+            break;
+        case 4:
+            // destroy session, log out -- move this close to official program exit
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                System.out.println("Error: " + e.getMessage());
+            }
+            break;
+        default:
+            System.out.println("===========Please enter valid selection.===========");
+    }
+} while(choice != 4);
     }
 
     public static String studentLogin() {
@@ -63,8 +79,15 @@ public class Authentication {
         String nNum;
         String name;
 
-        System.out.println("Please enter your N Number:");
+        System.out.println("");
+        System.out.print("Please enter your N Number: ");
         nNum = in.next();
+
+        if(nNum.charAt(0) == 'n' || nNum.charAt(0) == 'N')
+        {
+            nNum = nNum.substring(1);
+        }
+
         try {
             ps = connection.prepareStatement("SELECT * FROM Student WHERE n_number = '" + nNum + "'");
             rset = ps.executeQuery();
@@ -72,15 +95,18 @@ public class Authentication {
             {
                 name = rset.getString("first_name") + " " + rset.getString("last_name");
                 System.out.println("Welcome, " + name);
+                System.out.println("");
                 return nNum;
             }
             else
                 System.out.println("You are not a current student.");
+
         } catch (SQLException e) {
             System.out.println("Try again.");
         }
         return null;
     }
+
 
     public static String facultyLogin() {
         PreparedStatement ps = null;
@@ -92,12 +118,18 @@ public class Authentication {
         String password;
         String name;
 
+        System.out.println("");
         System.out.print("N number: ");
         username = in.next();
         System.out.print("Password: ");
         password = in.next();
 
-        System.out.println(username + " " + password);
+
+        if(username.charAt(0) == 'n' || username.charAt(0) == 'N')
+        {
+            username = username.substring(1);
+        }
+
         try {
             ps = connection.prepareStatement("SELECT * FROM Faculty WHERE n_number = '" + username + "' AND password = '" + password + "'" );
             rset = ps.executeQuery();
@@ -106,6 +138,7 @@ public class Authentication {
             {
                 name = rset.getString("first_name") + " " + rset.getString("last_name");
                 System.out.println("Welcome, " + name);
+                System.out.println("");
                 return username;
             }
             else
@@ -127,12 +160,18 @@ public class Authentication {
         String password;
         String name;
 
+        System.out.println("");
         System.out.print("N number: ");
         username = in.next();
         System.out.print("Password: ");
         password = in.next();
 
-        System.out.println(username + " " + password);
+
+        if(username.charAt(0) == 'n' || username.charAt(0) == 'N')
+        {
+            username = username.substring(1);
+        }
+
         try {
             ps = connection.prepareStatement("SELECT * FROM Faculty WHERE n_number = '" + username + "' AND password = '" + password + "' AND is_administrator = 1" );
             rset = ps.executeQuery();
@@ -140,6 +179,7 @@ public class Authentication {
             {
                 name = rset.getString("first_name") + " " + rset.getString("last_name");
                 System.out.println("Welcome, " + name);
+                System.out.println("");
                 return username;
             }
             else

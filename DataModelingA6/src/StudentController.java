@@ -51,7 +51,7 @@ public class StudentController {
         //create student object
         Student student = initStudent(nNumber);
         //append to DB, if necessary
-        checkStudent(student);
+        student = checkStudent(student);
         
         //launch Semester menu
         while(showSemesterMenu(student)){//when false, go back to Semester menu
@@ -293,14 +293,6 @@ public class StudentController {
             n = Integer.parseInt(nNumber);
         } catch (Exception e) { }
         s.setN_number(n);
-        System.out.println("Student Registration\n" + SEPARATOR);
-        System.out.print("Enter First Name >> ");
-        firstName = in.next();
-        System.out.print("Enter Last Name >> ");
-        lastName = in.next();
-        //force upper case for consistency in DB, modify for display purposes
-        s.setFirstName(firstName.toUpperCase());
-        s.setLastName(lastName.toUpperCase());
         return s;
     }
     
@@ -380,17 +372,32 @@ public class StudentController {
      * the student is added.
      * @param s -1 for failure, 0 for existing, >0 for success
      */
-    private int checkStudent(Student s){
+    private Student checkStudent(Student s){
         PreparedStatement ps = null, psi = null;
         ResultSet rset = null;
         try {
-            ps = conn.prepareStatement("SELECT n_number FROM student WHERE n_number = ?");
+            ps = conn.prepareStatement("SELECT n_number, first_name, last_name, degree FROM student WHERE n_number = ?");
             ps.setInt(1, s.getN_number());
             rset = ps.executeQuery();
             if(rset.next()){
-                //entry found - abandon ship!
-                return 0;
+                //entry found - update student object with data from databases
+                s.setFirstName(rset.getString("first_name"));
+                s.setLastName(rset.getString("last_name"));
+                s.setDegree(rset.getString("degree"));
+                return s;
             }
+
+            // student doesn't exist, get information and save student
+            System.out.println("Student Registration\n" + SEPARATOR);
+            System.out.print("Enter First Name >> ");
+            String firstName = in.next();
+            System.out.print("Enter Last Name >> ");
+            String lastName = in.next();
+            //force upper case for consistency in DB, modify for display purposes
+            s.setFirstName(firstName.toUpperCase());
+            s.setLastName(lastName.toUpperCase());
+            s.setDegree("CS");
+
             psi = conn.prepareStatement("INSERT INTO student VALUES(?,?,?,?)");
             psi.setInt(1, s.getN_number());
             psi.setString(2, s.getFirstName());
@@ -398,13 +405,14 @@ public class StudentController {
             psi.setString(4, s.getDegree());
             //psi.setString(5, s.getSemester().toString());
             //psi.setInt(6, s.getYear());
-            return psi.executeUpdate();
+            psi.executeUpdate();
+            return s;
         } catch (SQLException e) {
         } finally {
             clean(rset,ps);
             clean(null,psi);
         }
-        return -1;
+        return null;
     }
     /**
      * Saves the student's active semester only.
