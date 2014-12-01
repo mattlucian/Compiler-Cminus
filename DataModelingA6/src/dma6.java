@@ -34,9 +34,30 @@ public class dma6 {
 
 //        Admin adminClass = new Admin(connection);
 //        adminClass.mainMenu();
-
+//
         Faculty facultyClass = new Faculty(connection);
         facultyClass.mainMenu();
+
+
+//        String query = "INSERT ALL INTO course_ranking (preference_form_id, code, n_number, rank_order) VALUES (31, 'CAP4630', 123, 1) INTO course_ranking (preference_form_id, code, n_number, rank_order) VALUES (31, 'COT3210', 123, 2) SELECT * FROM DUAL";
+//        String query = "SELECT column_name FROM all_tab_cols WHERE table_name='PREFERENCE_FORM'";
+//
+//        try{
+//            try{
+//                Statement statement = connection.createStatement();
+//                ResultSet rs = statement.executeQuery(query);
+//
+//                while(rs.next()){
+//                        System.out.println(rs.getString("column_name"));
+////                    System.out.println( "(" + Integer.toString(count++) + ") : " + first_name + " " + last_name + " [ "+ faculty_type +" ]");
+//                }
+//
+//            }catch (Exception e){
+//                System.out.println("Failed to run query: "+ e.getMessage());
+//            }
+//        }catch (Exception e){
+//            System.out.println("Error: "+e.getMessage());
+//        }
 
     }
 }

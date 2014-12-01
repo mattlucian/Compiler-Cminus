@@ -1,6 +1,4 @@
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -12,36 +10,8 @@ import java.util.Scanner;
  * Created by Nick on 11/24/14.
  */
 public class Faculty {
-    private static List<String> courses = new ArrayList<String>();//the available course based on chosen semester
+    private static List<Course> courses = new ArrayList<Course>(); //the available course based on chosen semester
     public static int current_fac_id = 123;
-
-    //pretend initializer: in reality, it will change based on chosen semester
-    static {
-        courses.add("COP2220 - Computer Science I");
-        courses.add("COT3100 - Comp Structures");
-        courses.add("COP3503 - Computer Science II");
-        courses.add("COP3530 - Data Structures");
-        courses.add("CDA3101 - Intro to Computer Hardware");
-        courses.add("CIS4253 - Legal Ethical Issues");
-        courses.add("COP4710 - Data Modeling");
-        courses.add("COP4610 - Operating Systems");
-        courses.add("COT3210 - Computability and Automata");
-        courses.add("COP3601 - Intro to Systems Software");
-        courses.add("COP4620 - Constr of Language Trans");
-        courses.add("CEN4010 - Software Engineering");
-        courses.add("CNT4504 - Networking and Distributed Processing");
-        courses.add("COP4813 - Internet Programming");
-        courses.add("CAP4620 - Artificial Intelligence");
-        courses.add("CAP4831 - Modeling & Simulation");
-        courses.add("CAP4770 - Data Mining");
-        courses.add("CEN4801 - Systems Integration");
-        courses.add("COT4400 - Analysis of Algorithms");
-        courses.add("COT4111 - Comp Structures II");
-        courses.add("COT4461 - Computational Biology");
-        courses.add("COT4560 - Applied Graph Theory");
-        courses.add("CIS4362 - Computer Cryptography");
-        courses.add("CEN4943 - Software Dev Practicum");
-    }
 
     private Scanner inputReader = new Scanner(System.in); // for reading input
     private Connection connection;
@@ -85,10 +55,8 @@ public class Faculty {
         System.out.println("Creating a new Course Preference Form...");
         PreferenceFormRecord preference_form = new PreferenceFormRecord(current_fac_id);
 
-        System.out.println("Preference Form Id before insert:" + preference_form.preference_form_id);
         if(preference_form.insertPreferenceFormRecord(connection))
         {
-            System.out.println("Preference Form Id after insert:" + preference_form.preference_form_id);
             //view the course preference form menu
             coursePreferenceFormMenu(preference_form);
         }
@@ -100,19 +68,23 @@ public class Faculty {
     public void viewCoursePreferenceForms(){
 
         int choice = 0;
-        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        DateFormat dateFormat = new SimpleDateFormat("MMMM dd, YYYY");
         Date date = new Date();
         PreferenceFormRecord preference_form;
 
         //load Course Preference Forms
-        ArrayList<String> coursePreferenceForms = new ArrayList<String>();
-        coursePreferenceForms.add(dateFormat.format(date));
+        ArrayList<PreferenceFormRecord> coursePreferenceForms = getFacultyPreferenceForms();
 
         //menu to select a course preference form
         System.out.println("Available Course Preference Forms:");
 
+        String preference_form_description = "";
         for(int i = 0; i < coursePreferenceForms.size(); i++) {
-            System.out.println((i+1)+". "+coursePreferenceForms.get(i));
+            if(coursePreferenceForms.get(i).date_added != null)
+                preference_form_description = dateFormat.format(coursePreferenceForms.get(i).date_added) + "(#" + coursePreferenceForms.get(i).preference_form_id+")";
+            else
+                preference_form_description = "Form ID #" + coursePreferenceForms.get(i).preference_form_id;
+            System.out.println((i+1)+". "+preference_form_description);
         }
         System.out.println((coursePreferenceForms.size()+1)+". Back to Faculty Menu");
         choice = inputReader.nextInt();
@@ -121,14 +93,31 @@ public class Faculty {
             System.out.println("Error, invalid selection please try again");
         } else if(choice != coursePreferenceForms.size()+1){
 
-            preference_form = PreferenceFormRecord.loadById(connection, choice);
+            preference_form = coursePreferenceForms.get(choice-1);
+
+            if(preference_form == null)
+            {
+                System.out.println("An error occurred - could not find your preference form.");
+                return;
+            }
+
             //dump the course preference form information
             System.out.println("All data currently related to Course Preference Form:");
 
-            //show options for managing course preference form
-            coursePreferenceFormMenu(preference_form);
-        }
 
+            System.out.println("Would you like to edit this course preference form? type 'Y' to confirm, anything else to cancel.");
+
+            //clean buffer
+            inputReader.nextLine();
+
+            String input = inputReader.nextLine().trim();
+
+            if(input.toUpperCase().equals("Y"))
+            {
+                //show options for managing course preference form
+                coursePreferenceFormMenu(preference_form);
+            }
+        }
     }
 
     public void editCoursePreferenceForm(PreferenceFormRecord preference_form)
@@ -179,7 +168,8 @@ public class Faculty {
     public void courseRankingMenu(PreferenceFormRecord preference_form)
     {
         int choice = 0;
-        ArrayList<String> coursesRanked = new ArrayList<String>();
+        ArrayList<Course> courses = getAvailableCourses();
+        ArrayList<Course> coursesRanked = new ArrayList<Course>();
         String cardinalPosition = "first";
 
         //show menu of editable items
@@ -206,7 +196,7 @@ public class Faculty {
             System.out.println("Please select your " + cardinalPosition + " choice:");
 
             for(int i = 0; i < courses.size(); i++) {
-                System.out.println((i+1)+". "+courses.get(i));
+                System.out.println((i+1)+". "+courses.get(i).getCode() + " - " + courses.get(i).getCourseName());
             }
             System.out.println((courses.size()+1)+". Done ranking courses");
             choice = inputReader.nextInt();
@@ -215,7 +205,8 @@ public class Faculty {
                 System.out.println("Error, invalid selection please try again");
             } else if(choice != courses.size()+1){
                 //add course ranking record
-                coursesRanked.add(courses.get(choice-1));
+                Course course = courses.get(choice-1);
+                coursesRanked.add(course);
             }
 
             if(coursesRanked.size() >= 5) {
@@ -224,12 +215,21 @@ public class Faculty {
 
         }while(choice != (courses.size()+1) && coursesRanked.size() < 5);
 
-        //Display Courses Ranked
-        System.out.println("Courses Ranked: " + coursesRanked.size());
-        for(int i = 0; i < coursesRanked.size(); i++)
+        //Save Courses Ranked
+        if( preference_form.saveCourseRankings(connection, coursesRanked) )
         {
-            System.out.println((i+1) + ": " + coursesRanked.get(i));
+            //Display Courses Ranked
+            System.out.println("Courses Ranked: " + coursesRanked.size());
+            for(int i = 0; i < coursesRanked.size(); i++)
+            {
+                System.out.println((i+1) + ": " + coursesRanked.get(i).getCode() + " - " + coursesRanked.get(i).getCourseName());
+            }
         }
+        else
+        {
+            System.out.println("An error occurred saving your course rankings.");
+        }
+
     }
 
     public void semesterPreferenceForm(PreferenceFormRecord preference_form, String semester)
@@ -412,5 +412,41 @@ public class Faculty {
                 }
             }
         }while(!inputValid);
+    }
+
+    private ArrayList<Course> getAvailableCourses(){
+        ArrayList<Course> courses = new ArrayList<Course>();
+        PreparedStatement ps = null;
+        ResultSet rset = null;
+        try {
+            ps = connection.prepareStatement("SELECT MAX(crn),code,course_number,course_name FROM course GROUP BY code, course_number, course_name ORDER BY code");
+            rset = ps.executeQuery();
+            while(rset.next()){
+                courses.add(new Course(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4)));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: "+e.getMessage());
+        } finally {
+
+        }
+        return courses;
+    }
+
+    private ArrayList<PreferenceFormRecord> getFacultyPreferenceForms(){
+        ArrayList<PreferenceFormRecord> preference_forms = new ArrayList<PreferenceFormRecord>();
+        PreparedStatement ps = null;
+        ResultSet rset = null;
+        try {
+            ps = connection.prepareStatement("SELECT preference_form_id, n_number, date_added FROM preference_form WHERE date_added IS NOT NULL ORDER BY date_added DESC");
+            rset = ps.executeQuery();
+            while(rset.next()){
+                preference_forms.add(new PreferenceFormRecord(rset.getInt("preference_form_id"),rset.getInt("n_number"), rset.getDate("date_added")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error: "+e.getMessage());
+        } finally {
+
+        }
+        return preference_forms;
     }
 }
