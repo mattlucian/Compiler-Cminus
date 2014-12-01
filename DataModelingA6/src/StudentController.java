@@ -67,7 +67,7 @@ public class StudentController {
         while(showSemesterMenu(student)){//when false, go back to Semester menu
             
             //An available semester has been chosen
-            List<Course> availableCourses = getAvailableCourses(student.getActiveSemester());
+            List<Course> availableCourses = getAvailableCourses(student.getActive());
             //launch course menu chain
             handlePreferences(student, availableCourses);
         }
@@ -335,8 +335,9 @@ public class StudentController {
         int n = 0;
         try {
             n = Integer.parseInt(nNumber);
-        } catch (Exception e) { }
+        } catch (Exception e) { /* Ignoring failure */ }
         s.setN_number(n);
+        
         //System.out.println("Student Registration\n" + SEPARATOR);
         //System.out.print("Enter First Name >> ");
         //firstName = in.next();
@@ -345,9 +346,16 @@ public class StudentController {
         //force upper case for consistency in DB, modify for display purposes
         //s.setFirstName(firstName.toUpperCase());
         //s.setLastName(lastName.toUpperCase());
+        
         populateInfo(s);
         return s;
     }
+    
+    /**
+     * Extracts the student's first and last name from table
+     * based on provided n-number.
+     * 
+     */
     private void populateInfo(Student s){//expects n_number to be set
         PreparedStatement ps = null;
         ResultSet rset = null;
@@ -412,13 +420,22 @@ public class StudentController {
         
         return courses;
     }
-    private List<Course> getAvailableCourses(Semester semester){
+    /**
+     * Pulls the courses based on semester and parity of year.
+     * Table: course   Form: CRN, code, category, course_number, course_name, is_required, is_odd_year, semester
+     * @param semester
+     * @return 
+     */
+    private List<Course> getAvailableCourses(Entity unit){
         List<Course> courses = new ArrayList<Course>();
         PreparedStatement ps = null;
         ResultSet rset = null;
+        //Format: even years = 0, odd years = 1
+        int isOdd = ((unit.getYear() & 0x01) == 0) ? 0 : 1;// if last bit is 0, assign isOdd to be 0(false)
         try {
-            ps = conn.prepareStatement("SELECT crn,code,course_name FROM course WHERE semester = '?'");
-            ps.setString(1, semester.toString());
+            ps = conn.prepareStatement("SELECT crn,code,course_name FROM course WHERE semester = '?' AND is_odd_year = ?");
+            ps.setString(1, unit.getSemester().toString());
+            ps.setInt(2, isOdd);
             rset = ps.executeQuery();
             while(rset.next()){
                 //RS: 1-crn, 2-code, 3-courseName
@@ -464,10 +481,11 @@ public class StudentController {
     }
     /**
      * Saves the student's active semester only.
+     * Table: course_request
      * Uses JDBC transactions to rollback if needed.
      * @param s 
      */
-    private void saveData(Student s){//table: (CRN, n_number, year)pk semester, days_id, times_id
+    private void saveData(Student s){//table: (CRN, n_number, year), semester, days_id, times_id
         PreparedStatement ps = null;
         try {
             conn.setAutoCommit(false);//JDBC transactions

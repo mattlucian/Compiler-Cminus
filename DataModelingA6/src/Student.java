@@ -60,7 +60,9 @@ public final class Student {
     public void setActiveYear(int activeYear) {
         active.setYear(activeYear);
     }
-    
+    public Entity getActive(){
+        return active;
+    }
 
     public int getN_number() {
         return n_number;
