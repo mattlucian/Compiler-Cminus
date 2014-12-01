@@ -1,4 +1,4 @@
-/**
+                                         /**
  *
  * 
  *
@@ -15,33 +15,36 @@ import java.util.List;
  */
 public class Request {
     
-    private Semester semester;
+    //private Semester semester;
     //year is bound to chosen semeseter!
-    private int year = 2015;
+    //private int year;
+    private Entity period;
     //Upto 6 course selections
-    List<CourseChoice> selections = new ArrayList<CourseChoice>();
+    private List<CourseChoice> selections = new ArrayList<CourseChoice>();
 
     public Request(){
         
     }
-    public Request(Semester s){
-        semester = s;
+    public Request(Semester s, int yr){
+        //semester = s;
+        //year = yr;
+        period = new Entity(s,yr);
     }
 
     public Semester getSemester() {
-        return semester;
+        return period.getSemester();
     }
 
     public void setSemester(Semester semester) {
-        this.semester = semester;
+        period.setSemester(semester);
     }
 
     public int getYear() {
-        return year;
+        return period.getYear();
     }
 
     public void setYear(int year) {
-        this.year = year;
+        period.setYear(year);
     }
     public void addChoice(CourseChoice cc){
         selections.add(cc);

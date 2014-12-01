@@ -6,9 +6,7 @@
 
 package dmodel;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 
@@ -21,14 +19,12 @@ public final class Student {
     private int n_number;//pk
     private String firstName;
     private String lastName;
-    private String degree = "CS";//fixed
-    //Active semester only!
-    private Semester activeSemester;
+    private String degree = "CS";//permanent
     
+    private Entity active = new Entity();//active year and semester
     
-    //private int year = 2014;
     //max is 6 per activeSemester
-    private Map<Semester, Request> prefmap = new HashMap<Semester, Request>();
+    private Map<Entity, Request> prefmap = new HashMap<Entity, Request>();
     
     
     public Student(){
@@ -40,8 +36,8 @@ public final class Student {
         lastName = last;
     }
     //Test whether student has populated the given activeSemester
-    public boolean containsSemester(Semester semester){
-        return prefmap.containsKey(semester);
+    public boolean containsSemester(Semester semester, int year){
+        return prefmap.containsKey(new Entity(semester, year));
     }
     //Quickly determine if anything needs to be saved
     public boolean hasAnyData(){
@@ -50,12 +46,21 @@ public final class Student {
     
 
     public Semester getActiveSemester() {
-        return activeSemester;
+        return active.getSemester();
     }
     
     public void setActiveSemester(Semester semester){
-        this.activeSemester = semester;
+        active.setSemester(semester);
     }
+
+    public int getActiveYear() {
+        return active.getYear();
+    }
+
+    public void setActiveYear(int activeYear) {
+        active.setYear(activeYear);
+    }
+    
 
     public int getN_number() {
         return n_number;
@@ -81,14 +86,6 @@ public final class Student {
         this.lastName = lastName;
     }
 
-    public Semester getSemester() {
-        return activeSemester;
-    }
-
-    public void setSemester(Semester semester) {
-        this.activeSemester = semester;
-    }
-
     public String getDegree() {
         return degree;
     }
@@ -106,34 +103,34 @@ public final class Student {
      */
     
     public int getActiveSemesterCourseCount(){
-        return prefmap.get(activeSemester).getNumberOfSelections();
+        return prefmap.get(active).getNumberOfSelections();
     }
     /**
      * Add a new CourseChoice to the active semester.
      * @param cc 
      */
     public void addPreferenceToActiveSemester(CourseChoice cc){
-        if(!prefmap.containsKey(activeSemester)){
+        if(!prefmap.containsKey(active)){
             //lazy
-            prefmap.put(activeSemester, new Request(activeSemester));
+            prefmap.put(active, new Request(active.getSemester(), active.getYear()));
         }
-        prefmap.get(activeSemester).addChoice(cc);
+        prefmap.get(active).addChoice(cc);
     }
     public CourseChoice getActiveSemesterPreference(int n){
-        if(prefmap.containsKey(activeSemester)){
-            return prefmap.get(activeSemester).getChoice(n);
+        if(prefmap.containsKey(active)){
+            return prefmap.get(active).getChoice(n);
         }
         return null;
     }
     public int getActiveSemesterYear(){
-        if(prefmap.containsKey(activeSemester)){
-            return prefmap.get(activeSemester).getYear();
+        if(prefmap.containsKey(active)){
+            return prefmap.get(active).getYear();
         }
         return -1;
     }
     public boolean containsCourse(int courseCRN){
         
-        return prefmap.containsKey(activeSemester) && prefmap.get(activeSemester).containsCourse(courseCRN);
+        return prefmap.containsKey(active) && prefmap.get(active).containsCourse(courseCRN);
         
         //prefmap.get(activeSemester).getChoiceList().stream().anyMatch((cc) -> cc.getCourseCRN() == courseCRN);
     }
@@ -142,8 +139,8 @@ public final class Student {
      * @return null if no data collected.
      */
     public Request getData(){
-        if(prefmap.containsKey(activeSemester)){
-            return prefmap.get(activeSemester);
+        if(prefmap.containsKey(active)){
+            return prefmap.get(active);
         }
         return null;
     }
@@ -155,11 +152,11 @@ public final class Student {
      * @param n
      * @return 
      */
-    public CourseChoice getPreference(Semester s, int n){
-        if(prefmap.containsKey(s)){
-            return prefmap.get(s).getChoice(n);
-        }
-        return null;
-    }
+//    public CourseChoice getPreference(Semester s, int n){
+//        if(prefmap.containsKey(s)){
+//            return prefmap.get(s).getChoice(n);
+//        }
+//        return null;
+//    }
     
 }

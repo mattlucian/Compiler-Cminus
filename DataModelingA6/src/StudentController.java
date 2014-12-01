@@ -31,7 +31,16 @@ public class StudentController {
     private static final String SEPARATOR = "------------------------------";
     private static final String DAYS_MENU = "\nAvailable Days\n" + SEPARATOR + "\n[1] Monday/Wednesday\n[2] Tuesday/Thursday\n[3] Monday/Wednesday/Friday\n[4] Cancel\n";
     private static final String TIMES_MENU = "\nAvailable Times\n" + SEPARATOR + "\n[1] Morning\n[2] Evening\n[3] Night\n[4] Cancel\n";
-    private static final int MAX_DAYS_TIMES = 4;
+    private static final String SEMESTER_MENU = "\nChoose a Semester\n" + SEPARATOR + "\n[1] Spring\n[2] Summer\n[3] Fall\n[4] Back\n";
+    private static final int MAX_MENU = 4;
+    private static final HashMap<Integer,Semester> semMap = new HashMap<Integer, Semester>();
+    
+    static {
+        semMap.put(1, Semester.Spring);
+        semMap.put(2, Semester.Summer);
+        semMap.put(3, Semester.Fall);
+    }
+    //private static boolean DEBUG = false;
 
     public StudentController(){
         //for testing only
@@ -52,7 +61,7 @@ public class StudentController {
         //create student object
         Student student = initStudent(nNumber);
         //append to DB, if necessary
-        checkStudent(student);
+        //checkStudent(student);
         
         //launch Semester menu
         while(showSemesterMenu(student)){//when false, go back to Semester menu
@@ -71,32 +80,69 @@ public class StudentController {
      * Anytime "BACK" is chosen, this method returns false.
      * @param s 
      */
+//    private boolean showSemesterMenu(Student s){
+//        int index = 1;
+//        Map<Integer, Semester> smap = new HashMap<Integer, Semester>();
+//        System.out.println("\nChoose a Semester\n" + SEPARATOR);
+//        
+//        //Dynamically display ONLY those semesters that student has not completed
+//        if(!s.containsSemester(Semester.Spring)){
+//            smap.put(index, Semester.Spring);
+//            System.out.println(String.format("[%d] Spring", index++));
+//        }
+//        if(!s.containsSemester(Semester.Fall)){
+//            smap.put(index, Semester.Fall);
+//            System.out.println(String.format("[%d] Fall", index++));
+//        }
+//        if(!s.containsSemester(Semester.Summer)){
+//            smap.put(index, Semester.Summer);
+//            System.out.println(String.format("[%d] Summer", index++));
+//        }
+//        if(index == 1){
+//            System.out.println("No Semesters Available");
+//        }
+//        System.out.println(String.format("[%d] Back", index));
+//        int choice = getChoice(index);
+//        if(choice == index) return false;//Student selected "BACK"
+//        //Set Active Semester for other methods to use
+//        s.setActiveSemester(smap.get(choice));
+//        //acquire the year
+//        //System.out.println("Please enter ");
+//        return true;
+//    }
+    
+    /**
+     * Displays menu for semester selection. Only
+     * shows semesters that student has not filled out.
+     * Anytime "BACK" is chosen, this method returns false.
+     * @param s 
+     */
     private boolean showSemesterMenu(Student s){
-        int index = 1;
-        Map<Integer, Semester> smap = new HashMap<Integer, Semester>();
-        System.out.println("\nChoose a Semester\n" + SEPARATOR);
-        
-        //Dynamically display ONLY those semesters that student has not completed
-        if(!s.containsSemester(Semester.Spring)){
-            smap.put(index, Semester.Spring);
-            System.out.println(String.format("[%d] Spring", index++));
+        Semester stemp = null;
+        int ytemp = 0;
+        int choice;
+        boolean valid = false;
+        while(!valid){
+            //Prompt for semester
+            System.out.println(SEMESTER_MENU);
+            choice = getChoice(4);
+            if(choice == MAX_MENU){
+                return false;
+            }
+            stemp = semMap.get(choice);
+            //Prompt for year
+            System.out.print("\nEnter year: ");
+            ytemp = getChoice(Integer.MAX_VALUE);
+            if((ytemp > 2013 && ytemp <= 2030) && (!s.containsSemester(stemp, ytemp))){
+                valid = true;
+            } else if(ytemp <= 2013 || ytemp > 2030){
+                System.out.println("\nThe year is out of range. Please try again.");
+            } else {
+                System.out.println("\nThat combination of year and semester has already been recorded. Please try again.");
+            }
         }
-        if(!s.containsSemester(Semester.Fall)){
-            smap.put(index, Semester.Fall);
-            System.out.println(String.format("[%d] Fall", index++));
-        }
-        if(!s.containsSemester(Semester.Summer)){
-            smap.put(index, Semester.Summer);
-            System.out.println(String.format("[%d] Summer", index++));
-        }
-        if(index == 1){
-            System.out.println("No Semesters Available");
-        }
-        System.out.println(String.format("[%d] Back", index));
-        int choice = getChoice(index);
-        if(choice == index) return false;//Student selected "BACK"
-        //Set Active Semester for other methods to use
-        s.setActiveSemester(smap.get(choice));
+        s.setActiveSemester(stemp);
+        s.setActiveYear(ytemp);
         return true;
     }
     /**
@@ -127,12 +173,12 @@ public class StudentController {
 //                continue;
 //            }
 //            selectedDays = showDaysMenu();
-//            if(selectedDays == MAX_DAYS_TIMES){
+//            if(selectedDays == MAX_MENU){
 //                System.out.println("Cancelling current course");
 //                continue;
 //            }
 //            selectedTimes = showTimesMenu();
-//            if(selectedTimes == MAX_DAYS_TIMES){
+//            if(selectedTimes == MAX_MENU){
 //                System.out.println("Cancelling current course");
 //                continue;
 //            }
@@ -203,12 +249,12 @@ public class StudentController {
                 continue;
             }
             selectedDays = showDaysMenu();
-            if(selectedDays == MAX_DAYS_TIMES){
+            if(selectedDays == MAX_MENU){
                 System.out.println("Cancelling current course");
                 continue;
             }
             selectedTimes = showTimesMenu();
-            if(selectedTimes == MAX_DAYS_TIMES){
+            if(selectedTimes == MAX_MENU){
                 System.out.println("Cancelling current course");
                 continue;
             }
@@ -252,7 +298,7 @@ public class StudentController {
         int size = available.size();
         for (int c = 0; c < size; c++) {
             Course course = available.get(c);
-            result.append(String.format("[%2d] %s%d - %s (CRN: %d)\n", (c + 1), course.getCode(), course.getCourseNumber(), course.getCourseName(), course.getCrn()));
+            result.append(String.format("[%2d] %s - %s (CRN: %d)\n", (c + 1), course.getCode(), course.getCourseName(), course.getCrn()));
         }
         result.append(String.format("\n[%2d] Cancel\n", size + 1));
         System.out.println(result.toString());
@@ -266,7 +312,7 @@ public class StudentController {
      */
     private int showDaysMenu(){
         System.out.println(DAYS_MENU);
-        return getChoice(MAX_DAYS_TIMES);
+        return getChoice(MAX_MENU);
         
     }
     /**
@@ -276,11 +322,11 @@ public class StudentController {
      */
     private int showTimesMenu(){
         System.out.println(TIMES_MENU);
-        return getChoice(MAX_DAYS_TIMES);
+        return getChoice(MAX_MENU);
     }
     private Student initStudent(String nNumber){
         Student s = new Student();
-        String firstName, lastName;
+        //String firstName, lastName;
         nNumber = nNumber.toUpperCase();//force 'n' to uppercase
         //Remove 'N' if needed prior to parsing
         if(nNumber.charAt(0) == 'N'){
@@ -291,15 +337,32 @@ public class StudentController {
             n = Integer.parseInt(nNumber);
         } catch (Exception e) { }
         s.setN_number(n);
-        System.out.println("Student Registration\n" + SEPARATOR);
-        System.out.print("Enter First Name >> ");
-        firstName = in.next();
-        System.out.print("Enter Last Name >> ");
-        lastName = in.next();
+        //System.out.println("Student Registration\n" + SEPARATOR);
+        //System.out.print("Enter First Name >> ");
+        //firstName = in.next();
+        //System.out.print("Enter Last Name >> ");
+        //lastName = in.next();
         //force upper case for consistency in DB, modify for display purposes
-        s.setFirstName(firstName.toUpperCase());
-        s.setLastName(lastName.toUpperCase());
+        //s.setFirstName(firstName.toUpperCase());
+        //s.setLastName(lastName.toUpperCase());
+        populateInfo(s);
         return s;
+    }
+    private void populateInfo(Student s){//expects n_number to be set
+        PreparedStatement ps = null;
+        ResultSet rset = null;
+
+        try {
+            ps = conn.prepareStatement("SELECT first_name, last_name FROM student WHERE n_number = " + s.getN_number());
+            rset = ps.executeQuery();
+            if (rset.next()) {
+                s.setFirstName(rset.getString(1));
+                s.setLastName(rset.getString(2));
+            }
+        } catch (SQLException e) {
+        } finally {
+            clean(rset, ps);
+        }
     }
     
     
@@ -321,46 +384,45 @@ public class StudentController {
         } while (true);
     }
     
-//    private List<String> getAvailableCoursesTest(Semester s){
-//        List<String> courses = new ArrayList<>();
-//        courses.add("COP2220 - Computer Science I");
-//        courses.add("COT3100 - Comp Structures");
-//        courses.add("COP3503 - Computer Science II");
-//        courses.add("COP3530 - Data Structures");
-//        courses.add("CDA3101 - Intro to Computer Hardware");
-//        courses.add("CIS4253 - Legal Ethical Issues");
-//        courses.add("COP4710 - Data Modeling");
-//        courses.add("COP4610 - Operating Systems");
-//        courses.add("COT3210 - Computability and Automata");
-//        courses.add("COP3601 - Intro to Systems Software");
-//        courses.add("COP4620 - Constr of Language Trans");
-//        courses.add("CEN4010 - Software Engineering");
-//        courses.add("CNT4504 - Networking and Distributed Processing");
-//        courses.add("COP4813 - Internet Programming");
-//        courses.add("CAP4620 - Artifical Intelligence");
-//        courses.add("CAP4831 - Modeling & Simulation");
-//        courses.add("CAP4770 - Data Mining ");
-//        courses.add("CEN4801 - Systems Integration");
-//        courses.add("COT4400 - Analysis of Algorithms");
-//        courses.add("COT4111 - Comp Structures II");
-//        courses.add("COT4461 - Computational Biology");
-//        courses.add("COT4560 - Applied Graph Theory");
-//        courses.add("CIS4362 - Computer Cryptography");
-//        courses.add("CEN4943 - Software Dev Practicum");
-//        
-//        return courses;
-//    }
+    private List<Course> getAvailableCoursesTest(Semester s){
+        List<Course> courses = new ArrayList<>();//crn, code, name
+        courses.add(new Course(1034, "COP2220", "Computer Science I"));
+        courses.add(new Course(1034, "COP3100", "Comp Structures"));
+        courses.add(new Course(1034, "COP3503", "Computer Science II"));
+        courses.add(new Course(1034, "COP3530", "Data Structures"));
+        courses.add(new Course(1034, "CDA3101", "Intro to Computer Hardware"));
+        courses.add(new Course(1034, "CIS4253", "Legal Ethical Issues"));
+        courses.add(new Course(1034, "COP4710", "Data Modeling"));
+        courses.add(new Course(1034, "COP4610", "Operating Systems"));
+        courses.add(new Course(1034, "COT3210", "Computability and Automata"));
+        courses.add(new Course(1034, "COP3601", "Intro to Systems Software"));
+        courses.add(new Course(1034, "COP4620", "Constr of Language Trans"));
+        courses.add(new Course(1034, "CEN4010", "Software Engineering"));
+        courses.add(new Course(1034, "CNT4504", "Networking and Distributed Processing"));
+        courses.add(new Course(1034, "COP4813", "Internet Programming"));
+        courses.add(new Course(1034, "CAP4620", "Artifical Intelligence"));
+        courses.add(new Course(1034, "CAP4831", "Modeling & Simulation"));
+        courses.add(new Course(1034, "CEN4801", "Systems Integration"));
+        courses.add(new Course(1034, "COT4400", "Analysis of Algorithms"));
+        courses.add(new Course(1034, "COT4111", "Comp Structures II"));
+        courses.add(new Course(1034, "COT4461", "Computational Biology"));
+        courses.add(new Course(1034, "COT4560", "Applied Graph Theory"));
+        courses.add(new Course(1034, "CIS4362", "Computer Cryptography"));
+        
+        
+        return courses;
+    }
     private List<Course> getAvailableCourses(Semester semester){
         List<Course> courses = new ArrayList<Course>();
         PreparedStatement ps = null;
         ResultSet rset = null;
         try {
-            ps = conn.prepareStatement("SELECT crn,code,course_number,course_name FROM course WHERE semester = '?'");
+            ps = conn.prepareStatement("SELECT crn,code,course_name FROM course WHERE semester = '?'");
             ps.setString(1, semester.toString());
             rset = ps.executeQuery();
             while(rset.next()){
-                //RS: 1-crn, 2-code, 3-courseNumber, 4-courseName
-                courses.add(new Course(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4)));
+                //RS: 1-crn, 2-code, 3-courseName
+                courses.add(new Course(rset.getInt(1), rset.getString(2), rset.getString(3)));
             }
         } catch (SQLException e) {
         } finally {
@@ -374,7 +436,7 @@ public class StudentController {
      * the student is added.
      * @param s -1 for failure, 0 for existing, >0 for success
      */
-    private int checkStudent(Student s){
+    private int checkStudent(Student s){//table: n_number, first_name, last_name, degree
         PreparedStatement ps = null, psi = null;
         ResultSet rset = null;
         try {
@@ -405,11 +467,11 @@ public class StudentController {
      * Uses JDBC transactions to rollback if needed.
      * @param s 
      */
-    private void saveData(Student s){
+    private void saveData(Student s){//table: (CRN, n_number, year)pk semester, days_id, times_id
         PreparedStatement ps = null;
         try {
             conn.setAutoCommit(false);//JDBC transactions
-            ps = conn.prepareStatement("INSERT INTO course_request VALUES(?,?,?,?,?)");
+            ps = conn.prepareStatement("INSERT INTO course_request VALUES(?,?,?,?,?,?)");
             Request req = s.getData();
             int size = req.getNumberOfSelections();
             for (int i = 0; i < size; i++) {
@@ -417,8 +479,9 @@ public class StudentController {
                 ps.setInt(1, cc.getCourseCRN());
                 ps.setInt(2, s.getN_number());
                 ps.setInt(3, req.getYear());
-                ps.setInt(4, cc.getDays());
-                ps.setInt(5, cc.getTimes());
+                ps.setString(4, req.getSemester().toString());
+                ps.setInt(5, cc.getDays());
+                ps.setInt(6, cc.getTimes());
                 ps.executeUpdate();
                 conn.commit();//JDBC transactions
             }

@@ -13,13 +13,18 @@ package dmodel;
 public class Course {
     
     private int crn;
-    private String code;
-    private String category;
-    private int courseNumber;
+    private String code;//COP2220
+    private String category;//COP
+    private int courseNumber;//2220
     private String courseName;
 
     public Course(){
         super();
+    }
+    public Course(int crn, String code, String courseName){
+        this.crn = crn;
+        this.code = code;
+        this.courseName = courseName;
     }
     //simple constructor for displaying courses only
     public Course(int crn, String code, int courseNumber, String courseName){
