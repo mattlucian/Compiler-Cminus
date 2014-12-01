@@ -4,8 +4,6 @@
  *
  */
 
-package dmodel;
-
 import java.util.Objects;
 
 /**

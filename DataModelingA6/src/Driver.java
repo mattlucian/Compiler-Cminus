@@ -4,8 +4,6 @@
  *
  */
 
-package dmodel;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -26,7 +24,7 @@ public class Driver {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
             conn = DriverManager.getConnection(dbURL, db_username, db_password);
-        } catch (ClassNotFoundException | SQLException ex) {
+        } catch (Exception ex) {
             System.err.println(ex);
             System.exit(1);
         }

@@ -4,8 +4,6 @@
  *
  */
 
-package dmodel;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -393,7 +391,7 @@ public class StudentController {
     }
     
     private List<Course> getAvailableCoursesTest(Semester s){
-        List<Course> courses = new ArrayList<>();//crn, code, name
+        List<Course> courses = new ArrayList<Course>();//crn, code, name
         courses.add(new Course(1034, "COP2220", "Computer Science I"));
         courses.add(new Course(1034, "COP3100", "Comp Structures"));
         courses.add(new Course(1034, "COP3503", "Computer Science II"));
@@ -423,7 +421,7 @@ public class StudentController {
     /**
      * Pulls the courses based on semester and parity of year.
      * Table: course   Form: CRN, code, category, course_number, course_name, is_required, is_odd_year, semester
-     * @param semester
+     * @param unit
      * @return 
      */
     private List<Course> getAvailableCourses(Entity unit){
