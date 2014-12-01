@@ -390,7 +390,7 @@ public class StudentController {
         } while (true);
     }
     
-    private List<Course> getAvailableCoursesTest(Semester s){
+    /*private List<Course> getAvailableCoursesTest(Semester s){
         List<Course> courses = new ArrayList<Course>();//crn, code, name
         courses.add(new Course(1034, "COP2220", "Computer Science I"));
         courses.add(new Course(1034, "COP3100", "Comp Structures"));
@@ -417,7 +417,7 @@ public class StudentController {
         
         
         return courses;
-    }
+    }*/
     /**
      * Pulls the courses based on semester and parity of year.
      * Table: course   Form: CRN, code, category, course_number, course_name, is_required, is_odd_year, semester
@@ -431,13 +431,13 @@ public class StudentController {
         //Format: even years = 0, odd years = 1
         int isOdd = ((unit.getYear() & 0x01) == 0) ? 0 : 1;// if last bit is 0, assign isOdd to be 0(false)
         try {
-            ps = conn.prepareStatement("SELECT crn,code,course_name FROM course WHERE semester = '?' AND is_odd_year = ?");
+            ps = conn.prepareStatement("SELECT crn,code,course_number,course_name FROM course WHERE semester = '?' AND is_odd_year = ?");
             ps.setString(1, unit.getSemester().toString());
             ps.setInt(2, isOdd);
             rset = ps.executeQuery();
             while(rset.next()){
-                //RS: 1-crn, 2-code, 3-courseName
-                courses.add(new Course(rset.getInt(1), rset.getString(2), rset.getString(3)));
+                //RS: 1-crn, 2-code, 3-courseNumber, 4-courseName
+                courses.add(new Course(rset.getInt(1), rset.getString(2), rset.getInt(3),rset.getString(4)));
             }
         } catch (SQLException e) {
         } finally {
