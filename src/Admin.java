@@ -50,12 +50,7 @@ public class Admin {
             } else if (choice == 3) {
                 deleteAccount();
             } else if (choice == 4) {
-                // destroy session, log out -- move this close to official program exit
-                try {
-                    connection.close();
-                }catch (SQLException e){
-                    System.out.println("Error: " + e.getMessage());
-                }
+                return;
             } else {
                 System.out.println("Error, invalid selection please try again");
             }
@@ -174,8 +169,9 @@ public class Admin {
         boolean result = facultyObject.insertFacultyRecord(connection);
         if(result){
             System.out.println("Successfully created account!");
+        }else {
+            System.out.println("Failed to create account");
         }
-        System.out.println("Failed to create account");
     }
 
     /*
@@ -210,7 +206,7 @@ public class Admin {
                 facultyList.add(new FacultyRecord(n_number, first_name, last_name, faculty_type , isAdmin, password));
                 System.out.println( "(" + Integer.toString(count++) + ") : " + first_name + " " + last_name + " [ "+ faculty_type+ ((isAnAdmin)?"-(Admin)":"") +" ]");
             }
-
+            clean(rs,statement);
         }catch (Exception e){
             System.out.println("Failed to pull down records: "+ e.getMessage());
             return;
@@ -236,6 +232,7 @@ public class Admin {
                 try{
                     Statement statement = connection.createStatement();
                     statement.executeUpdate(deleteQuery);
+                    statement.close();
                 }catch (Exception e){
                     System.out.println("Error: "+e.getMessage());
                     return;
@@ -302,13 +299,18 @@ public class Admin {
                             System.out.println("---- Days of Week: "+lastRS.getInt(5)); //days[lastRS.getInt(5)-1]);
                         }
                         count++;
+                        clean(lastRS,lastStm);
                     }
+                    clean(internalRS,anotherStm);
                 }
+                clean(innerRS,newstm);
                 System.out.println("--------------");
             }
+            clean(rs,stm);
         }catch (SQLException e){
             System.out.println("Error: " + e.getMessage());
         }
+
         //endregion
 
         System.out.println("------------");
@@ -349,7 +351,9 @@ public class Admin {
                     System.out.println("--- "+days[rs2.getInt(6)-1]+" "+times[rs2.getInt(7)-1]);
                 }
                 System.out.println("--------------");
+                clean(rs2,stmt2);
             }
+            clean(rs,stm);
         }catch (SQLException e){
             System.out.println("Error: " + e.getMessage());
         }
@@ -367,7 +371,7 @@ public class Admin {
         for(int j = 0; j < 3; j++){
             System.out.println("\n---------------------");
             System.out.println(" "+semesters[j]+" Semester");
-            System.out.println("---------------------\n");
+            System.out.println("---------------------");
 
             for(int i = 0; i < 3; i++){
                 System.out.println("\n~~"+days[i]+"~~");
@@ -402,8 +406,9 @@ public class Admin {
                             System.out.println("     - Rank "+rs2.getInt(2)+": "+rs2.getString(1));
                         }
                         count++;
+                        clean(rs2,stmt2);
                     }
-
+                    clean(rs,stmt);
                 }catch (Exception e){
                     System.out.println("Error: "+e.getMessage());
                 }
@@ -441,6 +446,7 @@ public class Admin {
                         while(rs2.next()){
                             System.out.println("    - "+rs2.getString(2)+" ("+rs2.getString(1)+") | "+times[rs2.getInt(3)-1]);
                         }
+                        clean(rs2,stmt2);
                     }
 
                 }catch(Exception e){
@@ -558,6 +564,8 @@ public class Admin {
     */
     public void printFacultyReport(){
 
+        //region FacultyReport
+
         // select faculty members that have ranked it
         String query2 = "select distinct f.n_number, f.first_name, f.last_name "+
                 "FROM faculty f "+
@@ -621,6 +629,7 @@ public class Admin {
         }catch (SQLException ex){
             System.out.println("Error: "+ex.getMessage());
         }
+        //endregion
     }
 
    /*
@@ -763,4 +772,12 @@ public class Admin {
         //endregion
     }
     //endregion
+
+    private void clean(ResultSet rset, Statement stmt){
+        try {
+            if(rset != null) rset.close();
+            if(stmt != null) stmt.close();
+        } catch (SQLException se) { }
+    }
+
 }
