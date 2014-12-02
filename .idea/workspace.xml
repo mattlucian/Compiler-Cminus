@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="990d23a1-40a9-4a2f-8a0a-0bda8fdbfe24" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataModelingA6/src/Faculty.java" afterPath="$PROJECT_DIR$/DataModelingA6/src/Faculty.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataModelingA6/src/FormSemesterInfoRecord.java" afterPath="$PROJECT_DIR$/DataModelingA6/src/FormSemesterInfoRecord.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java" afterPath="$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DataModelingA6/src/dma6.java" afterPath="$PROJECT_DIR$/DataModelingA6/src/dma6.java" />
+    <list default="true" id="daf61941-1110-48c0-9a38-028665b20fca" name="Default" comment="Integrates Katelin, Chris, and Nick's changes into authentication. Linked everything together.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Authentication.java" afterPath="$PROJECT_DIR$/src/Authentication.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DatabaseModelingA6.iml" afterPath="$PROJECT_DIR$/DatabaseModelingA6.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Faculty.java" afterPath="$PROJECT_DIR$/src/Faculty.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FacultyRecord.java" afterPath="$PROJECT_DIR$/src/FacultyRecord.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FormSemesterInfoRecord.java" afterPath="$PROJECT_DIR$/src/FormSemesterInfoRecord.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/PreferenceFormRecord.java" afterPath="$PROJECT_DIR$/src/PreferenceFormRecord.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
-    <ignored path="DatabaseModelingA6.iws" />
+    <ignored path="dmrepo.iws" />
     <ignored path=".idea/workspace.xml" />
+    <ignored path="$PROJECT_DIR$/out/" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +28,7 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
+    <breakpoint_any>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
         <option name="NOTIFY_UNCAUGHT" value="true" />
@@ -60,120 +64,96 @@
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
-    <favorites_list name="DatabaseModelingA6" />
+    <favorites_list name="dmrepo" />
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="dma6.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
+      <file leaf-file-name="Driver.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Driver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="23" selection-start="2470" selection-end="2470" vertical-scroll-proportion="1.7459459" vertical-offset="0" max-vertical-offset="1275">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Admin.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Admin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="58" column="56" selection-start="1823" selection-end="1823" vertical-scroll-proportion="-8.269231" vertical-offset="686" max-vertical-offset="4080">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FacultyRecord.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FacultyRecord.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="0" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="680">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PreferenceFormRecord.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="129" column="24" selection-start="4568" selection-end="4571" vertical-scroll-proportion="-4.4615383" vertical-offset="2077" max-vertical-offset="2601">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#413#421#0" expanded="true" />
-                <element signature="e#970#978#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Faculty.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="69" column="0" selection-start="2355" selection-end="2355" vertical-scroll-proportion="-43.807693" vertical-offset="0" max-vertical-offset="8092">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#Faculty#0;class#Faculty#0" expanded="false" />
-                <element signature="method#requestCoursePrintout#0;class#Faculty#0" expanded="false" />
-                <element signature="e#17007#17015#0" expanded="true" />
-                <element signature="e#17760#17782#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CourseChoice.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataModelingA6/src/CourseChoice.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="36" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1139">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-                <element signature="e#669#670#0" expanded="true" />
-                <element signature="e#696#697#0" expanded="true" />
-                <element signature="e#733#734#0" expanded="true" />
-                <element signature="e#765#766#0" expanded="true" />
-                <element signature="e#794#795#0" expanded="true" />
-                <element signature="e#822#823#0" expanded="true" />
-                <element signature="e#861#862#0" expanded="true" />
-                <element signature="e#895#896#0" expanded="true" />
-                <element signature="e#928#929#0" expanded="true" />
-                <element signature="e#960#961#0" expanded="true" />
-                <element signature="e#1007#1008#0" expanded="true" />
-                <element signature="e#1049#1050#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Semester.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Semester.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="1" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
+            <state line="10" column="3" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Course.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Course.java">
+        <entry file="file://$PROJECT_DIR$/src/Course.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="23" column="33" selection-start="331" selection-end="337" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1309">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Authentication.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Authentication.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="140" column="29" selection-start="4426" selection-end="4426" vertical-scroll-proportion="-7.230769" vertical-offset="2192" max-vertical-offset="3502">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FacultyRecord.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/FacultyRecord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="33" column="12" selection-start="1218" selection-end="1218" vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="833">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="FormSemesterInfoRecord.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FormSemesterInfoRecord.java">
+        <entry file="file://$PROJECT_DIR$/src/FormSemesterInfoRecord.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="226" column="75" selection-start="10084" selection-end="10084" vertical-scroll-proportion="-12.5" vertical-offset="3449" max-vertical-offset="3978">
+            <state line="85" column="0" selection-start="3583" selection-end="3583" vertical-scroll-proportion="0.0" vertical-offset="1277" max-vertical-offset="3842">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Faculty.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Faculty.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="140" column="29" selection-start="5321" selection-end="5321" vertical-scroll-proportion="0.0" vertical-offset="4308" max-vertical-offset="7922">
               <folding>
-                <element signature="e#5281#5305#0" expanded="true" />
-                <element signature="e#7922#7946#0" expanded="true" />
+                <element signature="e#245#253#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PreferenceFormRecord.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/PreferenceFormRecord.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="22" column="0" selection-start="567" selection-end="567" vertical-scroll-proportion="0.9770115" vertical-offset="0" max-vertical-offset="2805">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Student.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Student.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2873">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StudentController.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/StudentController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9486">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -191,14 +171,11 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/DataModelingA6/src/CoursePreferenceFormRecord.java" />
-        <option value="$PROJECT_DIR$/DataModelingA6/src/Course.java" />
-        <option value="$PROJECT_DIR$/DataModelingA6/src/Semester.java" />
-        <option value="$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java" />
-        <option value="$PROJECT_DIR$/DataModelingA6/src/dma6.java" />
-        <option value="$PROJECT_DIR$/DataModelingA6/src/CourseChoice.java" />
-        <option value="$PROJECT_DIR$/DataModelingA6/src/FormSemesterInfoRecord.java" />
-        <option value="$PROJECT_DIR$/DataModelingA6/src/Faculty.java" />
+        <option value="$PROJECT_DIR$/src/Faculty.java" />
+        <option value="$PROJECT_DIR$/src/Authentication.java" />
+        <option value="$PROJECT_DIR$/src/FacultyRecord.java" />
+        <option value="$PROJECT_DIR$/src/FormSemesterInfoRecord.java" />
+        <option value="$PROJECT_DIR$/src/PreferenceFormRecord.java" />
       </list>
     </option>
   </component>
@@ -208,14 +185,14 @@
     <option name="width" value="1382" />
     <option name="height" value="744" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
     <OptionsSetting value="true" id="Update" />
     <OptionsSetting value="true" id="Status" />
     <OptionsSetting value="true" id="Edit" />
-    <ConfirmationsSetting value="1" id="Add" />
+    <ConfirmationsSetting value="0" id="Add" />
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectReloadState">
@@ -234,6 +211,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -262,54 +240,13 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="DataModelingA6" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DatabaseModelingA6" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DatabaseModelingA6" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DataModelingA6" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DatabaseModelingA6" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DatabaseModelingA6" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DataModelingA6" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="out" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="production" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -319,28 +256,27 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="FullScreen" value="false" />
-    <property name="recentsLimit" value="5" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="options.lastSelected" value="project.propCompiler" />
+    <property name="options.lastSelected" value="preferences.pluginManager" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
-    <property name="options.searchVisible" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/ojdbc6.jar!/" />
+    <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/DataModelingA6/ojdbc6.jar!/" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="SearchEverywhereHistory" value="&#10;null" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.dma6">
-    <configuration default="false" name="dma6" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="dma6" />
+  <component name="RunManager" selected="Application.Driver">
+    <configuration default="false" name="Driver" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="Driver" />
       <option name="VM_PARAMETERS" value="" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
@@ -350,9 +286,7 @@
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="DatabaseModelingA6" />
-      <envs>
-        <env name="CLASSPATH" value="C:\Users\thenickpick\Git Projects\DatabaseModelingA6\DataModelingA6\" />
-      </envs>
+      <envs />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="" />
         <option name="TRANSPORT" value="0" />
@@ -397,7 +331,35 @@
       <option name="PORT" value="5005" />
       <method />
     </configuration>
+    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
+      <ExternalSystemSettings>
+        <option name="externalProjectPath" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list />
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -415,7 +377,7 @@
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
+        <value defaultName="singleModule" />
       </option>
       <option name="USE_DEFAULT_REPORTERS" value="false" />
       <option name="PROPERTIES_FILE" />
@@ -424,26 +386,14 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="Driver" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ALTERNATIVE_JRE_PATH" value="" />
       <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
@@ -452,6 +402,7 @@
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -461,11 +412,11 @@
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
       <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
+        <value defaultName="singleModule" />
       </option>
       <envs />
       <patterns />
@@ -491,72 +442,67 @@
       <method />
     </configuration>
     <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Application.dma6" />
+      <item index="0" class="java.lang.String" itemvalue="Application.Driver" />
     </list>
     <recent_temporary>
       <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Application.dma6" />
+        <item index="0" class="java.lang.String" itemvalue="Application.Driver" />
       </list>
     </recent_temporary>
-    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
-      <Host>localhost</Host>
-      <Port>5050</Port>
-    </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
-  <component name="SliceManager">
-    <option name="analysisUIOptions">
-      <AnalysisUIOptions />
-    </option>
-  </component>
-  <component name="SvnConfiguration" maxAnnotateRevisions="500" myUseAcceleration="nothing" myAutoUpdateAfterCommit="false" cleanupOnStartRun="false" SSL_PROTOCOLS="all">
-    <option name="USER" value="" />
-    <option name="PASSWORD" value="" />
-    <option name="mySSHConnectionTimeout" value="30000" />
-    <option name="mySSHReadTimeout" value="30000" />
-    <option name="LAST_MERGED_REVISION" />
-    <option name="MERGE_DRY_RUN" value="false" />
-    <option name="MERGE_DIFF_USE_ANCESTRY" value="true" />
-    <option name="UPDATE_LOCK_ON_DEMAND" value="false" />
-    <option name="IGNORE_SPACES_IN_MERGE" value="false" />
-    <option name="CHECK_NESTED_FOR_QUICK_MERGE" value="false" />
-    <option name="IGNORE_SPACES_IN_ANNOTATE" value="true" />
-    <option name="SHOW_MERGE_SOURCES_IN_ANNOTATE" value="true" />
-    <option name="FORCE_UPDATE" value="false" />
-    <option name="IGNORE_EXTERNALS" value="false" />
-    <myIsUseDefaultProxy>false</myIsUseDefaultProxy>
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="990d23a1-40a9-4a2f-8a0a-0bda8fdbfe24" name="Default" comment="" />
-      <created>1416404636195</created>
-      <updated>1416404636195</updated>
+      <changelist id="daf61941-1110-48c0-9a38-028665b20fca" name="Default" comment="" />
+      <created>1417476019963</created>
+      <updated>1417476019963</updated>
     </task>
+    <task id="LOCAL-00001" summary="Merges Chris's changes.">
+      <created>1417476468463</created>
+      <updated>1417476468463</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Formatting.">
+      <created>1417476575936</created>
+      <updated>1417476575936</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Merge remote-tracking branch 'remotes/origin/nick'&#10;&#10;Conflicts:&#10;&#9;DataModelingA6/src/Course.java&#10;&#9;DataModelingA6/src/Semester.java&#10;&#9;DataModelingA6/src/dma6.java&#10;">
+      <created>1417477101316</created>
+      <updated>1417477101316</updated>
+    </task>
+    <task id="LOCAL-00004" summary="StudentController changes.">
+      <created>1417477233663</created>
+      <updated>1417477233663</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32357723" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39937106" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3284553" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32861635" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32861635" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.14350453" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="FLOATING" visible="false" weight="0.31382114" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="7" y="55" width="1351" height="617" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21978852" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.47804877" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
@@ -575,367 +521,274 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
+    <MESSAGE value="Merges Chris's changes." />
+    <MESSAGE value="Formatting." />
+    <MESSAGE value="Merging Nicks changes." />
+    <MESSAGE value="Merge remote-tracking branch 'remotes/origin/nick'&#10;&#10;Conflicts:&#10;&#9;DataModelingA6/src/Course.java&#10;&#9;DataModelingA6/src/Semester.java&#10;&#9;DataModelingA6/src/dma6.java&#10;" />
+    <MESSAGE value="StudentController changes." />
+    <option name="LAST_COMMIT_MESSAGE" value="StudentController changes." />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="6" />
+    </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
+    <entry file="file://$PROJECT_DIR$/src/Driver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="44" column="14" selection-start="1515" selection-end="1515" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1156">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="952">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Admin.java">
+    <entry file="file://$PROJECT_DIR$/src/Course.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="165" column="42" selection-start="5611" selection-end="5611" vertical-scroll-proportion="0.0" vertical-offset="2805" max-vertical-offset="4165">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1309">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FacultyRecord.java">
+    <entry file="file://$PROJECT_DIR$/src/Authentication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="680">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="27" column="0" selection-start="691" selection-end="691" vertical-scroll-proportion="0.0" vertical-offset="459" max-vertical-offset="2482">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3451">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#413#421#0" expanded="true" />
-            <element signature="e#970#978#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
+    <entry file="file://$PROJECT_DIR$/src/Faculty.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="48" column="9" selection-start="1587" selection-end="1587" vertical-scroll-proportion="0.0" vertical-offset="816" max-vertical-offset="3179">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="8160">
+          <folding>
+            <element signature="e#245#253#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2873">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StudentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9486">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Course.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Authentication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Faculty#0;class#Faculty#0" expanded="false" />
-            <element signature="method#requestCoursePrintout#0;class#Faculty#0" expanded="false" />
-            <element signature="e#17007#17015#0" expanded="true" />
-            <element signature="e#17760#17782#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Semester.java">
+    <entry file="file://$PROJECT_DIR$/src/Faculty.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="1" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="340">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Course.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="33" selection-start="331" selection-end="337" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1309">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FormSemesterInfoRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="25" selection-start="1643" selection-end="1643" vertical-scroll-proportion="0.0" vertical-offset="731" max-vertical-offset="1547">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding>
-            <element signature="e#5281#5305#0" expanded="true" />
-            <element signature="e#7922#7946#0" expanded="true" />
+            <element signature="e#245#253#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
+    <entry file="file://$PROJECT_DIR$/src/Student.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="38" column="26" selection-start="1129" selection-end="1129" vertical-scroll-proportion="0.0" vertical-offset="646" max-vertical-offset="799">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Admin.java">
+    <entry file="file://$PROJECT_DIR$/src/StudentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="165" column="42" selection-start="5611" selection-end="5611" vertical-scroll-proportion="0.0" vertical-offset="2805" max-vertical-offset="4165">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FacultyRecord.java">
+    <entry file="file://$PROJECT_DIR$/src/Driver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0" vertical-offset="289" max-vertical-offset="680">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java">
+    <entry file="file://$PROJECT_DIR$/src/Course.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="12" selection-start="2012" selection-end="2012" vertical-scroll-proportion="0.0" vertical-offset="867" max-vertical-offset="1615">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Authentication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#413#421#0" expanded="true" />
-            <element signature="e#970#978#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
+    <entry file="file://$PROJECT_DIR$/src/StudentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="89" column="9" selection-start="3566" selection-end="3566" vertical-scroll-proportion="0.0" vertical-offset="1513" max-vertical-offset="7038">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Course.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Authentication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Faculty#0;class#Faculty#0" expanded="false" />
-            <element signature="method#requestCoursePrintout#0;class#Faculty#0" expanded="false" />
-            <element signature="e#17007#17015#0" expanded="true" />
-            <element signature="e#17760#17782#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FormSemesterInfoRecord.java">
+    <entry file="file://$PROJECT_DIR$/src/StudentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="25" selection-start="1643" selection-end="1643" vertical-scroll-proportion="0.0" vertical-offset="731" max-vertical-offset="1547">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Semester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Request.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CourseChoice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Entity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TestQuery.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Student.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StudentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Course.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Driver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="3" selection-start="112" selection-end="112" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="850">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Faculty.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="140" column="29" selection-start="5321" selection-end="5321" vertical-scroll-proportion="0.0" vertical-offset="4308" max-vertical-offset="7922">
           <folding>
-            <element signature="e#5281#5305#0" expanded="true" />
-            <element signature="e#7922#7946#0" expanded="true" />
+            <element signature="e#245#253#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
+    <entry file="file://$PROJECT_DIR$/src/Authentication.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="9" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0" vertical-offset="106" max-vertical-offset="799">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Admin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="0" selection-end="7754" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="4165">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="0" selection-start="4637" selection-end="4637" vertical-scroll-proportion="0.0" vertical-offset="2023" max-vertical-offset="6834">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Faculty#0;class#Faculty#0" expanded="false" />
-            <element signature="method#requestCoursePrintout#0;class#Faculty#0" expanded="false" />
-            <element signature="e#17007#17015#0" expanded="true" />
-            <element signature="e#17760#17782#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="9" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0" vertical-offset="106" max-vertical-offset="799">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Admin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="0" selection-end="7754" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="4165">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="323" column="39" selection-start="12293" selection-end="12293" vertical-scroll-proportion="0.0" vertical-offset="5491" max-vertical-offset="6834">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Faculty#0;class#Faculty#0" expanded="false" />
-            <element signature="method#requestCoursePrintout#0;class#Faculty#0" expanded="false" />
-            <element signature="e#17007#17015#0" expanded="true" />
-            <element signature="e#17760#17782#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="9" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Admin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="0" selection-end="7754" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="4165">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="378" column="1" selection-start="13980" selection-end="13980" vertical-scroll-proportion="0.0" vertical-offset="6426" max-vertical-offset="6460">
+        <state line="140" column="29" selection-start="4426" selection-end="4426" vertical-scroll-proportion="-7.230769" vertical-offset="2192" max-vertical-offset="3502">
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Faculty#0;class#Faculty#0" expanded="false" />
-            <element signature="method#requestCoursePrintout#0;class#Faculty#0" expanded="false" />
-            <element signature="e#17007#17015#0" expanded="true" />
-            <element signature="e#17760#17782#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
+    <entry file="file://$PROJECT_DIR$/src/FacultyRecord.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="9" selection-start="959" selection-end="959" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="799">
+        <state line="33" column="12" selection-start="1218" selection-end="1218" vertical-scroll-proportion="0.0" vertical-offset="480" max-vertical-offset="833">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Admin.java">
+    <entry file="file://$PROJECT_DIR$/src/FormSemesterInfoRecord.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="0" selection-start="0" selection-end="7754" vertical-scroll-proportion="0.0" vertical-offset="238" max-vertical-offset="4165">
+        <state line="85" column="0" selection-start="3583" selection-end="3583" vertical-scroll-proportion="0.0" vertical-offset="1277" max-vertical-offset="3842">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
+    <entry file="file://$PROJECT_DIR$/src/PreferenceFormRecord.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="175" column="0" selection-start="6275" selection-end="6275" vertical-scroll-proportion="0.0" vertical-offset="2975" max-vertical-offset="2992">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Faculty#0;class#Faculty#0" expanded="false" />
-            <element signature="method#requestCoursePrintout#0;class#Faculty#0" expanded="false" />
-            <element signature="e#17007#17015#0" expanded="true" />
-            <element signature="e#17760#17782#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="5" selection-start="542" selection-end="542" vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="1445">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="0" selection-start="116" selection-end="116" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="1445">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/DataModelingA6/ojdbc6.jar!/oracle/jdbc/driver/Message11.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="28" selection-start="554" selection-end="554" vertical-scroll-proportion="-8.12" vertical-offset="18" max-vertical-offset="340" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/DataModelingA6/ojdbc6.jar!/oracle/jdbc/driver/DatabaseError.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="434" column="40" selection-start="25987" selection-end="25987" vertical-scroll-proportion="-3.76" vertical-offset="7267" max-vertical-offset="8432" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/DataModelingA6/ojdbc6.jar!/oracle/jdbc/driver/OracleStatementWrapper.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="30" selection-start="4048" selection-end="4048" vertical-scroll-proportion="-3.76" vertical-offset="1385" max-vertical-offset="2822" />
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/DataModelingA6/ojdbc6.jar!/oracle/jdbc/driver/OracleStatement.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="454" column="30" selection-start="18242" selection-end="18242" vertical-scroll-proportion="-3.76" vertical-offset="7607" max-vertical-offset="9452" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FacultyRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="0" selection-start="546" selection-end="546" vertical-scroll-proportion="0.0" vertical-offset="51" max-vertical-offset="663">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Course.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="33" selection-start="331" selection-end="337" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1309">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Semester.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="1" selection-start="271" selection-end="271" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="272">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/CourseChoice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="36" selection-start="394" selection-end="394" vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="1139">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#669#670#0" expanded="true" />
-            <element signature="e#696#697#0" expanded="true" />
-            <element signature="e#733#734#0" expanded="true" />
-            <element signature="e#765#766#0" expanded="true" />
-            <element signature="e#794#795#0" expanded="true" />
-            <element signature="e#822#823#0" expanded="true" />
-            <element signature="e#861#862#0" expanded="true" />
-            <element signature="e#895#896#0" expanded="true" />
-            <element signature="e#928#929#0" expanded="true" />
-            <element signature="e#960#961#0" expanded="true" />
-            <element signature="e#1007#1008#0" expanded="true" />
-            <element signature="e#1049#1050#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Admin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="58" column="56" selection-start="1823" selection-end="1823" vertical-scroll-proportion="-8.269231" vertical-offset="686" max-vertical-offset="4080">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/PreferenceFormRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="129" column="24" selection-start="4568" selection-end="4571" vertical-scroll-proportion="-4.4615383" vertical-offset="2077" max-vertical-offset="2601">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#413#421#0" expanded="true" />
-            <element signature="e#970#978#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/FormSemesterInfoRecord.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="226" column="75" selection-start="10084" selection-end="10084" vertical-scroll-proportion="-12.5" vertical-offset="3449" max-vertical-offset="3978">
-          <folding>
-            <element signature="e#5281#5305#0" expanded="true" />
-            <element signature="e#7922#7946#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/Faculty.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="69" column="0" selection-start="2355" selection-end="2355" vertical-scroll-proportion="-43.807693" vertical-offset="0" max-vertical-offset="8092">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Faculty#0;class#Faculty#0" expanded="false" />
-            <element signature="method#requestCoursePrintout#0;class#Faculty#0" expanded="false" />
-            <element signature="e#17007#17015#0" expanded="true" />
-            <element signature="e#17760#17782#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DataModelingA6/src/dma6.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="23" selection-start="2470" selection-end="2470" vertical-scroll-proportion="1.7459459" vertical-offset="0" max-vertical-offset="1275">
+        <state line="22" column="0" selection-start="567" selection-end="567" vertical-scroll-proportion="0.9770115" vertical-offset="0" max-vertical-offset="2805">
           <folding />
         </state>
       </provider>
@@ -998,7 +851,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>

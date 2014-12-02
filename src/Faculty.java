@@ -9,10 +9,10 @@ import java.util.Date;
  */
 public class Faculty {
     private static List<Course> courses = new ArrayList<Course>(); //the available course based on chosen semester
-    public static int current_fac_id = 123;
+    public int current_fac_id = 123;
 
-    public static String[] times = {"None", "Morning (9am-12pm)","Afternoon (12pm-4pm)","Evening (4pm-9pm)"};
-    public static String[] days = {"None", "MW","TR","MWF","MWTRF"};
+    public static String[] times = {"None","Morning (9am-12pm)","Afternoon (12pm-4pm)","Evening (4pm-9pm)"};
+    public static String[] days = {"None","MW","TR","MWF","MWTRF"};
 
     private Scanner inputReader = new Scanner(System.in); // for reading input
     private Connection connection;
@@ -110,21 +110,8 @@ public class Faculty {
                 return;
             }
 
-            //dump the course preference form information
-            System.out.println("Course Preference Form #" + preference_form.preference_form_id + ":");
-
-            if(preference_form.date_added != null)
-                System.out.println("Date Added: " + dateFormat.format(preference_form.date_added));
-            else
-                System.out.println("Date Added: Unknown");
-
-            //Display Courses Ranked
-            preference_form.loadCourseRankings(connection);
-            System.out.println("Courses Ranked: " + preference_form.courseRankings.size());
-            for(int i = 0; i < preference_form.courseRankings.size(); i++)
-            {
-                System.out.println((i+1) + ": " + preference_form.courseRankings.get(i).getCode() + " - " + preference_form.courseRankings.get(i).getCourseName() + "\n");
-            }
+            //Display Preference Form Record
+            preference_form.display(connection);
 
             //Display Semester Info Records
             ArrayList<FormSemesterInfoRecord> semester_info_records = FormSemesterInfoRecord.loadByPreferenceForm(connection, preference_form);
@@ -149,28 +136,31 @@ public class Faculty {
         do{
             System.out.println("You are managing Course Preference Form #" + preference_form.preference_form_id +": \n");
             System.out.println("Course Preference Form Menu:");
-            System.out.println("1. Course Rankings");
-            System.out.println("2. Fall Preferences");
-            System.out.println("3. Spring Preferences");
-            System.out.println("4. Summer Preferences");
-            System.out.println("5. Back to Faculty Menu");
+            System.out.println("1. Display Preference Form Information");
+            System.out.println("2. Course Rankings");
+            System.out.println("3. Fall Preferences");
+            System.out.println("4. Spring Preferences");
+            System.out.println("5. Summer Preferences");
+            System.out.println("6. Back to Faculty Menu");
             choice = inputReader.nextInt();
 
             if (choice == 1) {
-                courseRankingMenu(preference_form);
+                preference_form.display(connection);
             } else if (choice == 2) {
-                semesterPreferenceForm(preference_form, Semester.Fall);
+                courseRankingMenu(preference_form);
             } else if (choice == 3) {
-                semesterPreferenceForm(preference_form, Semester.Spring);
+                semesterPreferenceForm(preference_form, Semester.Fall);
             } else if (choice == 4) {
-                semesterPreferenceForm(preference_form, Semester.Summer);
+                semesterPreferenceForm(preference_form, Semester.Spring);
             } else if (choice == 5) {
+                semesterPreferenceForm(preference_form, Semester.Summer);
+            } else if (choice == 6) {
                 //back to Faculty menu
             }  else {
                 System.out.println("Error, invalid selection please try again");
             }
 
-        }while(choice != 5);
+        }while(choice != 6);
 
     }
 
