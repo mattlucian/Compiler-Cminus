@@ -50,8 +50,6 @@ public class FormSemesterInfoRecord {
                 "SET course_importance=" + course_importance + ", day_importance=" + day_importance + ", time_importance=" + time_importance +
                 " WHERE preference_form_id = " + this.preference_form_id + " AND semester='" + this.semester + "'";
 
-        System.out.println(query);
-
         try{
             Statement statement = establishedConnection.createStatement();
             statement.executeUpdate(query);
@@ -70,8 +68,6 @@ public class FormSemesterInfoRecord {
                 "SET number_of_courses=" + number_of_courses +
                 " WHERE preference_form_id = " + this.preference_form_id + " AND semester='" + this.semester + "'";
 
-        System.out.println(query);
-
         try{
             Statement statement = establishedConnection.createStatement();
             statement.executeUpdate(query);
@@ -88,8 +84,6 @@ public class FormSemesterInfoRecord {
                 "SET time_of_day_id=" + time_of_day_id +
                 " WHERE preference_form_id = " + this.preference_form_id + " AND semester='" + this.semester + "'";
 
-        System.out.println(query);
-
         try{
             Statement statement = establishedConnection.createStatement();
             statement.executeUpdate(query);
@@ -104,8 +98,6 @@ public class FormSemesterInfoRecord {
         String query = "UPDATE form_semester_info " +
                 "SET days_of_week_id=" + days_of_week_id +
                 " WHERE preference_form_id = " + this.preference_form_id + " AND semester='" + this.semester + "'";
-
-        System.out.println(query);
 
         try{
             Statement statement = establishedConnection.createStatement();

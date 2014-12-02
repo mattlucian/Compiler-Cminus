@@ -52,6 +52,9 @@ public class Authentication {
                     break;
                 case 2:
                     login = facultyLogin();
+                    Faculty facultyclass = new Faculty(connection);
+                    facultyclass.current_fac_id = Integer.parseInt(login);
+                    facultyclass.mainMenu();
                     break;
                 case 3:
                     login = adminLogin();

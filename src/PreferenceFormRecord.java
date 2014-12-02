@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -131,8 +132,6 @@ public class PreferenceFormRecord {
         Date today = new Date();
         query = "INSERT INTO preference_form (preference_form_id, n_number, date_added) VALUES ( ";
         query += max_id + ", " + this.fac_id + ", TO_DATE('" + dateFormat.format(today) + "', 'YYYY-MM-DD') )";
-//        System.out.println(dateFormat.format(today));
-//        System.out.println(query);
 
         try{
             Statement statement = establishedConnection.createStatement();
@@ -142,6 +141,26 @@ public class PreferenceFormRecord {
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
             return false;
+        }
+    }
+
+    public void display(Connection establishedConnection)
+    {
+        DateFormat dateFormat = new SimpleDateFormat("MMMM dd, YYYY");
+        Date date = new Date();
+        System.out.println("Course Preference Form #" + this.preference_form_id + ":");
+
+        if(this.date_added != null)
+            System.out.println("Date Added: " + dateFormat.format(this.date_added));
+        else
+            System.out.println("Date Added: Unknown");
+
+        //Display Courses Ranked
+        this.loadCourseRankings(establishedConnection);
+        System.out.println("Courses Ranked: " + this.courseRankings.size());
+        for(int i = 0; i < this.courseRankings.size(); i++)
+        {
+            System.out.println((i+1) + ": " + this.courseRankings.get(i).getCode() + " - " + this.courseRankings.get(i).getCourseName() + "\n");
         }
     }
 }

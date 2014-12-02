@@ -32,7 +32,6 @@ public class FacultyRecord {
         query += this.fac_id+" , '"+ this.first_name +"' , '" + this.last_name + "' , " + this.isAdministrator + " , '" + this.fac_password + "' , '" + this.fac_type +"' )";
 
         try{
-            System.out.println(query);
             Statement statement = establishedConnection.createStatement();
             statement.executeUpdate(query);
             return true;
