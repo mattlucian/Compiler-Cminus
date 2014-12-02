@@ -41,6 +41,8 @@ public class dma6 {
 
 //        String query = "INSERT ALL INTO course_ranking (preference_form_id, code, n_number, rank_order) VALUES (31, 'CAP4630', 123, 1) INTO course_ranking (preference_form_id, code, n_number, rank_order) VALUES (31, 'COT3210', 123, 2) SELECT * FROM DUAL";
 //        String query = "SELECT column_name FROM all_tab_cols WHERE table_name='PREFERENCE_FORM'";
+//        String query = "Select * FROM form_semester_info";
+//        query = "SELECT preference_form_id, n_number, time_of_day_id, days_of_week_id, semester, number_of_courses, course_importance, day_importance, time_importance FROM form_semester_info WHERE preference_form_id=39 AND semester='Fall' AND ROWNUM <= 1";
 //
 //        try{
 //            try{
@@ -48,7 +50,15 @@ public class dma6 {
 //                ResultSet rs = statement.executeQuery(query);
 //
 //                while(rs.next()){
-//                        System.out.println(rs.getString("column_name"));
+//
+//                    ResultSetMetaData rsmd = rs.getMetaData();
+//                    int columnCount = rsmd.getColumnCount();
+//
+//                    // The column count starts from 1
+//                    for (int i = 1; i < columnCount + 1; i++ ) {
+//                        System.out.println(rsmd.getColumnName(i) + ": " + rs.getString(rsmd.getColumnName(i)));
+//                        // Do stuff with name
+//                    }
 ////                    System.out.println( "(" + Integer.toString(count++) + ") : " + first_name + " " + last_name + " [ "+ faculty_type +" ]");
 //                }
 //
