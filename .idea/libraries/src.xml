@@ -1,11 +1,9 @@
 <component name="libraryTable">
   <library name="src">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/DataModelingA6/ojdbc6.jar!/" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
     <SOURCES>
-      <root url="file://$PROJECT_DIR$/DataModelingA6/src" />
+      <root url="file://$PROJECT_DIR$/src" />
     </SOURCES>
   </library>
 </component>

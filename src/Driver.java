@@ -37,13 +37,14 @@ public class Driver {
     //Testing
     public static void main(String[] args) {
         
+        Authentication auth = new Authentication(conn);
         //Simulating login: acquired valid n-Number
-        String studentId = "n00045673";
-        
-        //keep this instantiated as a singleton
-        StudentController controller = new StudentController(conn);//delivers connection
-        
-        //everytime the student option selected, call this method:
-        controller.startSession(studentId);
+//        String studentId = "n00045673";
+//
+//        //keep this instantiated as a singleton
+//        StudentController controller = new StudentController(conn);//delivers connection
+//
+//        //everytime the student option selected, call this method:
+//        controller.startSession(studentId);
     }
 }
