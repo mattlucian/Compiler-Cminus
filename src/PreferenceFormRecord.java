@@ -31,6 +31,44 @@ public class PreferenceFormRecord {
         this.date_added = date_added;
     }
 
+    public ArrayList<Course> loadCourseRankings(Connection establishedConnection)
+    {
+        ArrayList<Course> courseRankings = new ArrayList<Course>();
+        String query = "SELECT DISTINCT course_ranking.code, course_ranking.rank_order, course.course_number, course.course_name FROM course_ranking " +
+                "LEFT JOIN course ON course_ranking.code = course.code " +
+                "WHERE course_ranking.preference_form_id=" +
+                this.preference_form_id + " ORDER BY course_ranking.rank_order";
+
+        try{
+
+            try{
+                Statement statement = establishedConnection.createStatement();
+                ResultSet rs = statement.executeQuery(query);
+
+                while(rs.next()){
+
+                    int crn = -1;
+                    String code = rs.getString("code");
+                    int courseNumber = rs.getInt("course_number");
+                    String courseName = rs.getString("course_name");
+
+                    courseRankings.add(new Course(crn, code, courseNumber, courseName));
+//                    System.out.println( "(" + Integer.toString(count++) + ") : " + first_name + " " + last_name + " [ "+ faculty_type +" ]");
+                }
+
+                this.courseRankings = courseRankings;
+                return this.courseRankings;
+
+            }catch (Exception e){
+                System.out.println("Failed to pull down records: "+ e.getMessage());
+                return courseRankings;
+            }
+        }catch (Exception e){
+            System.out.println("Error: "+e.getMessage());
+        }
+        return null;
+    }
+
     public boolean saveCourseRankings(Connection establishedConnection,
                                    ArrayList<Course> courseRankings)
     {
@@ -105,36 +143,5 @@ public class PreferenceFormRecord {
             System.out.println("Error: "+e.getMessage());
             return false;
         }
-    }
-
-    public static PreferenceFormRecord loadById(Connection establishedConnection, int preference_form_id){
-
-        String query = "SELECT preference_form_id, n_number, date_added FROM preference_form WHERE preference_form_id=";
-        query += preference_form_id + " LIMIT 1";
-
-        try{
-            List<PreferenceFormRecord> preference_form_list = new ArrayList<PreferenceFormRecord>();
-
-            try{
-                Statement statement = establishedConnection.createStatement();
-                ResultSet rs = statement.executeQuery(query);
-
-                while(rs.next()){
-                    preference_form_id = rs.getInt("preference_form_id");
-                    int n_number = rs.getInt("n_number");
-                    Date date_added = rs.getDate("date_added");
-
-                    preference_form_list.add(new PreferenceFormRecord(preference_form_id, n_number, date_added));
-//                    System.out.println( "(" + Integer.toString(count++) + ") : " + first_name + " " + last_name + " [ "+ faculty_type +" ]");
-                }
-
-            }catch (Exception e){
-                System.out.println("Failed to pull down records: "+ e.getMessage());
-                return preference_form_list.get(0);
-            }
-        }catch (Exception e){
-            System.out.println("Error: "+e.getMessage());
-        }
-        return null;
     }
 }
