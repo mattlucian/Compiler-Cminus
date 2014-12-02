@@ -26,7 +26,9 @@ public class Authentication {
         do {
             choice = 0;
 
-            System.out.println("");
+            System.out.println("----------------------------");
+            System.out.println("   Team 6 - Data Modeling   ");
+            System.out.println("----------------------------");
             System.out.println("Please make your selection: ");
             System.out.println("[1] Login as Student");
             System.out.println("[2] Login as Faculty");
@@ -44,14 +46,16 @@ public class Authentication {
             String login = null;
             switch (choice) {
                 case 1:
-                    //login = studentLogin();
-                    //if (login != null) {
-                        controller.setConnection(connection);
-                        controller.startSession(login);
-                    //}
+                    login = studentLogin();
+                    controller.setConnection(connection);
+                    controller.startSession(login);
                     break;
                 case 2:
                     login = facultyLogin();
+                    if(login != null){
+                        Faculty faculty = new Faculty(connection);
+                        faculty.mainMenu();
+                    }
                     break;
                 case 3:
                     login = adminLogin();
@@ -101,7 +105,7 @@ public class Authentication {
                 return nNum;
             }
             else {
-                //System.out.println("You are not a current student.");
+                return nNum;
             }
 
         } catch (SQLException e) {

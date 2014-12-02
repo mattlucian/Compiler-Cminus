@@ -224,14 +224,16 @@ public class StudentController {
             smap.put(temp, CANCEL);
             menu.append(String.format("[%d] Cancel without saving\n", temp));
             System.out.println(menu.toString());
+
             result = smap.get(getChoice(temp));
+
             if(result != CHOOSE_CLASS){
                 if(result == CANCEL) return;
                 //Store active semester in DB
                 saveData(student);
                 if(result == SAVE_QUIT){
                     System.out.println("Have a nice day!");
-                    System.exit(0);
+                    return;
                 }
                 return;//control returns to Semester Menu
             }
@@ -431,7 +433,7 @@ public class StudentController {
         //Format: even years = 0, odd years = 1
         int isOdd = ((unit.getYear() & 0x01) == 0) ? 0 : 1;// if last bit is 0, assign isOdd to be 0(false)
         try {
-            ps = conn.prepareStatement("SELECT crn,code,course_number,course_name FROM course WHERE semester = '?' AND is_odd_year = ?");
+            ps = conn.prepareStatement("SELECT crn,code,course_number,course_name FROM course WHERE semester = ? AND is_odd_year = ?");
             ps.setString(1, unit.getSemester().toString());
             ps.setInt(2, isOdd);
             rset = ps.executeQuery();
@@ -479,12 +481,14 @@ public class StudentController {
             psi = conn.prepareStatement("INSERT INTO student VALUES(?,?,?,?)");
             psi.setInt(1, s.getN_number());
             psi.setString(2, s.getFirstName());
+            psi.setString(3,s.getLastName());
             psi.setString(4, s.getDegree());
             //psi.setString(5, s.getSemester().toString());
             //psi.setInt(6, s.getYear());
             psi.executeUpdate();
             return s;
         } catch (SQLException e) {
+            System.out.println("Error: "+e.getMessage());
         } finally {
             clean(rset,ps);
             clean(null,psi);
