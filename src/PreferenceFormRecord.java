@@ -1,6 +1,7 @@
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -29,6 +30,44 @@ public class PreferenceFormRecord {
     PreferenceFormRecord(int id, int fac_id, Date date_added){
         this(id, fac_id);
         this.date_added = date_added;
+    }
+
+    public ArrayList<Course> loadCourseRankings(Connection establishedConnection)
+    {
+        ArrayList<Course> courseRankings = new ArrayList<Course>();
+        String query = "SELECT DISTINCT course_ranking.code, course_ranking.rank_order, course.course_number, course.course_name FROM course_ranking " +
+                "LEFT JOIN course ON course_ranking.code = course.code " +
+                "WHERE course_ranking.preference_form_id=" +
+                this.preference_form_id + " ORDER BY course_ranking.rank_order";
+
+        try{
+
+            try{
+                Statement statement = establishedConnection.createStatement();
+                ResultSet rs = statement.executeQuery(query);
+
+                while(rs.next()){
+
+                    int crn = -1;
+                    String code = rs.getString("code");
+                    int courseNumber = rs.getInt("course_number");
+                    String courseName = rs.getString("course_name");
+
+                    courseRankings.add(new Course(crn, code, courseNumber, courseName));
+//                    System.out.println( "(" + Integer.toString(count++) + ") : " + first_name + " " + last_name + " [ "+ faculty_type +" ]");
+                }
+
+                this.courseRankings = courseRankings;
+                return this.courseRankings;
+
+            }catch (Exception e){
+                System.out.println("Failed to pull down records: "+ e.getMessage());
+                return courseRankings;
+            }
+        }catch (Exception e){
+            System.out.println("Error: "+e.getMessage());
+        }
+        return null;
     }
 
     public boolean saveCourseRankings(Connection establishedConnection,
@@ -93,8 +132,6 @@ public class PreferenceFormRecord {
         Date today = new Date();
         query = "INSERT INTO preference_form (preference_form_id, n_number, date_added) VALUES ( ";
         query += max_id + ", " + this.fac_id + ", TO_DATE('" + dateFormat.format(today) + "', 'YYYY-MM-DD') )";
-//        System.out.println(dateFormat.format(today));
-//        System.out.println(query);
 
         try{
             Statement statement = establishedConnection.createStatement();
@@ -107,34 +144,23 @@ public class PreferenceFormRecord {
         }
     }
 
-    public static PreferenceFormRecord loadById(Connection establishedConnection, int preference_form_id){
+    public void display(Connection establishedConnection)
+    {
+        DateFormat dateFormat = new SimpleDateFormat("MMMM dd, YYYY");
+        Date date = new Date();
+        System.out.println("Course Preference Form #" + this.preference_form_id + ":");
 
-        String query = "SELECT preference_form_id, n_number, date_added FROM preference_form WHERE preference_form_id=";
-        query += preference_form_id + " LIMIT 1";
+        if(this.date_added != null)
+            System.out.println("Date Added: " + dateFormat.format(this.date_added));
+        else
+            System.out.println("Date Added: Unknown");
 
-        try{
-            List<PreferenceFormRecord> preference_form_list = new ArrayList<PreferenceFormRecord>();
-
-            try{
-                Statement statement = establishedConnection.createStatement();
-                ResultSet rs = statement.executeQuery(query);
-
-                while(rs.next()){
-                    preference_form_id = rs.getInt("preference_form_id");
-                    int n_number = rs.getInt("n_number");
-                    Date date_added = rs.getDate("date_added");
-
-                    preference_form_list.add(new PreferenceFormRecord(preference_form_id, n_number, date_added));
-//                    System.out.println( "(" + Integer.toString(count++) + ") : " + first_name + " " + last_name + " [ "+ faculty_type +" ]");
-                }
-
-            }catch (Exception e){
-                System.out.println("Failed to pull down records: "+ e.getMessage());
-                return preference_form_list.get(0);
-            }
-        }catch (Exception e){
-            System.out.println("Error: "+e.getMessage());
+        //Display Courses Ranked
+        this.loadCourseRankings(establishedConnection);
+        System.out.println("Courses Ranked: " + this.courseRankings.size());
+        for(int i = 0; i < this.courseRankings.size(); i++)
+        {
+            System.out.println((i+1) + ": " + this.courseRankings.get(i).getCode() + " - " + this.courseRankings.get(i).getCourseName() + "\n");
         }
-        return null;
     }
 }
