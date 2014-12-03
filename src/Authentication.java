@@ -10,13 +10,15 @@ import java.sql.Statement;
 
 /**
  * Created by Katelin on 11/28/2014.
+ * The Authentication class presents the main menu
+ * and verifies login credentials of students,
+ * faculty, and admin.
  */
 public class Authentication {
     public static Connection connection;
 
     public StudentController controller;
 
-    // test addition
     Authentication(Connection establishedConnection){
         controller = new StudentController();
         connection = establishedConnection;
@@ -39,11 +41,14 @@ public class Authentication {
             try {
                 choice = in.nextInt();
             }catch(InputMismatchException e)
-           {
-               in.nextLine();
-           }
-
+            {
+                in.nextLine();
+            }
             String login = null;
+
+            /**
+             **** Switch-case to handle main menu options
+             **/
             switch (choice) {
                 case 1:
                     login = studentLogin();
@@ -65,7 +70,7 @@ public class Authentication {
                     }
                     break;
                 case 4:
-                    // destroy session, log out -- move this close to official program exit
+                    // destroy session, log out
                     try {
                         connection.close();
                     } catch (SQLException e) {
@@ -78,6 +83,12 @@ public class Authentication {
         } while(choice != 4);
     }
 
+
+    /**
+     ***  studentLogin function accepts the user's N number,
+     **** then determines if the user is in the current
+     ***  Student table of the database
+     **/
     public String studentLogin() {
         PreparedStatement ps = null;
         ResultSet rset = null;
@@ -94,6 +105,7 @@ public class Authentication {
             nNum = nNum.substring(1);
         }
 
+        // If user is found in the student table, locate their information and print out name
         try {
             ps = connection.prepareStatement("SELECT * FROM Student WHERE n_number = '" + nNum + "'");
             rset = ps.executeQuery();
@@ -118,6 +130,11 @@ public class Authentication {
     }
 
 
+    /**
+     ***  facultyLogin function takes the user's input of n number
+     **** and password, and verifies if the information is correct
+     ***  in the faculty table of the database
+     **/
     public static String facultyLogin() {
         PreparedStatement ps = null;
         ResultSet rset = null;
@@ -134,12 +151,14 @@ public class Authentication {
         System.out.print("Password: ");
         password = in.next();
 
-
         if(username.charAt(0) == 'n' || username.charAt(0) == 'N')
         {
             username = username.substring(1);
         }
 
+        /**
+         **** If user is found in the database and has correct password, locate and print out name
+         **/
         try {
             ps = connection.prepareStatement("SELECT * FROM Faculty WHERE n_number = '" + username + "' AND password = '" + password + "'" );
             rset = ps.executeQuery();
@@ -162,6 +181,12 @@ public class Authentication {
         return null;
     }
 
+
+    /**
+     ***  adminLogin function takes the user's input of n number
+     **** and password, and verifies if the information is correct
+     ***  in the faculty table of the database
+     **/
     public static String adminLogin()
     {
         PreparedStatement ps = null;
@@ -179,12 +204,14 @@ public class Authentication {
         System.out.print("Password: ");
         password = in.next();
 
-
         if(username.charAt(0) == 'n' || username.charAt(0) == 'N')
         {
             username = username.substring(1);
         }
 
+        /**
+         **** If user is found in the database and has correct password, locate and print out name
+         **/
         try {
             ps = connection.prepareStatement("SELECT * FROM Faculty WHERE n_number = '" + username + "' AND password = '" + password + "' AND is_administrator = 1" );
             rset = ps.executeQuery();
@@ -212,6 +239,4 @@ public class Authentication {
             if(stmt != null) stmt.close();
         } catch (SQLException se) { }
     }
-
 }
-
