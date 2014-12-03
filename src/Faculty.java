@@ -7,8 +7,11 @@ import java.util.Date;
 /**
  * Created by Nick on 11/24/14.
  */
+
+
+/* The Faculty class provides the main interface for Faculty members */
 public class Faculty {
-    public int current_fac_id = 123;
+    public int current_fac_id = 0;
 
     public static String[] times = {"None", "Morning (9am-12pm)", "Afternoon (12pm-4pm)", "Evening (4pm-9pm)"};
     public static String[] days = {"None", "MW", "TR", "MWF", "MTWRF", "Summer C(12 weeks) MW",
@@ -18,11 +21,17 @@ public class Faculty {
     private Scanner inputReader = new Scanner(System.in); // for reading input
     private Connection connection;
 
-    Faculty(Connection establishedConnection){
+    /* Create a Faculty menu object, requires a faculty member to be logged in
+    *
+    *   establishedConnection - a connection object to the database
+    *   current_fac_id - the ID of the currently logged in faculty member
+    */
+    Faculty(Connection establishedConnection, int current_fac_id){
         connection = establishedConnection;
+        this.current_fac_id = current_fac_id;
     }
 
-    //faculty main menu
+    /* Display the Main Menu for the currently logged in Faculty member */
     public void mainMenu(){
         int choice = 0;
         do{
@@ -45,7 +54,7 @@ public class Faculty {
     }
     //endregion
 
-    //submit a new course preference form
+    /* Trigger the creation of a new Course Preference Form */
     public void newCoursePreferenceForm(){
 
         //sql to create new course preference form
@@ -56,11 +65,16 @@ public class Faculty {
             //view the course preference form menu
             coursePreferenceFormMenu(preference_form);
         }
-
-        System.out.println("An error occurred creating your new course preference form.");
-
+        else
+        {
+            System.out.println("An error occurred creating your new course preference form.");
+        }
     }
 
+    /*
+    *   View a listing of Course Preference Forms for the currently logged in Faculty member
+    *   Allows Faculty member to select a course preference form for editing
+    */
     public void viewCoursePreferenceForms(){
 
         int choice = 0;
@@ -75,7 +89,7 @@ public class Faculty {
         System.out.println("Available Course Preference Forms:");
 
         String preference_form_description = "";
-        if(coursePreferenceForms != null)
+        if(coursePreferenceForms != null && coursePreferenceForms.size() > 0)
         {
             for(int i = 0; i < coursePreferenceForms.size(); i++) {
                 if(coursePreferenceForms.get(i).date_added != null)
@@ -111,6 +125,12 @@ public class Faculty {
         }
     }
 
+    /*
+    *   Displays the Course Preference Form Menu for the chosen Preference Form,
+    *   rather recently added or chosen for editing
+    *
+    *   preference_form is the relevant PreferenceFormRecord to show the menu for
+    */
     public void coursePreferenceFormMenu(PreferenceFormRecord preference_form)
     {
         int choice = 0;
@@ -145,11 +165,28 @@ public class Faculty {
 
     }
 
-    //region Reporting Menu Functions
+    /*
+    *   Displays the Course Listing
+    */
     public void requestCoursePrintout(){
-        System.out.println("Your request has been received. Please contact Professor Abbassi for your paper copy.");
+        ArrayList<Course> courses = getAvailableCourses();
+        System.out.println("------------------");
+        System.out.println("| Course Listing |");
+        System.out.println("------------------");
+
+        for(int i = 0; i < courses.size(); i++) {
+            System.out.println(courses.get(i).getCode() + " - " + courses.get(i).getCourseName());
+        }
+
+        System.out.println("\nIf you would like a paper copy, please contact Professor Abbassi.\n");
     }
 
+    /*
+    *   Allows the Faculty Member to initially set their Course Rankings for a Preference Form,
+    *   or remove their previous rankings and start over
+    *
+    *   preference_form is the relevant PreferenceFormRecord to rank courses for
+    */
     public void courseRankingMenu(PreferenceFormRecord preference_form)
     {
         int choice = 0;
@@ -235,6 +272,12 @@ public class Faculty {
 
     }
 
+    /*
+    *   Shows the Semester Preferences section of the Course Preference form for a chosen Semester
+    *
+    *   preference_form is the relevant PreferenceFormRecord to show the form for
+    *   semester is the semester chosen by the Faculty member to edit of the Preference Form
+    */
     public void semesterPreferenceForm(PreferenceFormRecord preference_form, Semester semester)
     {
         int choice = 0;
@@ -271,6 +314,11 @@ public class Faculty {
         }while(choice != 6);
     }
 
+    /*
+    *   Asks the user for their course load preference for a Semester of a Preference Form
+    *
+    *   form_semester_info is the relevant Semester section of a Preference Form
+    */
     public void courseLoadPreference(FormSemesterInfoRecord form_semester_info)
     {
         int number_of_courses = 0;
@@ -297,6 +345,11 @@ public class Faculty {
         }while(number_of_courses < 1 || number_of_courses > 3);
     }
 
+    /*
+    *   Asks the user for their scheduling factor rankings for a Semester of a Preference Form
+    *
+    *   form_semester_info is the relevant Semester section of a Preference Form
+    */
     public void schedulingFactors(FormSemesterInfoRecord form_semester_info)
     {
         String input = "";
@@ -346,6 +399,11 @@ public class Faculty {
         }while(!inputValid);
     }
 
+    /*
+    *   Asks the user for their time of day preference for a Semester of a Preference Form
+    *
+    *   form_semester_info is the relevant Semester section of a Preference Form
+    */
     public void timesOfDayPreference(FormSemesterInfoRecord form_semester_info)
     {
         int time_of_day = 0;
@@ -376,6 +434,11 @@ public class Faculty {
         }while(time_of_day < 1 || time_of_day > 3);
     }
 
+    /*
+    *   Asks the user for their days of week preference for a Semester of a Preference Form
+    *
+    *   form_semester_info is the relevant Semester section of a Preference Form
+    */
     public void daysOfWeekPreference(FormSemesterInfoRecord form_semester_info)
     {
         int choice = 0;
@@ -427,15 +490,18 @@ public class Faculty {
         }while(days_of_week < 1 || days_of_week > days.length);
     }
 
+    /*
+    *   loads a list of Courses to show for the Course Rankings menu and the Course Listing option
+    */
     private ArrayList<Course> getAvailableCourses(){
         ArrayList<Course> courses = new ArrayList<Course>();
         PreparedStatement ps = null;
         ResultSet rset = null;
         try {
-            ps = connection.prepareStatement("SELECT MAX(crn),code,course_number,course_name FROM course GROUP BY code, course_number, course_name ORDER BY code");
+            ps = connection.prepareStatement("SELECT DISTINCT code,course_number,course_name FROM course GROUP BY code, course_number, course_name ORDER BY code");
             rset = ps.executeQuery();
             while(rset.next()){
-                courses.add(new Course(rset.getInt(1), rset.getString(2), rset.getInt(3), rset.getString(4)));
+                courses.add(new Course(0, rset.getString(1), rset.getInt(2), rset.getString(3)));
             }
         } catch (SQLException e) {
             System.out.println("Error: "+e.getMessage());
@@ -445,12 +511,15 @@ public class Faculty {
         return courses;
     }
 
+    /*
+    *   loads the Preference Forms for the currently logged in Faculty member
+    */
     private ArrayList<PreferenceFormRecord> getFacultyPreferenceForms(){
         ArrayList<PreferenceFormRecord> preference_forms = new ArrayList<PreferenceFormRecord>();
         PreparedStatement ps = null;
         ResultSet rset = null;
         try {
-            ps = connection.prepareStatement("SELECT preference_form_id, n_number, date_added FROM preference_form WHERE date_added IS NOT NULL ORDER BY date_added DESC");
+            ps = connection.prepareStatement("SELECT preference_form_id, n_number, date_added FROM preference_form WHERE n_number=" + this.current_fac_id + " ORDER BY date_added DESC");
             rset = ps.executeQuery();
             while(rset.next()){
                 preference_forms.add(new PreferenceFormRecord(rset.getInt("preference_form_id"),rset.getInt("n_number"), rset.getDate("date_added")));
@@ -463,6 +532,12 @@ public class Faculty {
         return preference_forms;
     }
 
+    /*
+    *   clean up and deallocate resources for running queries
+    *
+    *   rset is the ResultSet object to close
+    *   stmt is the Statement object to close
+    */
     private static void clean(ResultSet rset, Statement stmt){
         try {
             if(rset != null) rset.close();
@@ -470,6 +545,11 @@ public class Faculty {
         } catch (SQLException se) { }
     }
 
+    /*
+    *   simple interface for getting a menu option
+    *
+    *   last - the maximum option allowed for the user to enter
+    */
     private int getChoice(int last){
         String selection = null;
         do {
@@ -483,6 +563,11 @@ public class Faculty {
         } while (true);
     }
 
+    /*
+    *   simple interface for getting string input
+    *
+    *   last - the maximum option allowed for the user to enter
+    */
     private String getInput(){
         System.out.print(">>  ");
         return inputReader.nextLine().trim();

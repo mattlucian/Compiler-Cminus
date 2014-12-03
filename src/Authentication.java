@@ -53,7 +53,7 @@ public class Authentication {
                 case 2:
                     login = facultyLogin();
                     if(login != null){
-                        Faculty faculty = new Faculty(connection);
+                        Faculty faculty = new Faculty(connection, Integer.parseInt(login));
                         faculty.mainMenu();
                     }
                     break;
