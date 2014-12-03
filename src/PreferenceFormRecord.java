@@ -1,11 +1,11 @@
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by nick on 11/29/14.
@@ -16,22 +16,45 @@ public class PreferenceFormRecord {
     public Date date_added;
     public ArrayList<Course> courseRankings = new ArrayList<Course>();
 
+    /*
+    *   Initialize a new Course Preference Form with just a Faculty connection
+    *
+    *   fac_id - the ID of the currently logged in faculty member
+    */
     PreferenceFormRecord(int fac_id){
         this.preference_form_id = -1;
         this.fac_id = fac_id;
     }
 
+    /*
+    *   Initialize an existing Course Preference Form
+    *
+    *   id - the ID of the existing course preference form
+    *   fac_id - the ID of the currently logged in faculty member
+    */
     PreferenceFormRecord(int id, int fac_id){
         this.preference_form_id = id;
         this.fac_id = fac_id;
         this.date_added = null;
     }
 
+    /*
+    *   Initialize an existing Course Preference Form with a date
+    *
+    *   id - the ID of the existing course preference form
+    *   fac_id - the ID of the currently logged in faculty member
+    *   date_added - the date the preference form was added
+    */
     PreferenceFormRecord(int id, int fac_id, Date date_added){
         this(id, fac_id);
         this.date_added = date_added;
     }
 
+    /*
+    *   load the Course Rankings for the current Preference Form
+    *
+    *   establishedConnection - a connection object to the database
+    */
     public ArrayList<Course> loadCourseRankings(Connection establishedConnection)
     {
         ArrayList<Course> courseRankings = new ArrayList<Course>();
@@ -40,12 +63,12 @@ public class PreferenceFormRecord {
                 "WHERE course_ranking.preference_form_id=" +
                 this.preference_form_id + " ORDER BY course_ranking.rank_order";
 
+        Statement statement = null;
+        ResultSet rs = null;
         try{
-
+            statement = establishedConnection.createStatement();
+            rs = statement.executeQuery(query);
             try{
-                Statement statement = establishedConnection.createStatement();
-                ResultSet rs = statement.executeQuery(query);
-
                 while(rs.next()){
 
                     int crn = -1;
@@ -66,21 +89,33 @@ public class PreferenceFormRecord {
             }
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
+        } finally {
+            clean(rs, statement);
         }
         return null;
     }
 
+    /*
+    *   save the Course Rankings for the current Preference Form
+    *
+    *   establishedConnection - a connection object to the database
+    *   courseRankings - list of Courses in order of rank to commit to database
+    */
     public boolean saveCourseRankings(Connection establishedConnection,
                                    ArrayList<Course> courseRankings)
     {
         //remove old course rankings and save new course rankings
         String query = "DELETE FROM course_ranking WHERE preference_form_id = " + this.preference_form_id;
+        Statement statement = null;
+        ResultSet rs = null;
         try{
-            Statement statement = establishedConnection.createStatement();
-            ResultSet rs = statement.executeQuery(query);
+            statement = establishedConnection.createStatement();
+            rs = statement.executeQuery(query);
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
             return false;
+        } finally {
+            clean(rs, statement);
         }
 
         query = "INSERT ALL ";
@@ -97,22 +132,33 @@ public class PreferenceFormRecord {
         query += "SELECT * FROM DUAL";
 
         try{
-            Statement statement = establishedConnection.createStatement();
+            statement = establishedConnection.createStatement();
             statement.executeUpdate(query);
             this.courseRankings = courseRankings;
             return true;
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
             return false;
+        } finally {
+            clean(rs, statement);
         }
     }
 
+    /*
+    *   create a new Course Preference Form Record
+    *
+    *   This method calls an additional query to determine the new ID of the preference form
+    *
+    *   establishedConnection - a connection object to the database
+    */
     public boolean insertPreferenceFormRecord(Connection establishedConnection){
         String query = "SELECT NVL(MAX(preference_form.preference_form_id)+1, 1) AS max_id FROM preference_form";
         int max_id = -1;
+        Statement statement = null;
+        ResultSet rs = null;
         try{
-            Statement statement = establishedConnection.createStatement();
-            ResultSet rs = statement.executeQuery(query);
+            statement = establishedConnection.createStatement();
+            rs = statement.executeQuery(query);
 
             if(rs.next()){
                 max_id = rs.getInt("max_id");
@@ -120,6 +166,8 @@ public class PreferenceFormRecord {
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
             return false;
+        } finally {
+            clean(rs, statement);
         }
 
         if(max_id == -1)
@@ -133,22 +181,33 @@ public class PreferenceFormRecord {
         query = "INSERT INTO preference_form (preference_form_id, n_number, date_added) VALUES ( ";
         query += max_id + ", " + this.fac_id + ", TO_DATE('" + dateFormat.format(today) + "', 'YYYY-MM-DD') )";
 
+        statement = null;
         try{
-            Statement statement = establishedConnection.createStatement();
+            statement = establishedConnection.createStatement();
             statement.executeUpdate(query);
             this.preference_form_id = max_id;
+            this.date_added = today;
             return true;
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
             return false;
+        } finally {
+            clean(null, statement);
         }
     }
 
+    /*
+    *   Display all relevant data to the current Preference Form
+    *
+    *   establishedConnection - a connection object to the database
+    */
     public void display(Connection establishedConnection)
     {
         DateFormat dateFormat = new SimpleDateFormat("MMMM dd, YYYY");
-        Date date = new Date();
-        System.out.println("Course Preference Form #" + this.preference_form_id + ":");
+
+        System.out.println("------------------------------");
+        System.out.println("| Course Preference Form #" + this.preference_form_id + " |");
+        System.out.println("------------------------------");
 
         if(this.date_added != null)
             System.out.println("Date Added: " + dateFormat.format(this.date_added));
@@ -160,7 +219,31 @@ public class PreferenceFormRecord {
         System.out.println("Courses Ranked: " + this.courseRankings.size());
         for(int i = 0; i < this.courseRankings.size(); i++)
         {
-            System.out.println((i+1) + ": " + this.courseRankings.get(i).getCode() + " - " + this.courseRankings.get(i).getCourseName() + "\n");
+            System.out.println((i+1) + ": " + this.courseRankings.get(i).getCode() + " - " + this.courseRankings.get(i).getCourseName());
         }
+        System.out.println("");
+
+        //Display Semester Info Records
+        ArrayList<FormSemesterInfoRecord> semester_info_records = FormSemesterInfoRecord.loadByPreferenceForm(establishedConnection, this);
+        if(semester_info_records != null)
+        {
+            for(int i = 0; i < semester_info_records.size(); i++)
+            {
+                semester_info_records.get(i).display();
+            }
+        }
+    }
+
+    /*
+    *   clean up and deallocate resources for running queries
+    *
+    *   rset is the ResultSet object to close
+    *   stmt is the Statement object to close
+    */
+    private static void clean(ResultSet rset, Statement stmt){
+        try {
+            if(rset != null) rset.close();
+            if(stmt != null) stmt.close();
+        } catch (SQLException se) { }
     }
 }

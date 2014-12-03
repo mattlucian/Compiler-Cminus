@@ -36,7 +36,7 @@ public class Authentication {
             System.out.println("[2] Login as Faculty");
             System.out.println("[3] Login as Admin");
             System.out.println("[4] Exit the program");
-            System.out.print(" >>   ");
+            System.out.print(">> ");
 
             try {
                 choice = in.nextInt();
@@ -58,7 +58,7 @@ public class Authentication {
                 case 2:
                     login = facultyLogin();
                     if(login != null){
-                        Faculty faculty = new Faculty(connection);
+                        Faculty faculty = new Faculty(connection, Integer.parseInt(login));
                         faculty.mainMenu();
                     }
                     break;
@@ -78,7 +78,7 @@ public class Authentication {
                     }
                     break;
                 default:
-                    System.out.println("===========Please enter valid selection.===========");
+                    System.out.println("===========Please enter a valid selection.===========");
             }
         } while(choice != 4);
     }
@@ -122,6 +122,9 @@ public class Authentication {
 
         } catch (SQLException e) {
             System.out.println("Try again.");
+        }
+        finally {
+            clean(rset, ps);
         }
         return null;
     }
@@ -172,6 +175,9 @@ public class Authentication {
         } catch (SQLException e) {
             System.out.println("Try again.");
         }
+        finally {
+            clean(rset, ps);
+        }
         return null;
     }
 
@@ -221,6 +227,16 @@ public class Authentication {
         } catch (SQLException e) {
             System.out.println("Try again.");
         }
+        finally {
+            clean(rset, ps);
+        }
         return null;
+    }
+
+    private static void clean(ResultSet rset, Statement stmt){
+        try {
+            if(rset != null) rset.close();
+            if(stmt != null) stmt.close();
+        } catch (SQLException se) { }
     }
 }

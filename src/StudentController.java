@@ -388,7 +388,7 @@ public class StudentController {
                 int num = Integer.parseInt(selection);
                 if(num > 0 && num <= last) return num;
             } catch (Exception e) { /* Politely ignore */ }
-            System.out.println("Invalid selection. Please try again.");
+            System.out.println("\"===========Please enter a valid selection.===========\"");
         } while (true);
     }
     
