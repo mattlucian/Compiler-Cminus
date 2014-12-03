@@ -6,43 +6,23 @@ This README explains about Team-A6's Data Modeling - Final Project for Fall of 2
 
 The project uses Oracle 11.2 and Java connections done via JDBC drivers.
 
+----------
 
-Official TODO List:
+To run this program, unshar the program and run the bash script "team6":
 
-- Nick
-    - Faculty menu
-    - Course preference forms
-    - Document your functions / classes at a high level
+    shar -u team6dm2finalproject
 
-- Matt
-    - Admin account creation (DONE)
-    - Admin account deletion (DONE)
-    - Document your functions / classes at a high level (DONE)
-    - Reports
-        - Course Report Queries (DONE)
-        - Days Report Queries
-        - Times Report Queries
-        - Faculty Report Queries (PARTIALLY)
-        - Student Report Queries (PARTIALLY)
+    TeamA6
 
-- Katelin
-    - Log in / Authenticate student, faculty, admin
-    - Document your functions / classes at a high level
 
-- Ryan
-     - Documentation
-          - Consult Phase 2 document
 
-- Randall
-    - Functional Diagrams
-    - ERD revamp
-        - Remove days/times
-        - Add NUMBER length
-    - physical and logical assumptions
-       
-- Chris
-    - Student menu
-    - Document your functions / classes at a high level
+For more information, please refer to the submitted documentation
 
-Nick and Ryan (Sat and Sun)
-    - presentation
+    - Matt Myers
+    - Nick Pickering
+    - Chris Raley
+    - Randall Guenther
+    - Ryan Cooper
+    - Katelin Carter
+
+    
