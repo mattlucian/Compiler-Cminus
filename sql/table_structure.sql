@@ -11,8 +11,7 @@ CREATE TABLE course (
        is_required          NUMBER(1)     NULL,
        is_odd_year          NUMBER(1)     NULL,
        semester             VARCHAR2(10)  NULL,
-       PRIMARY KEY (CRN)
-);
+       PRIMARY KEY (CRN) );
 
 
 CREATE TABLE faculty (
@@ -22,24 +21,21 @@ CREATE TABLE faculty (
        is_administrator     NUMBER(1)     NULL,
        password             VARCHAR2(100) NULL,
        faculty_type         VARCHAR2(20)  NULL,
-       PRIMARY KEY (n_number)
-);
+       PRIMARY KEY (n_number) );
 
 CREATE TABLE student (
        n_number             NUMBER(8)     NOT NULL,
        first_name           VARCHAR2(25)  NULL,
        last_name            VARCHAR2(25)  NULL,
        degree               VARCHAR2(2)   NULL,
-       PRIMARY KEY (n_number),
-);
+       PRIMARY KEY (n_number) );
 
 CREATE TABLE preference_form (
        preference_form_id   NUMBER(6)     NOT NULL,
        n_number             NUMBER(8)     NOT NULL,
        date_added           DATE          NULL,
        PRIMARY KEY (preference_form_id, n_number),
-       FOREIGN KEY (n_number) REFERENCES faculty
-);
+       FOREIGN KEY (n_number) REFERENCES faculty );
 
 
 CREATE TABLE form_semester_info (
@@ -53,8 +49,7 @@ CREATE TABLE form_semester_info (
        day_importance       NUMBER(1)     NULL,
        time_importance      NUMBER(1)     NULL,
        PRIMARY KEY (semester, preference_form_id, n_number),
-       FOREIGN KEY (preference_form_id, n_number) REFERENCES preference_form,
-);
+       FOREIGN KEY (preference_form_id, n_number) REFERENCES preference_form );
 
 
 CREATE TABLE course_ranking (
@@ -63,9 +58,7 @@ CREATE TABLE course_ranking (
        n_number             NUMBER(8)     NOT NULL,
        rank_order           NUMBER(1)     NULL,
        PRIMARY KEY (preference_form_id, code, n_number),
---       FOREIGN KEY (code) REFERENCES course,
-       FOREIGN KEY (preference_form_id, n_number) REFERENCES preference_form
-);
+       FOREIGN KEY (preference_form_id, n_number) REFERENCES preference_form );
 
 
 CREATE TABLE course_request (
@@ -77,5 +70,5 @@ CREATE TABLE course_request (
        times_id             number(5)     NULL;
        PRIMARY KEY (CRN, n_number, semester), --Composite keys needs 3 attribs for uniqueness
        FOREIGN KEY (n_number) REFERENCES student,
-       FOREIGN KEY (CRN) REFERENCES course
-);
+       FOREIGN KEY (CRN) REFERENCES course );
+

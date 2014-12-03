@@ -618,7 +618,7 @@ public class Admin {
                             Statement detailsStatement = connection.createStatement();
                             ResultSet detailsResult = detailsStatement.executeQuery(getDetails);
                             while(detailsResult.next()){
-                                System.out.println("\t\t\t\t"+days[detailsResult.getInt(1)-1]);
+                                System.out.println("\t\t\t\t"+days[detailsResult.getInt(1)]);
                                 System.out.println("\t\t\t\tImportance Ranks: Time("+detailsResult.getInt(4)+")"+" Day("+detailsResult.getInt(3)+")"+" Course("+detailsResult.getInt(2)+")");
 
                             }
@@ -675,7 +675,7 @@ public class Admin {
                         // get all classes for each student
                         System.out.println("\t\t\t\tCourses:");
                         while(rs2.next()){
-                            System.out.println("\t\t\t\t\t"+rs2.getString(2)+" ("+rs2.getString(1)+") | "+days[rs2.getInt(3)-1]);
+                            System.out.println("\t\t\t\t\t"+rs2.getString(2)+" ("+rs2.getString(1)+") | "+days[rs2.getInt(3)]);
                         }
                         clean(rs2,stmt2);
                     }
@@ -727,7 +727,7 @@ public class Admin {
                     ResultSet seasonResultSet = seasonStatement.executeQuery(seasonQuery);
                     while (seasonResultSet.next()) {
                         System.out.println("\t\t\t"+seasonResultSet.getString(7)); // semester & details
-                        System.out.println("\t\t\t\t"+times[seasonResultSet.getInt(1)-1]+" | "+days[seasonResultSet.getInt(2)-1]+" | "+"# Of Courses: "+seasonResultSet.getInt(3));
+                        System.out.println("\t\t\t\t"+times[seasonResultSet.getInt(1)-1]+" | "+days[seasonResultSet.getInt(2)]+" | "+"# Of Courses: "+seasonResultSet.getInt(3));
                         System.out.println("\t\t\t\tImportance Ranks: Time("+seasonResultSet.getInt(6)+") Day("+seasonResultSet.getInt(5)+") Courses("+seasonResultSet.getInt(4)+")");
                     }
                     clean(seasonResultSet,seasonStatement);
