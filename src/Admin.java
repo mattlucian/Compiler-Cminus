@@ -625,7 +625,7 @@ public class Admin {
                 }
 
             }
-
+            clean(innerRS,newstm);
         }catch (SQLException ex){
             System.out.println("Error: "+ex.getMessage());
         }

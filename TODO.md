@@ -9,14 +9,20 @@ Data Modeling Team 6 TODO List
 
 - Nick
     - Fix Days glitch, only accepts 1-3. Should be 1-4
-    - Formatting
     - Finalize "Faculty" section of documentation
     - Add "Close" statements to any result sets / statements
+    - clean / reset queries
+    - convert menus to chirs style
+    - truncate tables
+    - presentation
+    - document sql queries
+    - 1 insert query for each table
 
 - Katelin
     - Formatting
     - Finalize "authentication" section of documentation
-    - Add "Close" statements to any result sets / statements
+    - Add comments to code
+    - All queries and comments
 
 - Chris
     - Formatting

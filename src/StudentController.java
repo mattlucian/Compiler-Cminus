@@ -347,7 +347,7 @@ public class StudentController {
         //s.setFirstName(firstName.toUpperCase());
         //s.setLastName(lastName.toUpperCase());
         
-        populateInfo(s);
+        //populateInfo(s);
         return s;
     }
     
@@ -486,6 +486,7 @@ public class StudentController {
             //psi.setString(5, s.getSemester().toString());
             //psi.setInt(6, s.getYear());
             psi.executeUpdate();
+            //System.out.println("didn't fail");
             return s;
         } catch (SQLException e) {
             System.out.println("Error: "+e.getMessage());
