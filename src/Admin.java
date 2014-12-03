@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 /**
  * Created by matt on 11/24/14.
+ *
  */
 public class Admin {
 
@@ -814,6 +815,7 @@ public class Admin {
     }
     //endregion
 
+    //region Utility Methods
     private void clean(ResultSet rset, Statement stmt){
         try {
             if(rset != null) rset.close();
@@ -833,5 +835,5 @@ public class Admin {
             System.out.println("===========Please enter valid selection.===========");
         } while (true);
     }
-
+    //endregion
 }
