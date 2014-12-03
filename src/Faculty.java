@@ -26,10 +26,10 @@ public class Faculty {
         int choice = 0;
         do{
             System.out.println("Faculty Menu:");
-            System.out.println("1. Enter New Course Preference Form");
-            System.out.println("2. View / Edit Previous Course Preference Forms");
-            System.out.println("3. Request Course Print-Out");
-            System.out.println("4. Log out");
+            System.out.println("[1] Enter New Course Preference Form");
+            System.out.println("[2] View / Edit Previous Course Preference Forms");
+            System.out.println("[3] Request Course Print-Out");
+            System.out.println("[4] Log out");
             choice = inputReader.nextInt();
 
             if (choice == 1) {
@@ -87,7 +87,7 @@ public class Faculty {
                     preference_form_description = dateFormat.format(coursePreferenceForms.get(i).date_added) + "(#" + coursePreferenceForms.get(i).preference_form_id+")";
                 else
                     preference_form_description = "Form ID #" + coursePreferenceForms.get(i).preference_form_id;
-                System.out.println((i+1)+". "+preference_form_description);
+                System.out.println("["+(i+1)+"] "+preference_form_description);
             }
             System.out.println((coursePreferenceForms.size()+1)+". Back to Faculty Menu");
         }
@@ -136,12 +136,12 @@ public class Faculty {
         do{
             System.out.println("You are managing Course Preference Form #" + preference_form.preference_form_id +": \n");
             System.out.println("Course Preference Form Menu:");
-            System.out.println("1. Display Preference Form Information");
-            System.out.println("2. Course Rankings");
-            System.out.println("3. Fall Preferences");
-            System.out.println("4. Spring Preferences");
-            System.out.println("5. Summer Preferences");
-            System.out.println("6. Back to Faculty Menu");
+            System.out.println("[1] Display Preference Form Information");
+            System.out.println("[2] Course Rankings");
+            System.out.println("[3] Fall Preferences");
+            System.out.println("[4]. Spring Preferences");
+            System.out.println("[5] Summer Preferences");
+            System.out.println("[6] Back to Faculty Menu");
             choice = inputReader.nextInt();
 
             if (choice == 1) {
@@ -216,9 +216,9 @@ public class Faculty {
             System.out.println("Please select your " + cardinalPosition + " choice:");
 
             for(int i = 0; i < courses.size(); i++) {
-                System.out.println((i+1)+". "+courses.get(i).getCode() + " - " + courses.get(i).getCourseName());
+                System.out.println("["+(i+1)+"] "+courses.get(i).getCode() + " - " + courses.get(i).getCourseName());
             }
-            System.out.println((courses.size()+1)+". Done ranking courses");
+            System.out.println("["+(courses.size()+1)+"] Done ranking courses");
             choice = inputReader.nextInt();
 
             if (choice < 0 || choice > courses.size()+1) {
@@ -244,7 +244,7 @@ public class Faculty {
                 System.out.println("Courses Ranked: " + coursesRanked.size());
                 for(int i = 0; i < coursesRanked.size(); i++)
                 {
-                    System.out.println((i+1) + ": " + coursesRanked.get(i).getCode() + " - " + coursesRanked.get(i).getCourseName());
+                    System.out.println("["+(i+1) + "] " + coursesRanked.get(i).getCode() + " - " + coursesRanked.get(i).getCourseName());
                 }
             }
             else

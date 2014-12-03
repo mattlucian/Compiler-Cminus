@@ -1,5 +1,3 @@
-import javax.swing.plaf.nimbus.State;
-import javax.xml.transform.Result;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
