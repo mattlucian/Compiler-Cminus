@@ -112,7 +112,7 @@ public class Authentication {
             System.out.println("Try again.");
         }
         finally {
-            clean(rset, null);
+            clean(rset, ps);
         }
         return null;
     }
@@ -157,7 +157,7 @@ public class Authentication {
             System.out.println("Try again.");
         }
         finally {
-            clean(rset, null);
+            clean(rset, ps);
         }
         return null;
     }
@@ -201,7 +201,7 @@ public class Authentication {
             System.out.println("Try again.");
         }
         finally {
-            clean(rset, null);
+            clean(rset, ps);
         }
         return null;
     }

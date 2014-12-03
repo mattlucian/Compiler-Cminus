@@ -8,11 +8,12 @@ import java.util.Date;
  * Created by Nick on 11/24/14.
  */
 public class Faculty {
-    private static List<Course> courses = new ArrayList<Course>(); //the available course based on chosen semester
     public int current_fac_id = 123;
 
-    public static String[] times = {"None","Morning (9am-12pm)","Afternoon (12pm-4pm)","Evening (4pm-9pm)"};
-    public static String[] days = {"None","MW","TR","MWF","MWTRF"};
+    public static String[] times = {"None", "Morning (9am-12pm)", "Afternoon (12pm-4pm)", "Evening (4pm-9pm)"};
+    public static String[] days = {"None", "MW", "TR", "MWF", "MTWRF", "Summer C(12 weeks) MW",
+        "Summer C(12 weeks) TR", "Summer A(6 weeks) MWTR", "Summer B(6 weeks) MWTR", "8 week MWF",
+        "8 week TR", "6 week MW+4 Fridays", "6 week TR+4 Fridays"};
 
     private Scanner inputReader = new Scanner(System.in); // for reading input
     private Connection connection;
@@ -30,7 +31,7 @@ public class Faculty {
             System.out.println("[2] View / Edit Previous Course Preference Forms");
             System.out.println("[3] Request Course Print-Out");
             System.out.println("[4] Log out");
-            choice = inputReader.nextInt();
+            choice = getChoice(4);
 
             if (choice == 1) {
                 newCoursePreferenceForm();
@@ -38,12 +39,7 @@ public class Faculty {
                 viewCoursePreferenceForms();
             } else if (choice == 3) {
                 requestCoursePrintout();
-            } else if (choice == 4) {
-                // log out
-            }  else {
-                System.out.println("Error, invalid selection please try again");
             }
-
         }while(choice != 4);
         System.out.println("Logged out, exiting program");
     }
@@ -53,7 +49,6 @@ public class Faculty {
     public void newCoursePreferenceForm(){
 
         //sql to create new course preference form
-        System.out.println("Creating a new Course Preference Form...");
         PreferenceFormRecord preference_form = new PreferenceFormRecord(current_fac_id);
 
         if(preference_form.insertPreferenceFormRecord(connection))
@@ -89,18 +84,16 @@ public class Faculty {
                     preference_form_description = "Form ID #" + coursePreferenceForms.get(i).preference_form_id;
                 System.out.println("["+(i+1)+"] "+preference_form_description);
             }
-            System.out.println((coursePreferenceForms.size()+1)+". Back to Faculty Menu");
+            System.out.println("["+(coursePreferenceForms.size()+1)+"] Back to Faculty Menu");
         }
         else
         {
             System.out.println("\nNo Course Preference Forms to show. You must create one.\n");
             return;
         }
-        choice = inputReader.nextInt();
+        choice = getChoice(coursePreferenceForms.size()+1);
 
-        if (choice < 0 || choice > coursePreferenceForms.size()+1) {
-            System.out.println("Error, invalid selection please try again");
-        } else if(choice != coursePreferenceForms.size()+1){
+        if(choice != coursePreferenceForms.size()+1){
 
             preference_form = coursePreferenceForms.get(choice-1);
 
@@ -113,16 +106,6 @@ public class Faculty {
             //Display Preference Form Record
             preference_form.display(connection);
 
-            //Display Semester Info Records
-            ArrayList<FormSemesterInfoRecord> semester_info_records = FormSemesterInfoRecord.loadByPreferenceForm(connection, preference_form);
-            if(semester_info_records != null)
-            {
-                for(int i = 0; i < semester_info_records.size(); i++)
-                {
-                    semester_info_records.get(i).display();
-                }
-            }
-
             //show options for managing course preference form
             coursePreferenceFormMenu(preference_form);
         }
@@ -134,15 +117,17 @@ public class Faculty {
 
         //show menu of editable items
         do{
-            System.out.println("You are managing Course Preference Form #" + preference_form.preference_form_id +": \n");
+            System.out.println("------------------------------");
+            System.out.println("| Course Preference Form #" + preference_form.preference_form_id + " |");
+            System.out.println("------------------------------");
             System.out.println("Course Preference Form Menu:");
             System.out.println("[1] Display Preference Form Information");
             System.out.println("[2] Course Rankings");
             System.out.println("[3] Fall Preferences");
-            System.out.println("[4]. Spring Preferences");
+            System.out.println("[4] Spring Preferences");
             System.out.println("[5] Summer Preferences");
             System.out.println("[6] Back to Faculty Menu");
-            choice = inputReader.nextInt();
+            choice = getChoice(6);
 
             if (choice == 1) {
                 preference_form.display(connection);
@@ -154,10 +139,6 @@ public class Faculty {
                 semesterPreferenceForm(preference_form, Semester.Spring);
             } else if (choice == 5) {
                 semesterPreferenceForm(preference_form, Semester.Summer);
-            } else if (choice == 6) {
-                //back to Faculty menu
-            }  else {
-                System.out.println("Error, invalid selection please try again");
             }
 
         }while(choice != 6);
@@ -184,7 +165,7 @@ public class Faculty {
             //clean buffer
             inputReader.nextLine();
 
-            String input = inputReader.nextLine().trim();
+            String input = getInput();
 
             if(!input.toUpperCase().equals("Y"))
             {
@@ -213,17 +194,16 @@ public class Faculty {
                     break;
 
             }
-            System.out.println("Please select your " + cardinalPosition + " choice:");
+            System.out.println("\nPlease select your " + cardinalPosition + " choice:");
 
             for(int i = 0; i < courses.size(); i++) {
                 System.out.println("["+(i+1)+"] "+courses.get(i).getCode() + " - " + courses.get(i).getCourseName());
             }
             System.out.println("["+(courses.size()+1)+"] Done ranking courses");
-            choice = inputReader.nextInt();
+            choice = getChoice(courses.size()+1);
+            System.out.println("");
 
-            if (choice < 0 || choice > courses.size()+1) {
-                System.out.println("Error, invalid selection please try again");
-            } else if(choice != courses.size()+1){
+            if(choice != courses.size()+1){
                 //add course ranking record
                 Course course = courses.get(choice-1);
                 coursesRanked.add(course);
@@ -265,14 +245,14 @@ public class Faculty {
             System.out.println("Semester Preference Form Menu:");
             System.out.println("Semester: " + semester);
 
-            System.out.println("1. Display Semester Info Form");
-            System.out.println("2. Course Load Preference");
-            System.out.println("3. Scheduling Factors");
-            System.out.println("4. Times of Day Preference");
-            System.out.println("5. Days of Week Preference");
-            System.out.println("6. Back to Course Preference Forms Menu");
+            System.out.println("[1] Display Semester Info Form");
+            System.out.println("[2] Course Load Preference");
+            System.out.println("[3] Scheduling Factors");
+            System.out.println("[4] Times of Day Preference");
+            System.out.println("[5] Days of Week Preference");
+            System.out.println("[6] Back to Course Preference Forms Menu");
 
-            choice = inputReader.nextInt();
+            choice = getChoice(6);
             if(choice == 1) {
                 form_semester_info.display();
             } else if (choice == 2) {
@@ -297,7 +277,7 @@ public class Faculty {
 
         do {
             System.out.println("How many courses would you like to teach this semester?");
-            number_of_courses = inputReader.nextInt();
+            number_of_courses = getChoice(3);
             if(number_of_courses < 1 || number_of_courses > 3)
             {
                 System.out.println("Invalid choice, please select a number between 1 and 3.");
@@ -323,15 +303,15 @@ public class Faculty {
         boolean inputValid = false;
         System.out.println("Enter in a, b, and c in the corresponding order of importance to your scheduling.\n" +
                 "For example \"c a b\" to indicate that Times of the Day are the most important factor, \n" +
-                "and Days of the Week are the lease important factor:");
-        System.out.println("a: Course Preference \tb: Days of the Week \tc: Times of the Day");
+                "and Days of the Week are the least important factor:");
+        System.out.println("[a] Course Preference \n[b] Days of the Week \n[c] Times of the Day");
 
         //clear buffer of any existing input
         inputReader.nextLine();
 
         do {
             inputValid = false;
-            input = inputReader.nextLine().trim();
+            input = getInput();
             if(input.equals("quit"))
             {
                 inputValid = true; // quitting
@@ -371,12 +351,12 @@ public class Faculty {
         int time_of_day = 0;
 
         do {
-            System.out.println("Which time of the day would you prefer? (Select one)");
+            System.out.println("Which time of the day would you prefer?");
             for(int i = 1; i < times.length; i++)
             {
-                System.out.println(i+": "+times[i]);
+                System.out.println("["+i+"] "+times[i]);
             }
-            time_of_day = inputReader.nextInt();
+            time_of_day = getChoice(3);
             if(time_of_day < 1 || time_of_day > 3)
             {
                 System.out.println("Invalid choice, please select a number between 1 and 3.");
@@ -398,20 +378,41 @@ public class Faculty {
 
     public void daysOfWeekPreference(FormSemesterInfoRecord form_semester_info)
     {
+        int choice = 0;
         int days_of_week = 0;
 
         do {
-            System.out.println("Which days of the week would you prefer? (Select one)");
-            for(int i = 1; i < days.length; i++)
+            System.out.println("Which days of the week would you prefer?");
+
+            switch(form_semester_info.semester)
             {
-                System.out.println(i+": "+days[i]);
+                case Fall:
+                case Spring:
+                    System.out.println("[1] MWF");
+                    System.out.println("[2] MW");
+                    System.out.println("[3] TR");
+
+                    choice = getChoice(3);
+                    days_of_week = choice;
+                    break;
+
+                case Summer:
+                    System.out.println("[1] Summer C(12 weeks) MW");
+                    System.out.println("[2] Summer C(12 weeks) TR");
+                    System.out.println("[3] Summer A(6 weeks) MWTR");
+                    System.out.println("[4] Summer B(6 weeks) MWTR");
+                    System.out.println("[5] 8 week MWF");
+                    System.out.println("[6] 8 week TR");
+                    System.out.println("[7] 6 week MW+4 Fridays");
+                    System.out.println("[8] 6 week TR+4 Fridays");
+
+                    choice = getChoice(8);
+                    days_of_week = choice+4; //offset by Spring/Fall days
+                    break;
             }
-            days_of_week = inputReader.nextInt();
-            if(days_of_week < 1 || days_of_week > 3)
-            {
-                System.out.println("Invalid choice, please select a number between 1 and 3.");
-            }
-            else
+
+
+            if(days_of_week > 0 && days_of_week < days.length)
             {
                 //save the time of day to the semester form
                 if(form_semester_info.saveDaysOfWeek(connection, days_of_week))
@@ -423,7 +424,7 @@ public class Faculty {
                     System.out.println("An error occurred saving your days of week preference.");
                 }
             }
-        }while(days_of_week < 1 || days_of_week > 3);
+        }while(days_of_week < 1 || days_of_week > days.length);
     }
 
     private ArrayList<Course> getAvailableCourses(){
@@ -439,7 +440,7 @@ public class Faculty {
         } catch (SQLException e) {
             System.out.println("Error: "+e.getMessage());
         } finally {
-
+            clean(rset, ps);
         }
         return courses;
     }
@@ -457,8 +458,33 @@ public class Faculty {
         } catch (SQLException e) {
             System.out.println("Error: "+e.getMessage());
         } finally {
-
+            clean(rset, ps);
         }
         return preference_forms;
+    }
+
+    private static void clean(ResultSet rset, Statement stmt){
+        try {
+            if(rset != null) rset.close();
+            if(stmt != null) stmt.close();
+        } catch (SQLException se) { }
+    }
+
+    private int getChoice(int last){
+        String selection = null;
+        do {
+            System.out.print(">>  ");
+            selection = inputReader.next();
+            try {
+                int num = Integer.parseInt(selection);
+                if(num > 0 && num <= last) return num;
+            } catch (Exception e) { /* Politely ignore */ }
+            System.out.println("\"===========Please enter a valid selection.===========\"");
+        } while (true);
+    }
+
+    private String getInput(){
+        System.out.print(">>  ");
+        return inputReader.nextLine().trim();
     }
 }

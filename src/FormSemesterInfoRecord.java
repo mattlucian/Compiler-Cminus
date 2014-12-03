@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,13 +36,16 @@ public class FormSemesterInfoRecord {
         String query = "INSERT INTO form_semester_info (preference_form_id, n_number, semester) VALUES ( ";
         query += this.preference_form_id + ", " + this.fac_id + ", '" + this.semester + "' )";
 
+        Statement statement = null;
         try{
-            Statement statement = establishedConnection.createStatement();
+            statement = establishedConnection.createStatement();
             statement.executeUpdate(query);
             return true;
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
             return false;
+        } finally {
+            clean(null, statement);
         }
     }
 
@@ -50,8 +54,9 @@ public class FormSemesterInfoRecord {
                 "SET course_importance=" + course_importance + ", day_importance=" + day_importance + ", time_importance=" + time_importance +
                 " WHERE preference_form_id = " + this.preference_form_id + " AND semester='" + this.semester + "'";
 
+        Statement statement = null;
         try{
-            Statement statement = establishedConnection.createStatement();
+            statement = establishedConnection.createStatement();
             statement.executeUpdate(query);
             this.course_importance = course_importance;
             this.day_importance = day_importance;
@@ -60,6 +65,8 @@ public class FormSemesterInfoRecord {
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
             return false;
+        } finally {
+            clean(null, statement);
         }
     }
 
@@ -68,14 +75,17 @@ public class FormSemesterInfoRecord {
                 "SET number_of_courses=" + number_of_courses +
                 " WHERE preference_form_id = " + this.preference_form_id + " AND semester='" + this.semester + "'";
 
+        Statement statement = null;
         try{
-            Statement statement = establishedConnection.createStatement();
+            statement = establishedConnection.createStatement();
             statement.executeUpdate(query);
             this.number_of_courses = number_of_courses;
             return true;
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
             return false;
+        } finally {
+            clean(null, statement);
         }
     }
 
@@ -84,14 +94,17 @@ public class FormSemesterInfoRecord {
                 "SET time_of_day_id=" + time_of_day_id +
                 " WHERE preference_form_id = " + this.preference_form_id + " AND semester='" + this.semester + "'";
 
+        Statement statement = null;
         try{
-            Statement statement = establishedConnection.createStatement();
+            statement = establishedConnection.createStatement();
             statement.executeUpdate(query);
             this.time_of_day_id = time_of_day_id;
             return true;
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
             return false;
+        } finally {
+            clean(null, statement);
         }
     }
     public boolean saveDaysOfWeek(Connection establishedConnection, int days_of_week_id){
@@ -99,14 +112,17 @@ public class FormSemesterInfoRecord {
                 "SET days_of_week_id=" + days_of_week_id +
                 " WHERE preference_form_id = " + this.preference_form_id + " AND semester='" + this.semester + "'";
 
+        Statement statement = null;
         try{
-            Statement statement = establishedConnection.createStatement();
+            statement = establishedConnection.createStatement();
             statement.executeUpdate(query);
             this.days_of_week_id = days_of_week_id;
             return true;
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
             return false;
+        } finally {
+            clean(null, statement);
         }
     }
 
@@ -118,9 +134,11 @@ public class FormSemesterInfoRecord {
 
         List<FormSemesterInfoRecord> form_semester_info_list = new ArrayList<FormSemesterInfoRecord>();
 
+        Statement statement = null;
+        ResultSet rs = null;
         try{
-            Statement statement = establishedConnection.createStatement();
-            ResultSet rs = statement.executeQuery(query);
+            statement = establishedConnection.createStatement();
+            rs = statement.executeQuery(query);
             try{
                 while(rs.next()){
                     int preference_form_id = rs.getInt("preference_form_id");
@@ -142,6 +160,8 @@ public class FormSemesterInfoRecord {
             }
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
+        } finally {
+            clean(rs, statement);
         }
 
         if(form_semester_info_list.size()>0)
@@ -172,9 +192,11 @@ public class FormSemesterInfoRecord {
 
         ArrayList<FormSemesterInfoRecord> form_semester_info_list = new ArrayList<FormSemesterInfoRecord>();
 
+        Statement statement = null;
+        ResultSet rs = null;
         try{
-            Statement statement = establishedConnection.createStatement();
-            ResultSet rs = statement.executeQuery(query);
+            statement = establishedConnection.createStatement();
+            rs = statement.executeQuery(query);
             try{
                 while(rs.next()){
                     int preference_form_id = rs.getInt("preference_form_id");
@@ -197,6 +219,8 @@ public class FormSemesterInfoRecord {
             }
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());
+        } finally {
+            clean(rs, statement);
         }
 
         if(form_semester_info_list.size()>0)
@@ -220,5 +244,12 @@ public class FormSemesterInfoRecord {
         System.out.println("\tDay Importance: " + this.day_importance);
         System.out.println("\tTime Importance: " + this.time_importance);
         System.out.println("");
+    }
+
+    private static void clean(ResultSet rset, Statement stmt){
+        try {
+            if(rset != null) rset.close();
+            if(stmt != null) stmt.close();
+        } catch (SQLException se) { }
     }
 }

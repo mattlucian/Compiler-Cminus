@@ -34,17 +34,12 @@ public class Driver {
         super();
     }
     
-    //Testing
+    /*
+        The main method of the Driver class is the entry point into this application
+
+        It begins by authenticating users to show them the appropriate menus.
+     */
     public static void main(String[] args) {
-        
         Authentication auth = new Authentication(conn);
-        //Simulating login: acquired valid n-Number
-//        String studentId = "n00045673";
-//
-//        //keep this instantiated as a singleton
-//        StudentController controller = new StudentController(conn);//delivers connection
-//
-//        //everytime the student option selected, call this method:
-//        controller.startSession(studentId);
     }
 }
