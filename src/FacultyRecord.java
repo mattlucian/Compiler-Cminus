@@ -34,6 +34,7 @@ public class FacultyRecord {
         try{
             Statement statement = establishedConnection.createStatement();
             statement.executeUpdate(query);
+            statement.close();
             return true;
         }catch (Exception e){
             System.out.println("Error: "+e.getMessage());

@@ -16,6 +16,7 @@ public class Admin {
     private Connection connection;
     private String[] times = {"Morning (9am-12pm)","Afternoon (12pm-4pm)","Evening (4pm-9pm)"};
     private String[] days = {"MW","TR","MWF","MWTRF"};
+    private String[] semesters = {"Fall","Spring","Summer"};
 
     /*
      * Admin constructor. Accepts the established
@@ -47,12 +48,7 @@ public class Admin {
             } else if (choice == 3) {
                 deleteAccount();
             } else if (choice == 4) {
-                // destroy session, log out -- move this close to official program exit
-                try {
-                    connection.close();
-                }catch (SQLException e){
-                    System.out.println("Error: " + e.getMessage());
-                }
+                return;
             } else {
                 System.out.println("Error, invalid selection please try again");
             }
@@ -171,8 +167,9 @@ public class Admin {
         boolean result = facultyObject.insertFacultyRecord(connection);
         if(result){
             System.out.println("Successfully created account!");
+        }else {
+            System.out.println("Failed to create account");
         }
-        System.out.println("Failed to create account");
     }
 
     /*
@@ -207,7 +204,7 @@ public class Admin {
                 facultyList.add(new FacultyRecord(n_number, first_name, last_name, faculty_type , isAdmin, password));
                 System.out.println( "(" + Integer.toString(count++) + ") : " + first_name + " " + last_name + " [ "+ faculty_type+ ((isAnAdmin)?"-(Admin)":"") +" ]");
             }
-
+            clean(rs,statement);
         }catch (Exception e){
             System.out.println("Failed to pull down records: "+ e.getMessage());
             return;
@@ -233,6 +230,7 @@ public class Admin {
                 try{
                     Statement statement = connection.createStatement();
                     statement.executeUpdate(deleteQuery);
+                    statement.close();
                 }catch (Exception e){
                     System.out.println("Error: "+e.getMessage());
                     return;
@@ -295,17 +293,22 @@ public class Admin {
                         while(lastRS.next()){
                             // prints details per semester for preference form
                             System.out.println("--- Semester: "+lastRS.getString(1));
-                            System.out.println("---- Time Of Day: "+times[lastRS.getInt(4)]);
-                            System.out.println("---- Days of Week: "+days[lastRS.getInt(5)]);
+                            System.out.println("---- Time Of Day: "+lastRS.getInt(4)); //times[lastRS.getInt(4)-1]);
+                            System.out.println("---- Days of Week: "+lastRS.getInt(5)); //days[lastRS.getInt(5)-1]);
                         }
                         count++;
+                        clean(lastRS,lastStm);
                     }
+                    clean(internalRS,anotherStm);
                 }
+                clean(innerRS,newstm);
                 System.out.println("--------------");
             }
+            clean(rs,stm);
         }catch (SQLException e){
             System.out.println("Error: " + e.getMessage());
         }
+
         //endregion
 
         System.out.println("------------");
@@ -323,14 +326,9 @@ public class Admin {
             Statement stm = connection.createStatement();
             ResultSet rs = stm.executeQuery(query3);
             while(rs.next()) {
-                if(foundCourses.contains(rs.getString(2))){ // if already has course
+                foundCourses.add(rs.getString(2)); // add code to found
+                System.out.println(rs.getString(1)+" ("+rs.getString(2)+")");
 
-
-                }else{
-                    foundCourses.add(rs.getString(2)); // add code to found
-                    System.out.println(rs.getString(1)+" ("+rs.getString(2)+")");
-
-                }
                 // grab student information linking to the course request
                 String query2 = "select distinct s.n_number, s.first_name, s.last_name, cr.semester, cr.year, cr.days_id, cr.times_id "+
                         "FROM student s "+
@@ -343,15 +341,17 @@ public class Admin {
                 Statement stmt2 = connection.createStatement();
                 ResultSet rs2 = stmt2.executeQuery(query2);
                 while(rs2.next()){
+                    System.out.println("result set size: "+rs2.getFetchSize());
                     // prints student name
                     System.out.println("- "+rs2.getString(2)+" "+rs2.getString(3));
-
                     // get all details pertaining to student
                     System.out.println("-- "+rs2.getString(4)+" "+rs2.getString(5));
-                    System.out.println("--- "+days[rs2.getInt(6)]+" "+times[rs2.getInt(7)]);
+                    System.out.println("--- "+days[rs2.getInt(6)-1]+" "+times[rs2.getInt(7)-1]);
                 }
                 System.out.println("--------------");
+                clean(rs2,stmt2);
             }
+            clean(rs,stm);
         }catch (SQLException e){
             System.out.println("Error: " + e.getMessage());
         }
@@ -366,7 +366,95 @@ public class Admin {
     *   Form_Semester_Info, Faculty, and Student tables
     */
     public void printDayReport(){
-        System.out.println("Test print day report");
+        for(int j = 0; j < 3; j++){
+            System.out.println("\n---------------------");
+            System.out.println(" "+semesters[j]+" Semester");
+            System.out.println("---------------------");
+
+            for(int i = 0; i < 3; i++){
+                System.out.println("\n~~"+days[i]+"~~");
+
+                //region Faculty Days
+                System.out.println("-----------");
+                System.out.println("| Faculty |");
+                System.out.println("-----------");
+                // query all faculty memebrs that have preference_forms for this time
+                String selectAllFacultyMembersThatHaveForms = "select distinct f.first_name, f.last_name," +
+                        " f.n_number, fsi.time_of_day_id, fsi.course_importance, fsi.day_importance, fsi.time_importance, fsi.preference_form_id " +
+                        " from faculty f inner join preference_form pf " +
+                        " on f.n_number = pf.n_number inner join form_semester_info fsi " +
+                        " on pf.preference_form_id = fsi.preference_form_id " +
+                        " where fsi.days_of_week_id = "+i+" AND fsi.semester = '"+semesters[j]+"'";
+
+                try{
+                    Statement stmt = connection.createStatement();
+                    ResultSet rs = stmt.executeQuery(selectAllFacultyMembersThatHaveForms);
+                    int count = 1;
+                    while(rs.next()){ // grab all the details for that person
+                        System.out.println(count+": "+rs.getString(1)+" "+rs.getString(2)+" | "+times[rs.getInt(4)-1]);
+                        System.out.println("  - Importance Ranks: Time("+rs.getInt(7)+")"+" Day("+rs.getInt(6)+")"+" Course("+rs.getInt(5)+")");
+
+
+                        String getAllRankedCourses = "select code, rank_order from course_ranking where preference_form_id = "+rs.getInt(8);
+                        Statement stmt2 = connection.createStatement();
+                        ResultSet rs2 = stmt2.executeQuery(getAllRankedCourses);
+
+                        System.out.println("  - Courses:");
+                        while(rs2.next()){
+                            System.out.println("     - Rank "+rs2.getInt(2)+": "+rs2.getString(1));
+                        }
+                        count++;
+                        clean(rs2,stmt2);
+                    }
+                    clean(rs,stmt);
+                }catch (Exception e){
+                    System.out.println("Error: "+e.getMessage());
+                }
+                //endregion
+
+                //region Student Days
+                System.out.println("------------");
+                System.out.println("| Students |");
+                System.out.println("------------");
+
+                String getAllStudentsWithTime = "select distinct s.first_name, s.last_name, " +
+                        " s.n_number from student s " +
+                        " inner join course_request cr " +
+                        " on s.n_number = cr.n_number " +
+                        " where cr.days_id = "+i;
+
+                try{
+                    Statement stmt = connection.createStatement();
+                    ResultSet rs = stmt.executeQuery(getAllStudentsWithTime);
+
+                    // for each student with a time
+                    int count = 1;
+                    while(rs.next()){
+                        System.out.println(count+++": "+rs.getString(1)+" "+rs.getString(2));
+                        String getAllClassesForStudent = "select c.code, c.course_name, cr.times_id" +
+                                " from course c inner join course_request cr " +
+                                " on c.CRN = cr.CRN " +
+                                " where cr.n_number = "+rs.getInt(3);
+
+                        Statement stmt2 = connection.createStatement();
+                        ResultSet rs2 = stmt2.executeQuery(getAllClassesForStudent);
+
+                        // get all classes for each student
+                        System.out.println("  - Courses:");
+                        while(rs2.next()){
+                            System.out.println("    - "+rs2.getString(2)+" ("+rs2.getString(1)+") | "+times[rs2.getInt(3)-1]);
+                        }
+                        clean(rs2,stmt2);
+                    }
+
+                }catch(Exception e){
+                    System.out.println("Error: "+ e.getMessage());
+                }
+
+
+                //endregion
+            }
+        }
     }
 
     /*
@@ -376,7 +464,94 @@ public class Admin {
     *   Form_Semester_Info, Faculty, and Student tables
     */
     public void printTimeReport(){
-        System.out.println("Test print time report");
+
+        for(int j = 0; j < 3; j++){
+            System.out.println("\n---------------------");
+            System.out.println(" "+semesters[j]+" Semester");
+            System.out.println("---------------------\n");
+
+            for(int i = 0; i < 3; i++){
+                System.out.println("\n~~"+times[i]+"~~");
+
+                //region Faculty Times
+                System.out.println("-----------");
+                System.out.println("| Faculty |");
+                System.out.println("-----------");
+                // query all faculty memebrs that have preference_forms for this time
+                String selectAllFacultyMembersThatHaveForms = "select distinct f.first_name, f.last_name," +
+                        " f.n_number, fsi.days_of_week_id, fsi.course_importance, fsi.day_importance, fsi.time_importance, fsi.preference_form_id " +
+                        " from faculty f inner join preference_form pf " +
+                        " on f.n_number = pf.n_number inner join form_semester_info fsi " +
+                        " on pf.preference_form_id = fsi.preference_form_id " +
+                        " where fsi.time_of_day_id = "+i+" AND fsi.semester = '"+semesters[j]+"'";
+
+                try{
+                    Statement stmt = connection.createStatement();
+                    ResultSet rs = stmt.executeQuery(selectAllFacultyMembersThatHaveForms);
+                    int count = 1;
+                    while(rs.next()){ // grab all the details for that person
+                        System.out.println(count+": "+rs.getString(1)+" "+rs.getString(2)+" | "+days[rs.getInt(4)]);
+                        System.out.println("  - Importance Ranks: Time("+rs.getInt(7)+")"+" Day("+rs.getInt(6)+")"+" Course("+rs.getInt(5)+")");
+
+
+                        String getAllRankedCourses = "select code, rank_order from course_ranking where preference_form_id = "+rs.getInt(8);
+                        Statement stmt2 = connection.createStatement();
+                        ResultSet rs2 = stmt2.executeQuery(getAllRankedCourses);
+
+                        System.out.println("  - Courses:");
+                        while(rs2.next()){
+                            System.out.println("     - Rank "+rs2.getInt(2)+": "+rs2.getString(1));
+                        }
+                        count++;
+                    }
+
+                }catch (Exception e){
+                    System.out.println("Error: "+e.getMessage());
+                }
+                //endregion
+
+                //region Student Times
+                System.out.println("------------");
+                System.out.println("| Students |");
+                System.out.println("------------");
+
+                String getAllStudentsWithTime = "select distinct s.first_name, s.last_name, " +
+                        " s.n_number from student s " +
+                        " inner join course_request cr " +
+                        " on s.n_number = cr.n_number " +
+                        " where cr.times_id = "+i;
+
+                try{
+                    Statement stmt = connection.createStatement();
+                    ResultSet rs = stmt.executeQuery(getAllStudentsWithTime);
+
+                    // for each student with a time
+                    int count = 1;
+                    while(rs.next()){
+                        System.out.println(count+++": "+rs.getString(1)+" "+rs.getString(2));
+                        String getAllClassesForStudent = "select c.code, c.course_name, cr.days_id" +
+                                " from course c inner join course_request cr " +
+                                " on c.CRN = cr.CRN " +
+                                " where cr.n_number = "+rs.getInt(3);
+
+                        Statement stmt2 = connection.createStatement();
+                        ResultSet rs2 = stmt2.executeQuery(getAllClassesForStudent);
+
+                        // get all classes for each student
+                        System.out.println("  - Courses:");
+                        while(rs2.next()){
+                            System.out.println("    - "+rs2.getString(2)+" ("+rs2.getString(1)+") | "+days[rs2.getInt(3)-1]);
+                        }
+                    }
+
+                }catch(Exception e){
+                    System.out.println("Error: "+ e.getMessage());
+                }
+
+
+                //endregion
+            }
+        }
     }
 
     /*
@@ -387,56 +562,71 @@ public class Admin {
     */
     public void printFacultyReport(){
 
-        String getFaculty = "select f.first_name, f.last_name " +
-                "from faculty f " +
-                "inner join " +
-                "inner join course_ranking cr " +
-                " on f.n_number = cr.n_number " +
-                "where cr.semester = '";
+        //region FacultyReport
 
-
-        System.out.println("Fall Semester");
-        //region Fall Semester
+        // select faculty members that have ranked it
+        String query2 = "select distinct f.n_number, f.first_name, f.last_name "+
+                "FROM faculty f "+
+                "INNER JOIN course_ranking cr "+
+                " ON f.n_number = cr.n_number ";
         try{
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(getFaculty+"Fall'");
+            Statement newstm = connection.createStatement();
+            ResultSet innerRS = newstm.executeQuery(query2);
+            while(innerRS.next()) {
+                // prints faculty name + n_number
+                System.out.println("- " + innerRS.getString(2) + " " + innerRS.getString(3));
 
-        }catch (SQLException e){
-            System.out.println("Error: "+e.getMessage());
-        }
+                // gets preference form for faculty
+                String queryFacultyDetails = "select preference_form_id from preference_form where n_number = " + innerRS.getInt(1);
+                Statement anotherStm = connection.createStatement();
+                ResultSet internalRS = anotherStm.executeQuery(queryFacultyDetails);
+                int count = 1;
+                while (internalRS.next()) { // for every preference form, show the details
+                    // prints preference form for particular faculty member
+                    System.out.println("-- Preference Form: " + Integer.toString(count));
+                    System.out.println("--- Fall");
+                    String fallQuery = "Select time_of_day_id, days_of_week_id, number_of_courses, course_importance, day_importance, time_importance" +
+                            " from form_semester_info where preference_form_id = " + internalRS.getInt(1)+" AND semester = 'Fall'";
+                    Statement fallstmt = connection.createStatement();
+                    ResultSet fallrs = fallstmt.executeQuery(fallQuery);
+                    while (fallrs.next()) {
+                        System.out.println("---- "+times[fallrs.getInt(1)-1]+" | "+days[fallrs.getInt(2)-1]+" | "+"# Of Courses: "+fallrs.getInt(3));
+                        System.out.println("---- Importance Ranks: Time("+fallrs.getInt(6)+") Day("+fallrs.getInt(5)+") Courses("+fallrs.getInt(4)+")");
+                    }
+                    System.out.println("--- Spring");
+                    String springQuery = "Select time_of_day_id, days_of_week_id, number_of_courses, course_importance, day_importance, time_importance" +
+                            " from form_semester_info where preference_form_id = " + internalRS.getInt(1)+" AND semester = 'Spring'";
+                    Statement springstmt = connection.createStatement();
+                    ResultSet springrs = springstmt.executeQuery(springQuery);
+                    while (springrs.next()) {
+                        System.out.println("---- "+times[springrs.getInt(1)-1]+" | "+days[springrs.getInt(2)-1]+" | "+"# Of Courses: "+springrs.getInt(3));
+                        System.out.println("---- Importance Ranks: Time("+springrs.getInt(6)+") Day("+springrs.getInt(5)+") Courses("+springrs.getInt(4)+")");
+                    }
+                    System.out.println("--- Summer");
+                    String summerQuery = "Select time_of_day_id, days_of_week_id, number_of_courses, course_importance, day_importance, time_importance" +
+                            " from form_semester_info where preference_form_id = " + internalRS.getInt(1)+" AND semester = 'Summer'";
+                    Statement summerstmt = connection.createStatement();
+                    ResultSet summerrs = summerstmt.executeQuery(summerQuery);
+                    while (summerrs.next()) {
+                        System.out.println("---- "+times[summerrs.getInt(1)-1]+" | "+days[summerrs.getInt(2)-1]+" | "+"# Of Courses: "+summerrs.getInt(3));
+                        System.out.println("---- Importance Ranks: Time("+summerrs.getInt(6)+") Day("+summerrs.getInt(5)+") Courses("+summerrs.getInt(4)+")");
+                    }
 
-        //endregion
 
-        System.out.println("Spring Semester");
-        //region Spring Semester
-        try{
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(getFaculty+"Spring'");
-
-        }catch (SQLException e){
-            System.out.println("Error: "+e.getMessage());
-        }
-
-        //endregion
-
-        System.out.println("Summer Semester");
-        //region Summer Semester
-        try{
-            Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery(getFaculty+"Summer'");
-            while(rs.next()){
-                System.out.println(" - "+rs.getString(1)+" "+rs.getString(2));
-
-
-
+                    String getFacultyCourses = "select code, rank_order from course_ranking where preference_form_id = "+internalRS.getInt(1)+" AND n_number = "+innerRS.getInt(1);
+                    Statement stmt3 = connection.createStatement();
+                    ResultSet coursesRS = stmt3.executeQuery(getFacultyCourses);
+                    while(coursesRS.next()){
+                        System.out.println("--- "+coursesRS.getString(1)+" Ranked: "+coursesRS.getInt(2));
+                    }
+                    count++;
+                }
 
             }
-
-
-        }catch (SQLException e){
-            System.out.println("Error: "+e.getMessage());
+            clean(innerRS,newstm);
+        }catch (SQLException ex){
+            System.out.println("Error: "+ex.getMessage());
         }
-
         //endregion
     }
 
@@ -446,10 +636,10 @@ public class Admin {
     *   Course_Ranking, Course_RequestPreference_Form,
     *   Form_Semester_Info, Faculty, and Student tables
     */
-    public void printStudentReport(){
+    public void printStudentReport(){ // change to show student then semesters
 
         //region Fall Semester
-        System.out.println("Fall Semester:");
+        System.out.println("\nFall Semester:");
         String queryForFall = "select distinct s.first_name, s.last_name, s.n_number, cr.days_id, cr.times_id "+
                 "FROM student s " +
                 "INNER JOIN course_request cr " +
@@ -461,7 +651,7 @@ public class Admin {
             ResultSet rs = stm.executeQuery(queryForFall);
             while(rs.next()){
                 System.out.println(count+++": "+rs.getString(1)+" "+rs.getString(2)+" ("+rs.getString(3)+")");
-                System.out.println("-- "+days[rs.getInt(4)]+" | "+times[rs.getInt(5)]);
+                System.out.println("-- "+days[rs.getInt(4)-1]+" | "+times[rs.getInt(5)-1]);
                 String queryToGetClasses = "select c.course_name, c.code from course c " +
                         "inner join course_request cr " +
                         "on c.CRN = cr.CRN " +
@@ -491,7 +681,7 @@ public class Admin {
         //endregion
 
         //region Spring Semester
-        System.out.println("Spring Semester:");
+        System.out.println("\nSpring Semester:");
         String queryForSpring = "select distinct s.first_name, s.last_name, s.n_number, cr.days_id, cr.times_id "+
                 "FROM student s " +
                 "INNER JOIN course_request cr " +
@@ -503,7 +693,7 @@ public class Admin {
             ResultSet rs = stm.executeQuery(queryForSpring);
             while(rs.next()){
                 System.out.println(count+++": "+rs.getString(1)+" "+rs.getString(2)+" ("+rs.getString(3)+")");
-                System.out.println("-- "+days[rs.getInt(4)]+" | "+times[rs.getInt(5)]);
+                System.out.println("-- "+days[rs.getInt(4)-1]+" | "+times[rs.getInt(5)-1]);
                 String queryToGetClasses = "select c.course_name, c.code from course c " +
                         "inner join course_request cr " +
                         "on c.CRN = cr.CRN " +
@@ -535,6 +725,7 @@ public class Admin {
         //endregion
 
         //region Summer Semester
+        System.out.println("\nSummer Semester");
         String queryForSummer = "select distinct s.first_name, s.last_name, s.n_number, cr.days_id, cr.times_id "+
                 "FROM student s " +
                 "INNER JOIN course_request cr " +
@@ -547,7 +738,7 @@ public class Admin {
             ResultSet rs = stm.executeQuery(queryForSummer);
             while(rs.next()){
                 System.out.println(count+++": "+rs.getString(1)+" "+rs.getString(2)+" ("+rs.getString(3)+")");
-                System.out.println("-- "+days[rs.getInt(4)]+" | "+times[rs.getInt(5)]);
+                System.out.println("-- "+days[rs.getInt(4)-1]+" | "+times[rs.getInt(5)-1]);
                 String queryToGetClasses = "select c.course_name, c.code from course c " +
                         "inner join course_request cr " +
                         "on c.CRN = cr.CRN " +
@@ -577,7 +768,14 @@ public class Admin {
 
 
         //endregion
-
     }
     //endregion
+
+    private void clean(ResultSet rset, Statement stmt){
+        try {
+            if(rset != null) rset.close();
+            if(stmt != null) stmt.close();
+        } catch (SQLException se) { }
+    }
+
 }

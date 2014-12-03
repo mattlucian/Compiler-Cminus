@@ -21,9 +21,8 @@ INNER JOIN preference_form pf
 ----------------------
 -- Gets Courses Requested By Students
 ----------------------
--- c  = course
--- cr = course_request
--- s  = student
+-- param1 =
+
 SELECT c.code,
        c.course_name,
        s.first_name,
