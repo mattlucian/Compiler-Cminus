@@ -1,28 +1,16 @@
 # README #
 
-This README explains about Team-A6's Data Modeling - Final Project for Fall of 2014. 
+### COP4620 Compiler Project ###
 
-* This project details unf scheduling and allows students, faculty, and administrators to log into the system and perform various tasks associated with scheduling classes at UNF.
+* Components
+    * P1 - Lexical Analyzer
+    * P2 - Parser for Syntax
+    * P3 - Semantics...
+    * P4 - TBD
+* Created for Dr. Roger Eggen's Compiler course at UNF for Spring 2015 semester
 
-The project uses Oracle 11.2 and Java connections done via JDBC drivers.
+### Created By ###
+* Matt Myers
 
-----------
-
-To run this program, unshar the program and run the bash script "team6":
-
-    shar -u team6dm2finalproject
-
-    TeamA6
-
-
-
-For more information, please refer to the submitted documentation
-
-    - Matt Myers
-    - Nick Pickering
-    - Chris Raley
-    - Randall Guenther
-    - Ryan Cooper
-    - Katelin Carter
-
-    
+### Description ###
+* The Compiler reads a program in and sends it to the Lexical Analyzer. The Lexical Analyzer creates tokens and sends these tokens to the Parser. The Parser uses a Grammar (created for C- syntax) and validates the syntax of the program. 
