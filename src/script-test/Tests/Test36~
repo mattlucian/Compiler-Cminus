@@ -1,0 +1,5 @@
+int main(){
+	void i;		//Test reject on void id
+	
+	return 1;
+}

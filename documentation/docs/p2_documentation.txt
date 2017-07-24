@@ -1,0 +1,155 @@
+Matt Myers
+N00748663
+COP4620 - Compilers
+Dr. Eggen
+
+Project 2
+Due: 3/05/2015 @ 11:59pm
+Submitted: 3/05/2015
+
+-------------------------------------------------------------------------------
+    Overview:
+-------------------------------------------------------------------------------
+    Part two adds several new classes to parse the program
+and ensure the syntax is aligned with the C- Grammar.
+    - Grammar class
+    - Parser class
+    - Transition class
+    - Choices class
+
+    This program essentially mimics the way a grammar is solved on paper
+by recursively traversing through objects that are linked together.
+The Grammar is given the "Transitions" which each have a list of "Choices"
+(so long as they are non-terminal).
+
+    The program begins by traversing from the starting Transition into
+it's choices, and then chooses the appropriate choice by checking if any of the
+firsts of each choice accepts the current token provided by the Lexical Analyzer.
+If the program uses all of its tokens and successfully backs out to the start of
+the grammar with the right State returned, it will be considered correct syntax.
+
+    With the model I created, the Grammar can be swapped with any different
+Grammar (non-recursive) and the code will traverse through the Grammar
+in the same manner. In theory, it would work with C or C++ Grammars as well, although
+more Lexical Tokens would have to be created and recognized for proper support.
+
+-------------------------------------------------------------------------------
+    Example Grammar Code-Representation
+-------------------------------------------------------------------------------
+
+    A -> BdB | B    A = Transition, B = Transition, @ = Transition
+    B -> a | @     d = Transition (terminal), a = Transition (terminal)
+                   A's Choices: { Bd , B }    B's Choices: { a , @ }
+
+    ------------------------------
+    Basic Traversal of string "da"
+    ------------------------------
+    Get first token, "a"
+    Transition A -> checks choices
+        Transition B -> checks choices
+            Transition a -> doesn't match, next choice
+            Transition @ -> goes to empty, back out
+        Transition d -> is terminal, matches. Accept - get next token = "a", State.FOUND_MATCH
+        Transition B -> checks choices
+            Transition a -> is terminal, matches. Accept - no tokens left, State.FOUND_MATCH
+        Transition B -> End of this transition, return State.FOUND_MATCH
+    Transition A -> No remaining Transitions in the choice, return State.FOUND_MATCH
+
+    Made it back to A and has State.FOUND_MATCH, Syntax is correct.
+
+-------------------------------------------------------------------------------
+    New Classes:
+-------------------------------------------------------------------------------
+Grammar:
+    Holds all the Transitions in the Grammar, both non-terminal and terminal.
+
+
+Parser:
+    Handles token management.
+    Applies traversing logic to the Grammar itself through two recursive methods
+        1. checkChoices(Choices c)
+        --------------------------
+            - Iterates through each Transition that the choice contains
+            and calls the "checkTransition" method to check each one. Depending
+            on the State returned, reacts accordingly.
+
+            - For example, if State.EMPTY is received, you know that choice goes
+            to empty now. If State.DEAD_END is received, the choice is a dead end
+            and another one must match for the syntax to be correct.
+
+        2. checkTransition(Transition t)
+        --------------------------------
+            - If the transition is a terminal, compares the transition
+            to the current token. If it matches, grab the next token and
+            return State.FOUND_MATCH to the "checkChoices" method. If the token
+            doesn't match and it needs to, return State.DEAD_END
+
+            - If the transition is an empty string, return State.EMPTY to
+            indicate that there was no match, but it can continue to traverse.
+
+            - If the transition is a non-terminal, calls the "checkChoices"
+            method and reacts depending on the State returned.
+
+
+Transition:
+    Transition objects represent both non-terminal and terminal transitions
+    within a grammar. This object contains a list of "choices" if it is a non-
+    terminal Transition that it can traverse to.
+
+    A -> B      In this example, A is a Transition, B is a Transition,
+    B -> b      and b is a terminal-Transition.
+
+
+Choices:
+    Choices objects contain a list of Transitions, both terminal and non-terminal.
+
+    A -> BC     In this example, A, B, and C are Transitions while a and b are
+    B -> a      terminal-Transitions. BC is a "Choices" object that contains the
+    C -> b      Transitions B and C, respectively. This BC choice is housed within
+                A's "choices" property to allow A to traverse into them.
+
+-------------------------------------------------------------------------------
+    C- Grammar (Indexed)
+-------------------------------------------------------------------------------
+    0. start -> 1
+    1. beginDeclarations -> 3 2
+    2. moreDeclarations -> 3 2 | @
+    3. declaration -> 6 ID 4
+    4. extendedDeclaration-> 5 | ( 7 ) 12
+    5. arrayCheck -> ; | [ NUM ] ;
+    6. keywordType -> int | float | void
+    7. parameters -> void 8 | int ID 11 9 | float ID 11 9
+    8. voidParamCheck -> ID 11 9 | @
+    9. moreParams -> , 10 9 | @
+    10. param -> 6 ID 11
+    11. paramArrayCheck -> [ ] | @
+    12. compoundStmt -> { 13 15 }
+    13. declarationsInScope -> 14 13 | @
+    14. newDeclaration -> 6 ID 5
+    15. allStatements-> 16 15 | @
+    16. statement -> 18 | 12 | 17 | 20 | 21
+    17. selectionStmt -> if ( 23 ) 16 19
+    18. expressionStmt -> 23 ; | ;
+    19. elseStmt -> else 16 | @
+    20. iterateStmt -> while ( 23 ) 16
+    21. returnStmt -> return 22
+    22. returnComponent -> 23 ; | ;
+    23. expression -> ID 26 | ( 23 ) 27 | NUM 27 | FLON 27
+    24. variableArrayCheck -> [ 23 ] | @
+    25. remainingVariableComponent -> = 23 | 27
+    26. remainingIDComponent -> 24 25 | ( 39 ) 27
+    27. remainingExpressionComponent -> 35 32 29
+    28. variable -> ID 24
+    29. relation -> 30 31 | @
+    30. operation -> <= | < | > | >= | == | !=
+    31. addExpression -> 34 32
+    32. moreAddExpressions -> 33 34 32 | @
+    33. additionOperations -> + | -
+    34. term -> 37 35
+    35. moreTerms -> 36 37 35 | @
+    36. timesOperations -> * | /
+    37. factor -> ( 23 ) | 28 | 38 | NUM | FLON
+    38. call -> ID ( 39 )
+    39. arguments -> 40 | @
+    40. allArgs -> 23 41
+    41. moreArgs -> , 23 41 | @

@@ -1,0 +1,109 @@
+Matt Myers
+N00748663
+COP4620 - Compilers
+Dr. Eggen
+
+Project 3
+Due: 4/09/2015 (extended) @ 11:59pm
+Submitted: 4/09/2015
+
+-------------------------------------------------------------------------------
+    Overview:
+-------------------------------------------------------------------------------
+    Part 3 of this Compiler adds semantic checks to any program that passes through the
+lexical analyzer and syntax checker. These semantic checks primarily resolved around type,
+scope, proper parameters, naming conventions, and other valid rules for the C- language.
+
+Some examples of checks that are performed are:
+	- Proper return type
+	- Return not present in void function
+	- Only one main function
+	- No re-used names for functions
+	- No re-used names for variables at current depth
+	- Implemented variables are declared
+	- Function calls are referencing declared functions
+	- Variables / Values used in an expression are the same type
+	
+
+-------------------------------------------------------------------------------
+     Classes:
+-------------------------------------------------------------------------------
+Semantic:
+-----------
+	- This class contains the main logic for checking the semantics. It receives tokens
+	that the lexical analyzer creates and converts them into semantic symbols. During this
+	conversion process, the semantics class observes various language patterns and 
+	compares types of the tokens being processed. 
+	Properties
+		- Current Token
+		- Current Type
+		- Last Type
+		- Scope
+	Methods
+		- convertTokens(tokens)
+	    - checkIfValidReturnExpression(function)
+	    - checkIfValidExpression()
+	    - checkParamDeclaration()
+	    - checkIfProperParametersPassed()
+	    - consultGrammar()
+	    - compareTypes()
+	    - nextToken()
+	    - peek()
+	
+-----------------------------------------------------------------------------
+Depth:
+-----------
+    - Structurally is a "node" on a tree, as it contains a parent Depth and children Depths.
+    Depths represent the current depth of scope that the program is in. Each Depth in the
+     scope contains the following properties:
+	Properties
+        - Symbols
+        - Parent Depth
+        - Children Depths
+        - Identifier
+	Methods
+        - popBack() 
+        - addChild() 
+        
+-----------------------------------------------------------------------------
+Symbol:
+-----------
+	- A symbol is any variable found in the program, and as such holds a property
+	for the name, type, if this variable is a declaration, and what function they are
+	inside (or global)
+		- Name
+		- Type - int, void, float, int_array, float_array
+		- Reference to function contained in
+		- Declaration - bool, checks if declared or implemented
+		
+-----------------------------------------------------------------------------
+Parameter:
+-----------
+	- The parameter is a symbol that is only housed in Functions. The parameter class is 
+	structurally equivalent to the symbol.
+		- Name
+		- Type - int, void, float
+		
+-----------------------------------------------------------------------------
+Function:
+-----------
+    - The represents each function that is declared in the program. All functions are attached 
+    to the Scope object.
+		- Name
+		- Type - int, void, float
+		- Returned - bool if return was called
+		- Parameters
+		
+-----------------------------------------------------------------------------
+Scope:
+-----------
+    - The scope is just a container with utility methods to manipulate the Depth tree. It
+    has the following properties and functions:
+	Properties
+        - Starting Depth
+        - Current Depth
+        - Declared Functions
+	Methods
+        - isDeclaredFunction(name) 
+        - isDeclared(name)
+        - getFunctionNamed(name) 

@@ -1,0 +1,112 @@
+Matt Myers
+N00748663
+P4 - Testing results
+
+
+************************************************
+    Example 1
+************************************************
+INPUT
+------------------------------------------------
+void main (void)
+{
+ int x;
+ if (x==5){
+	x = 5 + 6 * 3;
+ }
+}
+------------------------------------------------
+OUTPUT
+------------------------------------------------
+1	func		main		void		0
+2	alloc		4						x
+3	comp		x			5			_t0
+4	BRNEQ								10
+5	block
+6	times		6			3			_t1
+7	add			5			_t1			_t2
+8	assign		_t2						x
+9	end		block
+10	end		func		main
+
+
+
+
+************************************************
+    Example 2
+************************************************
+INPUT
+------------------------------------------------
+void main(void)
+{
+  int x;
+  int y;
+  int z;
+  int m;
+   while(x+3 > 5)
+   {
+     x = y + m / z;
+     m = x - y + z * m / z;
+   }
+}
+------------------------------------------------
+OUTPUT
+------------------------------------------------
+1	func		main		void		0
+2	alloc		4						x
+3	alloc		4						y
+4	alloc		4						z
+5	alloc		4						m
+6	add			x			3			_t0
+7	BRLTEQ								20
+8	comp		_t0			5			_t1
+9	block
+10	div			m			z			_t2
+11	add			y			_t2			_t3
+12	assign		_t3						x
+13	sub			x			y			_t4
+14	times		z			m			_t5
+15	div			_t5			z			_t6
+16	add			_t4			_t6			_t7
+17	assign		_t7						m
+18	end		block
+19	BR								6
+20	end		func		main
+
+
+
+
+
+
+************************************************
+    Example 3
+************************************************
+INPUT
+------------------------------------------------
+int sub(int x)
+{
+   return(x+x);
+}
+void main(void)
+{
+  int x;
+  int y;
+  y = sub(x);
+}
+
+------------------------------------------------
+OUTPUT
+------------------------------------------------
+1	func		sub			int			1
+2	param
+3	alloc		4						x
+4	add			x			x			_t0
+5	return								_t0
+6	end		func		sub
+7	func		main		void		0
+8	alloc		4						x
+9	alloc		4						y
+10	arg								x
+11	call		sub			1			_t1
+12	assign		_t1						y
+13	end		func		main

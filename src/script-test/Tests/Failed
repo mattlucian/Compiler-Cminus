@@ -1,0 +1,58 @@
+FAILED FILES
+1 - Test Return type present - OUTPUT:  
+2 - Test Return type present - OUTPUT:  
+3 - Test Return type present - OUTPUT:  
+4 - Test no return statement on void - OUTPUT:  
+5 - Test no return statement on void - OUTPUT:  
+6 - Test return int type on int method - OUTPUT:  
+7 - Test return float type on float method - OUTPUT:  
+8 - Test return float type on int method - OUTPUT:  
+9 - Test return int type on float method - OUTPUT:  
+10 - Test adding int + int - OUTPUT:  
+11 - Test adding int + int + int - OUTPUT:  
+12 - Test adding int + float - OUTPUT:  
+13 - Test adding float + int - OUTPUT:  
+14 - Test float = float + float - OUTPUT:  
+15 - Test float = int - OUTPUT:  
+16 - Test int = float - OUTPUT:  
+17 - Test int[] = int - OUTPUT:  
+18 - Test float[] = float - OUTPUT:  
+19 - Test int[] = float - OUTPUT:  
+20 - Test float[] = int - OUTPUT:  
+21 - Test int = int + int[] - OUTPUT:  
+22 - Test float = float + float[] - OUTPUT:  
+23 - Test int = int + float[] - OUTPUT:  
+24 - Test int * int - OUTPUT:  
+25 - Test float * float - OUTPUT:  
+26 - Test reject on int * float - OUTPUT:  
+27 - Test reject on float * int - OUTPUT:  
+28 - Test (int + int) + int - OUTPUT:  
+29 - Test (float + float) + float - OUTPUT:  
+30 - Test (float) + int - OUTPUT:  
+31 - Test (int) + float - OUTPUT:  
+32 - Test int id + int id - OUTPUT:  
+33 - Test float id + float id - OUTPUT:  
+34 - Test reject on int id + float id - OUTPUT:  
+35 - Test reject on float id + int id - OUTPUT:  
+36 - Test reject on declaration of void id - OUTPUT:  
+37 - Test calling array index bigger than array size - OUTPUT:  
+38 - Test reject on calling float index of array on left of equation - OUTPUT:  
+39 - Test reject on calling float index of array on right of equation - OUTPUT:  
+40 - Test reject on calling array index bigger than size on right of equation - OUTPUT:  
+41 - Test accepts on declaring same ids at different scopes for int - OUTPUT:  
+42 - Test accepts on declaring same ids at differect scopes for float - OUTPUT:  
+43 - Test accepts on declaring same ids of different types at different scopes - OUTPUT:  
+44 - Test accepts on declaring same ids of different types at differect scopes - OUTPUT:  
+45 - Test reject on multiple id declaration at global scope - OUTPUT:  
+46 - Test reject on multiple id declaration at function scope - OUTPUT:  
+47 - Test reject on nultiple id declaration at compound scope - OUTPUT:  
+48 - Test parameters are at different scope than global scope - OUTPUT:  
+49 - Test params are unique for each function - OUTPUT:  
+50 - Test params and function declarations at same scope - OUTPUT:  
+51 - Test compound statements are at unique scopes - OUTPUT:  
+52 - Test reject on assigning float to int on method call - OUTPUT:  
+53 - Test reject on assigning int to float on method call - OUTPUT:  
+54 - Test reject on assigning void method results to anything - OUTPUT:  
+55 - Test reject on non-matching parameter types - OUTPUT:  
+56 - Test reject on too many arguments in method call - OUTPUT:  
+57 - Test reject on too few arguments in method call - OUTPUT:  

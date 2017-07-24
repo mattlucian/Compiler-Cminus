@@ -1,0 +1,66 @@
+
+Matt Myers
+N00748663
+P3 - Testing results
+------------------------------------------------
+Since there so many unique situations to test, I've included the all tests I verified.
+These tests can be found in the test directory and the results expected for each one are
+below:
+------------------------------------------------
+Test1   - ACCEPT
+Test2   - ACCEPT
+Test3   - REJECT
+Test4   - ACCEPT
+Test5   - REJECT
+Test6   - ACCEPT
+Test7   - ACCEPT
+Test8   - REJECT
+Test9   - REJECT
+Test10  - ACCEPT
+Test11  - ACCEPT
+Test12  - REJECT
+Test13  - REJECT
+Test14  - ACCEPT
+Test15  - REJECT
+Test16  - REJECT
+Test17  - ACCEPT
+Test18  - ACCEPT
+Test19  - REJECT
+Test20  - REJECT
+Test21  - ACCEPT
+Test22  - ACCEPT
+Test23  - REJECT
+Test24  - ACCEPT
+Test25  - ACCEPT
+Test26  - REJECT
+Test27  - REJECT
+Test28  - ACCEPT
+Test29  - ACCEPT
+Test30  - REJECT
+Test31  - REJECT
+Test32  - ACCEPT
+Test33  - ACCEPT
+Test34  - REJECT
+Test35  - REJECT
+Test36  - REJECT
+Test37  - ACCEPT
+Test38  - REJECT
+Test39  - REJECT
+Test40  - ACCEPT
+Test41  - ACCEPT
+Test42  - ACCEPT
+Test43  - ACCEPT
+Test44  - ACCEPT
+Test45  - REJECT
+Test46  - REJECT
+Test47  - REJECT
+Test48  - ACCEPT
+Test49  - ACCEPT
+Test50  - REJECT
+Test51  - ACCEPT
+Test52  - REJECT
+Test53  - REJECT
+Test54  - REJECT
+Test55  - REJECT
+Test56  - REJECT
+Test57  - REJECT

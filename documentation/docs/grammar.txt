@@ -1,0 +1,42 @@
+    start -> beginDeclarations
+    beginDeclarations -> declaration moreDeclarations
+    moreDeclarations -> declaration moreDeclarations | ε
+    declaration -> keywordType ID extendedDeclaration
+    extendedDeclaration-> arrayCheck | ( parameters ) compoundStmt
+    arrayCheck -> ; | [ NUM ] ;
+    keywordType -> int | float | void
+    parameters -> void voidParamCheck | int ID paramArrayCheck moreParams | float ID paramArrayCheck moreParams
+    voidParamCheck -> ID paramArrayCheck moreParams | ε
+    moreParams -> , param moreParams | ε
+    param -> keywordType ID paramArrayCheck
+    paramArrayCheck -> [ ] | ε
+    compoundStmt -> { declarationsInScope allStatements }
+    declarationsInScope -> newDeclaration declarationsInScope | ε
+    newDeclaration -> keywordType ID arrayCheck
+    allStatements-> statement allStatements | ε
+    statement -> expressionStmt | compoundStmt | selectionStmt | iterateStmt | returnStmt
+    selectionStmt -> if ( expression ) statement elseStmt
+    expressionStmt -> expression ; | ;
+    elseStmt -> else statement | @
+    iterateStmt -> while ( expression ) statement
+    returnStmt -> return returnComponent
+    returnComponent -> expression ; | ;
+    expression -> ID remainingIDComponent | ( expression ) remainingExpressionComponent | NUM remainingExpressionComponent
+    variableArrayCheck -> [ expression ] | ε
+    remainingVariableComponent -> = expression | remainingExpressionComponent
+    remainingIDComponent -> variableArrayCheck remainingVariableComponent | ( arguments ) remainingExpressionComponent
+    remainingExpressionComponent -> moreTerms moreAddExpressions relation
+    variable -> ID variableArrayCheck
+    relation -> operation addExpression | ε
+    operation -> <= | < | > | >= | == | !=
+    addExpression -> term moreAddExpressions
+    moreAddExpressions -> additionOperations term moreAddExpressions | ε
+    additionOperations -> + | -
+    term -> factor moreTerms
+    moreTerms -> timesOperations factor moreTerms | ε
+    timesOperations -> * | /
+    factor -> ( expression ) | variable | call | NUM
+    call -> ID ( arguments )
+    arguments -> allArgs | ε
+    allArgs -> expression moreArgs
+    moreArgs -> , expression moreArgs | ε

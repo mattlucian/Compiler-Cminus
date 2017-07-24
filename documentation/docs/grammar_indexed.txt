@@ -1,0 +1,42 @@
+    0. start -> 1
+    1. beginDeclarations -> 3 2
+    2. moreDeclarations -> 3 2 | @
+    3. declaration -> 6 ID 4
+    4. extendedDeclaration-> 5 | ( 7 ) 12
+    5. arrayCheck -> ; | [ NUM ] ;
+    6. keywordType -> int | float | void
+    7. parameters -> void 8 | int ID 11 9 | float ID 11 9
+    8. voidParamCheck -> ID 11 9 | @
+    9. moreParams -> , 10 9 | @
+    10. param -> 6 ID 11
+    11. paramArrayCheck -> [ ] | @
+    12. compoundStmt -> { 13 15 }
+    13. declarationsInScope -> 14 13 | @
+    14. newDeclaration -> 6 ID 5
+    15. allStatements-> 16 15 | @
+    16. statement -> 18 | 12 | 17 | 20 | 21
+    17. selectionStmt -> if ( 23 ) 16 19
+    18. expressionStmt -> 23 ; | ;
+    19. elseStmt -> else 16 | @
+    20. iterateStmt -> while ( 23 ) 16
+    21. returnStmt -> return 22
+    22. returnComponent -> 23 ; | ;
+    23. expression -> ID 26 | ( 23 ) 27 | NUM 27 | FLON 27
+    24. variableArrayCheck -> [ 23 ] | @
+    25. remainingVariableComponent -> = 23 | 27
+    26. remainingIDComponent -> 24 25 | ( 39 ) 27
+    27. remainingExpressionComponent -> 35 32 29
+    28. variable -> ID 24
+    29. relation -> 30 31 | @
+    30. operation -> <= | < | > | >= | == | !=
+    31. addExpression -> 34 32
+    32. moreAddExpressions -> 33 34 32 | @
+    33. additionOperations -> + | -
+    34. term -> 37 35
+    35. moreTerms -> 36 37 35 | @
+    36. timesOperations -> * | /
+    37. factor -> ( 23 ) | 28 | 38 | NUM | FLON
+    38. call -> ID ( 39 )
+    39. arguments -> 40 | @
+    40. allArgs -> 23 41
+    41. moreArgs -> , 23 41 | @

@@ -1,0 +1,97 @@
+Matt Myers
+N00748663
+COP4620 - Compilers
+Dr. Eggen
+
+Project 4
+Due: 4/19/2015 (extended) @ 11:59pm
+Submitted: 4/19/2015
+
+-------------------------------------------------------------------------------
+    Overview:
+-------------------------------------------------------------------------------
+    Part 4 of this compiler generates intermediate code that can be translated
+    into executable code by a runtime environment. It generates code for various
+    operations, such as function calls or variable allocation. It also handles
+    arithmetic and follows order of operations. This is accomplished by reading in
+    a strand of tokens in INFIX order and converting them to POSTFIX order.
+
+    Once this is completed, the expression is evaluated and output respectively.
+
+    EXAMPLE input:
+    --------------------
+        void main (void)
+        {
+         int x;
+         if (x==5){
+            x = 5 + 6 * 3;
+         }
+        }
+    --------------------
+    EXAMPLE output
+    --------------------
+        1	func		main		void		0
+        2	alloc		4						x
+        3	comp		x			5			_t0
+        4	BRNEQ								10
+        5	block
+        6	times		6			3			_t1
+        7	add			5			_t1			_t2
+        8	assign		_t2						x
+        9	end		block
+        10	end		func		main
+    --------------------
+
+
+    The generated code includes operations such as...
+    ------------------------------------------------
+    - call
+        calls a function declared
+    - comp
+        compares the two values and stores them in a result
+    - alloc
+        allocates memory for a variable
+    - add
+        adds two values together and stores them in a temporary variable
+    - func
+        shows function beginning and ending
+    - block
+        shows when an if, while, or else block begins / ends
+    - assign
+        assigns a value to a variable
+    - BR
+        Break to... Conditions are appended, such as
+        - BREQ
+            Break, if equal to
+        - BRNEQ
+            Break, if not equal to
+        - BRLT
+            Break, if less than
+        - BRGT
+            Break, if greater than
+        - BRLTEQ
+            Break if less than or equal
+        - BRGTEQ
+            Break if greater than or equal
+
+
+-------------------------------------------------------------------------------
+     Classes:
+-------------------------------------------------------------------------------
+CodeGeneration:
+-----------
+    - Stores the "Generations" of code that are generated the tokens are analyzed
+     Handles INFIX to POSTFIX conversion
+     handles POSTFIX evaluation
+     Prints the Generations accordingly, follows misc values such as BR line numbers
+
+-----------------------------------------------------------------------------
+Generation:
+-----------
+	- Stores 4 primary string values and an integer. These primary values are the 4
+	columns of generated code that are required for this project. Since these columns are symbolic
+	of different components at different times, the specifics of each column is determined at analysis time.
+	In short, the first column will always represent the "operation" while the last column
+	typically represents the "result".
+
+-----------------------------------------------------------------------------
